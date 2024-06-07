@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save to Cache Example</title>
+</head>
+<body>
+    <h1>Save Item to Cache</h1>
+    <form id="itemForm">
+        <label for="itemCategory">Item Category:</label>
+        <input type="text" id="itemCategory" name="itemCategory" required>
+        <br><br>
+        <label for="itemData">Item Data:</label>
+        <input type="text" id="itemData" name="itemData" required>
+        <br><br>
+        <button type="submit">Save Item</button>
+    </form>
+    <h2>Saved Items</h2>
+    <ul id="savedItems"></ul>
+
+    <script>
+        document.getElementById('itemForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let category = document.getElementById('itemCategory').value;
+            let data = document.getElementById('itemData').value;
+
+            if (category && data) {
+                // Save to local storage
+                localStorage.setItem(category, data);
+                displaySavedItems();
+            }
+        });
+
+        function displaySavedItems() {
+            let savedItems = document.getElementById('savedItems');
+            savedItems.innerHTML = '';
+
+            for (let i = 0; i < localStorage.length; i++) {
+                let key = localStorage.key(i);
+                let value = localStorage.getItem(key);
+                let listItem = document.createElement('li');
+                listItem.textContent = `${key}: ${value}`;
+                savedItems.appendChild(listItem);
+            }
+        }
+
+        // Display saved items on page load
+        window.onload = displaySavedItems;
+    </script>
+</body>
+</html>
