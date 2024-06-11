@@ -61,3 +61,24 @@ document.addEventListener("DOMContentLoaded", () => {
   showSlide(currentIndex);
   setInterval(nextSlide, 5000); // Change slide every 4 seconds
 });
+
+// --------------- Back to Top btn -------------------------
+
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("backToTop").style.display = "block";
+  } else {
+    document.getElementById("backToTop").style.display = "none";
+  }
+}
+
+function scrollToTop() {
+  const scrollToTopBtn = document.documentElement || document.body;
+  scrollToTopBtn.scrollIntoView({
+    behavior: "smooth",
+  });
+}
