@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Define CSS styles */
+    .list-item {
+      background-color: #f0f0f0;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+  </style>
+  <title>Orders</title>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+</head>
+<body>
+  <h1>Orders</h1>
+  <ul id="ordersList"></ul>
+
+  <script src="firebase.js"></script>
+  <script>
+    // Function to remove an order
+    function removeOrder(orderId) {
+    if (confirm('Are you sure you want to delete this order?')) {
+        firebase.database().ref('orders/' + orderId).remove()
+            .then(() => console.log('Order removed successfully'))
+            .catch((error) => console.error('Failed to remove order:', error));
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Reference to the 'orders' container in the database
+    const ordersRef = firebase.database().ref('orders');
+
+    // Assuming ordersList is the ul element where you want to display orders
+    const ordersList = document.getElementById('ordersList');
+
+    if (ordersList) {
+        // Fetch the data from Firebase and display it
+        ordersRef.on('value', (snapshot) => {
+            const ordersData = snapshot.val();
+
+            // Clear existing orders
+            ordersList.innerHTML = '';
+
+            // Check if ordersData is not null or undefined
+            if (ordersData) {
+                Object.entries(ordersData).forEach(([orderId, order]) => {
+                    const { name, contact, address, cartItems } = order;
+
+                    // Check if cartItems is defined and not empty
+                    if (cartItems && cartItems.length > 0) {
+                        const listItem = document.createElement('li');
+                        listItem.classList.add('list-item');
+                        let itemsHTML = ''; // To accumulate HTML for each item in the order
+
+                        // Iterate through cartItems array and create HTML for each item
+                        cartItems.forEach(item => {
+                            itemsHTML += `
+                                <strong>Name:</strong> ${item.name}<br>
+                                <strong>Price:</strong> ${item.price}<br>
+                                <strong>Size:</strong> ${item.buttonName}<br>
+                                <strong>Quantity:</strong> ${item.quantity}<br>
+                                <strong>Image:</strong> <img src="${item.image}" alt="Item Image"><br>
+                                -----------------------<br>
+                            `;
+                        });
+
+                        // Construct HTML for the whole order
+                        listItem.innerHTML = `
+                            <strong>Name:</strong> ${name}<br>
+                            <strong>Contact:</strong> ${contact}<br>
+                            <strong>Address:</strong> ${address}<br>
+                            <strong>Items:</strong><br>
+                            ${itemsHTML} 
+                            <button onclick="removeOrder('${orderId}')">Remove</button>
+                        `;
+
+                        ordersList.appendChild(listItem); // Append order to the list
+                    } else {
+                        console.log('No cart items found for order:', orderId);
+                    }
+                });
+            } else {
+                console.log('No orders found');
+                ordersList.innerHTML = '<li>No orders available</li>';
+            }
+        }, (error) => {
+            console.error('Error fetching orders:', error);
+        });
+    } else {
+        console.error('Orders list element not found');
+    }
+});
+  </script>
+</body>
+</html>
