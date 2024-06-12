@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        #messageDiv {
+            padding: 10px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+        }
+
+        h1, h2 {
+            text-align: center;
+        }
+    </style>
+    <title>Admin Panel</title>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+</head>
+<body>
+<h1>ADMIN PANEL (eid)</h1>
+<h2>Click <a href="apnaorderchecker.html" class="clickHereLink disabled" data-href="apnaorderchecker.html"><u>here</u></a> to check orders</h2>
+<h2>Click <a href="messages.html" class="clickHereLink disabled" data-href="messages.html"><u>here</u></a> to check messages</h2>
+click <a href="admin.html">here</a> to edit eid <br>
+click <a href="admin2.html">here</a> to edit bags<br>
+click <a href="admin3.html">here</a> to edit wedding<br>
+click <a href="admin4.html">here</a> to edit formal<br>
+click <a href="admin5.html">here</a> to edit tops <br>
+click <a href="admin6.html">here</a> to edit shoes<br>
+click <a href="admin7.html">here</a> to edit casual<br>
+<h2>Login to Manage Packages</h2>
+<label for="email">Email:</label>
+<input type="email" id="email" placeholder="Enter your email">
+<label for="password">Password:</label>
+<input type="password" id="password" placeholder="Enter your password">
+<button id="loginButton" onclick="login()">Login</button>
+<label for="nodeName">Enter Node Name:</label>
+<input type="text" id="nodeName" name="nodeName" placeholder="Enter node name...">
+<input type="text" id="itemName" placeholder="Enter Package name">
+<label for="itemImageInput">Select Package image:</label>
+<input type="file" id="itemImageInput" accept="image/*" multiple>
+
+<input type="text" id="itemDescription" placeholder="Enter Package description">
+<input type="text" id="itemDescriptionnext" placeholder="Enter Package description for next page">
+<input type="text" id="button1" placeholder="Enter Button 1 name">
+<input type="text" id="button1Price" placeholder="Enter Button 1 price">
+<input type="text" id="button2" placeholder="Enter Button 2 name">
+<input type="text" id="button2Price" placeholder="Enter Button 2 price">
+<input type="text" id="button3" placeholder="Enter Button 3 name">
+<input type="text" id="button3Price" placeholder="Enter Button 3 price">
+<input type="text" id="button4" placeholder="Enter Button 4 name">
+<input type="text" id="button4Price" placeholder="Enter Button 4 price">
+<input type="text" id="button5" placeholder="Enter Button 5 name">
+<input type="text" id="button5Price" placeholder="Enter Button 5 price">
+<input type="text" id="button6" placeholder="Enter Button 6 name">
+<input type="text" id="button6Price" placeholder="Enter Button 6 price">
+<input type="text" id="button7" placeholder="Enter Button 7 name">
+<input type="text" id="button7Price" placeholder="Enter Button 7 price">
+<input type="text" id="button8" placeholder="Enter Button 8 name">
+<input type="text" id="button8Price" placeholder="Enter Button 8 price">
+<input type="text" id="button9" placeholder="Enter Button 9 name">
+<input type="text" id="button9Price" placeholder="Enter Button 9 price">
+<input type="text" id="button10" placeholder="Enter Button 10 name">
+<input type="text" id="button10Price" placeholder="Enter Button 10 price">
+<input type="text" id="button11" placeholder="Enter Button 11 name">
+<input type="text" id="button11Price" placeholder="Enter Button 11 price">
+<input type="text" id="button12" placeholder="Enter Button 12 name">
+<input type="text" id="button12Price" placeholder="Enter Button 12 price">
+<input type="text" id="button13" placeholder="Enter Button 13 name">
+<input type="text" id="button13Price" placeholder="Enter Button 13 price">
+<input type="text" id="button14" placeholder="Enter Button 14 name">
+<input type="text" id="button14Price" placeholder="Enter Button 14 price">
+<input type="text" id="button15" placeholder="Enter Button 15 name">
+<input type="text" id="button15Price" placeholder="Enter Button 15 price">
+<input type="text" id="button16" placeholder="Enter Button 16 name">
+<input type="text" id="button16Price" placeholder="Enter Button 16 price">
+<input type="text" id="button17" placeholder="Enter Button 17 name">
+<input type="text" id="button17Price" placeholder="Enter Button 17 price">
+<input type="text" id="button18" placeholder="Enter Button 18 name">
+<input type="text" id="button18Price" placeholder="Enter Button 18 price">
+<input type="text" id="button19" placeholder="Enter Button 19 name">
+<input type="text" id="button19Price" placeholder="Enter Button 19 price">
+<!-- Add more input fields for additional buttons and prices as needed -->
+<button id="saveItemButton" onclick="saveItem()">Save Item</button>
+
+<h2>Remove Existing domestic Package </h2>
+<input type="text" id="itemIdToRemove" placeholder="Enter Package name to remove">
+<button id="removeItemButton" onclick="removeItem()">Remove Item</button>
+
+<div id="messageDiv"></div>
+<script src="firebase.js"></script>
+<script>
+
+    function showMessage(message, isError) {
+        var messageDiv = document.getElementById("messageDiv");
+        messageDiv.innerHTML = message;
+        messageDiv.style.color = isError ? "red" : "green";
+    }
+    function login() {
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+
+      var loginButton = document.getElementById("loginButton");
+      loginButton.disabled = true;
+
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(function(userCredential) {
+          var user = userCredential.user;
+          console.log("User logged in successfully:", user);
+          enableButtons();
+          showMessage("Login successful!", false);
+        })
+        .catch(function(error) {
+          console.error("Error logging in: ", error);
+          loginButton.disabled = false;
+          showMessage("Error logging in. Please check your credentials.", true);
+        });
+    }
+
+    function enableButtons() {
+    var saveItemButton = document.getElementById("saveItemButton");
+    var removeItemButton = document.getElementById("removeItemButton");
+    saveItemButton.disabled = false;
+    removeItemButton.disabled = false;
+}
+    function saveItem() {
+    var saveItemButton = document.getElementById("saveItemButton");
+
+    var itemName = document.getElementById("itemName").value;
+    var itemImageInput = Array.from(document.getElementById("itemImageInput").files);
+ // Get an array of selected files
+    var itemDescription = document.getElementById("itemDescription").value;
+    var itemDescriptionnext = document.getElementById("itemDescriptionnext").value;
+
+    // Additional fields for buttons and their prices
+    var button1 = document.getElementById("button1").value;
+    var button1Price = document.getElementById("button1Price").value;
+    var button2 = document.getElementById("button2").value;
+    var button2Price = document.getElementById("button2Price").value;
+    var button3 = document.getElementById("button3").value;
+    var button3Price = document.getElementById("button3Price").value;
+    var button4 = document.getElementById("button4").value;
+    var button4Price = document.getElementById("button4Price").value;
+    var button5 = document.getElementById("button5").value;
+    var button5Price = document.getElementById("button5Price").value;
+    var button6 = document.getElementById("button6").value;
+    var button6Price = document.getElementById("button6Price").value;
+    var button7 = document.getElementById("button7").value;
+    var button7Price = document.getElementById("button7Price").value;
+    var button8 = document.getElementById("button8").value;
+    var button8Price = document.getElementById("button8Price").value;
+    var button9 = document.getElementById("button9").value;
+    var button9Price = document.getElementById("button9Price").value;
+    var button10 = document.getElementById("button10").value;
+    var button10Price = document.getElementById("button10Price").value;
+    var button11 = document.getElementById("button11").value;
+    var button11Price = document.getElementById("button11Price").value;
+    var button12 = document.getElementById("button12").value;
+    var button12Price = document.getElementById("button12Price").value;
+    var button13 = document.getElementById("button13").value;
+    var button13Price = document.getElementById("button13Price").value;
+    var button14 = document.getElementById("button14").value;
+    var button14Price = document.getElementById("button14Price").value;
+    var button15 = document.getElementById("button15").value;
+    var button15Price = document.getElementById("button15Price").value;
+    var button16 = document.getElementById("button16").value;
+    var button16Price = document.getElementById("button16Price").value;
+    var button17 = document.getElementById("button17").value;
+    var button17Price = document.getElementById("button17Price").value;
+    var button18 = document.getElementById("button18").value;
+    var button18Price = document.getElementById("button18Price").value;
+    var button19 = document.getElementById("button19").value;
+    var button19Price = document.getElementById("button19Price").value;
+    var itemId = itemName;
+    var nodeName = document.getElementById("nodeName").value;
+    var images = []; // Array to store image URLs
+
+// Function to upload each image and return a promise that resolves with the download URL
+function uploadImage(file) {
+    var storageRef = firebase.storage().ref('itemImages/' + file.name);
+    var uploadTask = storageRef.put(file);
+
+    return new Promise((resolve, reject) => {
+        uploadTask.on('state_changed',
+            function progress(snapshot) {
+                var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + percentage + '% done');
+            },
+            function error(err) {
+                console.error("Error uploading image: ", err);
+                reject(err);
+            },
+            function complete() {
+                uploadTask.snapshot.ref.getDownloadURL().then(resolve).catch(reject);
+            }
+        );
+    });
+}
+var database = firebase.database();
+   var itemsRef = database.ref("products/" + nodeName);
+
+// Map each file to the upload function and store promises in an array
+var uploadTasks = itemImageInput.map(uploadImage);
+
+// Use Promise.all to wait for all uploads to complete
+Promise.all(uploadTasks).then(function(downloadURLs) {
+    var item = {
+        images: downloadURLs, 
+            name: itemName,
+            description: itemDescription,
+            descriptionnext: itemDescriptionnext,
+            // Additional properties for buttons and their prices
+            button1: button1,
+            button1Price: button1Price,
+            button2: button2,
+            button2Price: button2Price,
+            button3: button3,
+            button3Price: button3Price,
+            button4: button4,
+            button4Price: button4Price,
+            button5: button5,
+            button5Price: button5Price,
+            button6: button6,
+            button6Price: button6Price,
+            button7: button7,
+            button7Price: button7Price,
+            button8: button8,
+            button8Price: button8Price,
+            button9: button9,
+            button9Price: button9Price,
+            button10: button10,
+            button10Price: button10Price,
+            button11: button11,
+            button11Price: button11Price,
+            button12: button12,
+            button13: button13,
+            button13Price: button13Price,
+            button14: button14,
+            button14Price: button14Price,
+            button15: button15,
+            button15Price: button15Price,
+            button16: button16,
+            button16Price: button16Price,
+            button17: button17,
+            button17Price: button17Price,
+            button18: button18,
+            button18Price: button18Price,
+            button19: button19,
+            button19Price: button19Price,
+         button12Price: button12Price
+        };
+
+        // Save the item with the image URLs and button information
+        itemsRef.child(itemId).set(item)
+            .then(function() {
+                console.log("Item saved successfully!");
+                showMessage("Item saved successfully!", false);
+            })
+            .catch(function(error) {
+                console.error("Error saving item: ", error);
+                showMessage("Error saving item. Please try again.", true);
+            });
+    }).catch(function(error) {
+        console.error("Error uploading images: ", error);
+        showMessage("Error uploading images. Please try again.", true);
+    });
+}
+
+    function removeItem() {
+        var removeItemButton = document.getElementById("removeItemButton");
+        var itemIdToRemove = document.getElementById("itemIdToRemove").value;
+
+        itemsRef.child(itemIdToRemove).remove()
+            .then(function() {
+                console.log("Item removed successfully!");
+                showMessage("Item removed successfully!", false);
+            })
+            .catch(function(error) {
+                console.error("Error removing item: ", error);
+                showMessage("Error removing item. Please try again.", true);
+            });
+    }
+</script>
+</body>
+</html>
