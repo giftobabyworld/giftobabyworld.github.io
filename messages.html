@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Define CSS styles */
+    .list-item {
+      background-color: #f0f0f0;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+  </style>
+  <title>Orders</title>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+</head>
+<body>
+  <h1>Messages</h1>
+  <ul id="menu-container"></ul>
+  <h1>newsletter emails</h1>
+  <ul id="menu-container2"></ul>
+  <script src="firebase.js"></script>
+  <script>
+
+
+ 
+
+    // Reference to the 'menu' container in the database
+const menuRef = firebase.database().ref('messages');
+
+// Fetch the data from Firebase
+menuRef.on('value', (snapshot) => {
+  const menuData = snapshot.val();
+  const menuContainer = document.getElementById('menu-container');
+
+  // Clear existing menu items
+  menuContainer.innerHTML = '';
+
+  // Display the data
+  Object.entries(menuData).forEach(([key, menuItem]) => {
+    const { firstname, lastname, email, message } = menuItem;
+
+    // Create list item
+    const listItem = document.createElement('li');
+
+    // Create remove button
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'Remove';
+    removeButton.addEventListener('click', () => {
+      // Remove item from the database
+      menuRef.child(key).remove();
+    });
+
+    // Append remove button and item details to the list item
+    listItem.innerHTML = `
+      <strong>Firstname:</strong> ${firstname}<br>
+      <strong>Email:</strong> ${email}<br>
+      <strong>Message:</strong>  ${message}<br>
+      -----------------------<br>
+    `;
+    listItem.prepend(removeButton); // Add remove button at the beginning of the list item
+
+    // Append list item to the menu container
+    menuContainer.appendChild(listItem);
+  });
+});
+  // Reference to the 'menu' container in the database
+const menuRef2 = firebase.database().ref('newsletter');
+
+// Fetch the data from Firebase
+menuRef2.on('value', (snapshot) => {
+  const menuData2 = snapshot.val();
+  const menuContainer2 = document.getElementById('menu-container2');
+
+  // Clear existing menu items
+  menuContainer2.innerHTML = '';
+
+  // Display the data
+  Object.entries(menuData2).forEach(([key, menuItem]) => {
+    const { firstname, lastname, email, message } = menuItem;
+
+    // Create list item
+    const listItem = document.createElement('li');
+
+    // Create remove button
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'Remove';
+    removeButton.addEventListener('click', () => {
+      // Remove item from the database
+      menuRef2.child(key).remove();
+    });
+
+    // Append remove button and item details to the list item
+    listItem.innerHTML = `
+   
+      <strong>Email:</strong> ${email}<br>
+    
+    `;
+    listItem.prepend(removeButton); // Add remove button at the beginning of the list item
+
+    // Append list item to the menu container
+    menuContainer2.appendChild(listItem);
+  });
+});
+  </script>
+</body>
+</html>
