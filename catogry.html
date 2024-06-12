@@ -209,8 +209,9 @@ menuRef.on("value", function (snapshot) {
 
                 // Create menu item element
                 var menuItemElement = document.createElement("div");
-                var firstImageUrl = menuItem.imageUrl || ""; // Replace with appropriate logic if needed
-
+                var firstImageUrl = Array.isArray(menuItem.images)
+              ? menuItem.images[0]
+              : menuItem.images; // Get the first image URL if it's an array
                 menuItemElement.innerHTML = `
                 <div class="btn-container">
                     <button class="btn-package" onclick="redirectToUrl('${menuItem.name}')">
@@ -247,7 +248,7 @@ function redirectToUrl(itemName) {
     // Save itemName to localStorage
     localStorage.setItem("itemName", itemName);
 
-    var url = "/eidd.html";
+    var url = "/product.html";
     window.location.href = url;
 }
 
