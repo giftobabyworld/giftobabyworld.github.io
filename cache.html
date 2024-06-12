@@ -42,6 +42,20 @@
                 let value = localStorage.getItem(key);
                 let listItem = document.createElement('li');
                 listItem.textContent = `${key}: ${value}`;
+                
+                // Create a remove button for each item
+                let removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.setAttribute('data-category', key);
+                removeButton.addEventListener('click', function() {
+                    // Remove the item from local storage and update the display
+                    localStorage.removeItem(key);
+                    displaySavedItems();
+                });
+                
+                // Append the remove button to the list item
+                listItem.appendChild(removeButton);
+
                 savedItems.appendChild(listItem);
             }
         }
