@@ -109,6 +109,12 @@ body {
   transition: 0.5s;
 }
 
+.menu-icon {
+  font-size: 30px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
 .header-container {
   display: flex;
   align-items: center;
@@ -336,6 +342,43 @@ aside .pages {
 }
 .addtocart i:hover {
   color: var(--pink-color);
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #efcccc;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: var(--black-color);
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  background-color: #ff1493;
+  color: white;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  background-color: var(--pink-color);
+  padding: 10px 12px 10px 12px;
+  border-radius: 0.25em;
 }
 
 /* ---------------right sidebar------------------ */
@@ -600,7 +643,7 @@ p {
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 }
 
 .video-content {
@@ -857,8 +900,8 @@ hr {
   }
 
   .deals-wrapper {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: 1fr;
+    display: none;
   }
   .deal5 {
     position: inherit;
@@ -879,5 +922,34 @@ hr {
   .footer-socials-wrapper {
     justify-content: center;
     margin-bottom: 3rem;
+  }
+
+  .products-content h1 {
+    font-size: 3rem;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .product1 img {
+    width: 300px;
+  }
+
+  .video-content p {
+    font-size: 1.3rem;
+  }
+
+  .gears-wrapper {
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: flex-end;
+    margin-left: -10rem;
+  }
+  .gear1 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .video-wrapper iframe {
+    width: 100%;
+    height: 30rem;
   }
 }

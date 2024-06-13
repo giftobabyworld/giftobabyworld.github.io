@@ -26,9 +26,7 @@
     <!-- -----------------------------------------Header--------------------------------------- -->
     <div class="header">
       <div class="header-container">
-        <button onclick="openNav()" class="navbar-toggler" type="button">
-          <i class="ri-menu-line sidebar-btn"></i>
-        </button>
+        <span class="menu-icon" onclick="openNav()">&#9776;</span>
         <div class="logo">
           <a href="index.html"><img src="images/logo.jpg" alt="logo" /></a>
         </div>
@@ -54,31 +52,18 @@
         </div>
       </div>
       <!-- open sidebar -->
-      <aside class="sidepanel" id="mysidepanel">
-        <div class="sidebar flex">
-          <button
-            onclick="closeNav()"
-            type="button"
-            class="closebtn btn_hover1"
-          >
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-        <!-- -----------side menus--------------- -->
-        <ul>
-          <li><a href="index.html" class="nav-link active">Home</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="eid.html" class="nav-link">Eid Collection</a></li>
-          <li><a href="wedding.html" class="nav-link">Wedding Wear</a></li>
-          <li><a href="formal.html" class="nav-link">Formal Wear</a></li>
-          <li>
-            <a href="bags.html" class="nav-link">Mini Bags / Potlies</a>
-          </li>
-          <li>
-            <a href="contact.html" class="nav-link">Contact Us</a>
-          </li>
-        </ul>
-      </aside>
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Eid Collection</a>
+        <a href="#">Wedding Wear</a>
+        <a href="#">Formal Wear</a>
+        <a href="#">Mini Bags / Bottles</a>
+        <a href="#">Contact Us</a>
+      </div>
 
       <!-- ------------------right sidebar------------------ -->
       <div class="sidebar" id="sidebar">

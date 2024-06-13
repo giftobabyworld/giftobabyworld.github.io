@@ -1,17 +1,12 @@
 // --------------------------------------------------Sidebar------------------------------------------
 function openNav() {
-  const sidePanel = document.getElementById("mysidepanel");
-  if (sidePanel) {
-    sidePanel.style.left = "0";
-  } else {
-    console.error("sidepanel not found");
-  }
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
 }
+
 function closeNav() {
-  const sidePanel = document.getElementById("mysidepanel");
-  if (sidePanel) {
-    sidePanel.style.left = "-320px";
-  }
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
 }
 
 // small banner at top
