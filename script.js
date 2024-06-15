@@ -77,3 +77,64 @@ function scrollToTop() {
     behavior: "smooth",
   });
 }
+
+// -----------------Products slider---------------------------
+
+const swiperEl = document.querySelector("swiper-container");
+Object.assign(swiperEl, {
+  slidesPerView: 1,
+  spaceBetween: 10,
+  pagination: {
+    clickable: true,
+  },
+  breakpoints: {
+    "@0.00": {
+      slidesPerView: 1,
+      spaceBetween: 10,
+    },
+    "@0.75": {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    "@1.00": {
+      slidesPerView: 3,
+      spaceBetween: 40,
+    },
+    "@1.50": {
+      slidesPerView: 4,
+      spaceBetween: 50,
+    },
+  },
+});
+
+swiperEl.initialize();
+
+// ----------------------------Brands slider----------------
+const swiper2 = document.querySelector(".swiper2");
+Object.assign(swiper2, {
+  slidesPerView: 1,
+  spaceBetween: 10,
+  pagination: {
+    clickable: true,
+  },
+  breakpoints: {
+    "@0.00": {
+      slidesPerView: 1,
+      spaceBetween: 10,
+    },
+    "@0.75": {
+      slidesPerView: 2,
+      spaceBetween: 20,
+    },
+    "@1.00": {
+      slidesPerView: 3,
+      spaceBetween: 40,
+    },
+    "@1.50": {
+      slidesPerView: 4,
+      spaceBetween: 50,
+    },
+  },
+});
+
+swiper2.initialize();

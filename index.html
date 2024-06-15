@@ -16,6 +16,7 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="swiper-bundle.min.css" />
   </head>
   <body>
     <!-- small banner at top -->
@@ -105,54 +106,6 @@
       <button class="next" onclick="nextSlide()">❯</button>
     </div>
 
-    <!-- -----------------------------------------Qualities------------------------------------------- -->
-
-    <section class="qualities">
-      <div class="container">
-        <div class="qualities-wrapper-container">
-          <div class="qualities-wrapper">
-            <div class="qualities-icon">
-              <i class="fa-solid fa-van-shuttle"></i>
-            </div>
-            <div class="qualities-content">
-              <h2>Free Shipping</h2>
-              <p>Free Shipping On Order Above PKR 500. Shop Now!</p>
-            </div>
-          </div>
-
-          <div class="qualities-wrapper">
-            <div class="qualities-icon pink-shade">
-              <i class="fa-solid fa-rotate-left"></i>
-            </div>
-            <div class="qualities-content">
-              <h2>Easy Return</h2>
-              <p>Enjoy hassle-free returns on all toy purchases.</p>
-            </div>
-          </div>
-
-          <div class="qualities-wrapper">
-            <div class="qualities-icon">
-              <i class="fa-solid fa-ribbon"></i>
-            </div>
-            <div class="qualities-content">
-              <h2>High Quality</h2>
-              <p>"Discover high-quality toys designed for endless fun."</p>
-            </div>
-          </div>
-
-          <div class="qualities-wrapper">
-            <div class="qualities-icon pink-shade">
-              <i class="fa-solid fa-thumbs-up"></i>
-            </div>
-            <div class="qualities-content">
-              <h2>Security Gurantee</h2>
-              <p>Your safety guaranteed with every purchase.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- -----------------------------------------Products------------------------------------------- -->
 
     <section class="products">
@@ -160,43 +113,137 @@
         <div class="products-content">
           <h1>Exclusive Products</h1>
         </div>
-        <div class="products-wrapper">
-          <div class="product1">
-            <img src="images/product1.jpg" alt="" />
-            <h2>Toys</h2>
-            <p>Starting From PKR 500</p>
-          </div>
+        <swiper-container class="mySwiper" init="false">
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/product1.jpg" alt="" />
+            </div>
+            <div class="slider-content">
+              <h2>Toys</h2>
+            </div>
+          </swiper-slide>
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/product2.jpg" alt="" />
+            </div>
+            <div class="slider-content">
+              <h2>Toys</h2>
+            </div>
+          </swiper-slide>
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/product1.jpg" alt="" />
+            </div>
+            <div class="slider-content">
+              <h2>Toys</h2>
+            </div>
+          </swiper-slide>
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/product2.jpg" alt="" />
+            </div>
+            <div class="slider-content">
+              <h2>Toys</h2>
+            </div>
+          </swiper-slide>
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/product1.jpg" alt="" />
+            </div>
+            <div class="slider-content">
+              <h2>Toys</h2>
+            </div>
+          </swiper-slide>
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/product2.jpg" alt="" />
+            </div>
+            <div class="slider-content">
+              <h2>Toys</h2>
+            </div>
+          </swiper-slide>
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/product1.jpg" alt="" />
+            </div>
+            <div class="slider-content">
+              <h2>Toys</h2>
+            </div>
+          </swiper-slide>
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/product2.jpg" alt="" />
+            </div>
+            <div class="slider-content">
+              <h2>Toys</h2>
+            </div>
+          </swiper-slide>
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/product1.jpg" alt="" />
+            </div>
+            <div class="slider-content">
+              <h2>Toys</h2>
+            </div>
+          </swiper-slide>
+        </swiper-container>
+      </div>
+    </section>
 
-          <div class="product1">
-            <img src="images/product2.jpg" alt="" />
-            <h2>Toys</h2>
-            <p>Starting From PKR 500</p>
-          </div>
+    <!-- -----------------------------------------Top Brands------------------------------------------- -->
 
-          <div class="product1">
-            <img src="images/product1.jpg" alt="" />
-            <h2>Toys</h2>
-            <p>Starting From PKR 500</p>
-          </div>
-
-          <div class="product1">
-            <img src="images/product1.jpg" alt="" />
-            <h2>Toys</h2>
-            <p>Starting From PKR 500</p>
-          </div>
-
-          <div class="product1">
-            <img src="images/product1.jpg" alt="" />
-            <h2>Toys</h2>
-            <p>Starting From PKR 500</p>
-          </div>
-
-          <div class="product1">
-            <img src="images/product1.jpg" alt="" />
-            <h2>Toys</h2>
-            <p>Starting From PKR 500</p>
-          </div>
+    <section class="brands">
+      <div class="container">
+        <div class="brands-content">
+          <h1>Top Brands</h1>
         </div>
+        <swiper-container class="mySwiper swiper2" init="true">
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/brand-1.png" alt="" />
+            </div>
+          </swiper-slide>
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/brand2.jpg" alt="" />
+            </div>
+          </swiper-slide>
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/brand3.jpg" alt="" />
+            </div>
+          </swiper-slide>
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/brand-2.png" alt="" />
+            </div>
+          </swiper-slide>
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/brand5.jpg" alt="" />
+            </div>
+          </swiper-slide>
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/brand-3.png" alt="" />
+            </div>
+          </swiper-slide>
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/brand7.jpg" alt="" />
+            </div>
+          </swiper-slide>
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/brand8.jpg" alt="" />
+            </div>
+          </swiper-slide>
+          <swiper-slide class="slider-wrapper">
+            <div class="image">
+              <img src="images/brand9.jpg" alt="" />
+            </div>
+          </swiper-slide>
+        </swiper-container>
       </div>
     </section>
 
@@ -204,23 +251,10 @@
     <section class="deals">
       <div class="container">
         <div class="deals-wrapper">
-          <div class="deals-list deal1">
-            <img src="images/deal-template.png" alt="" />
-          </div>
-          <div class="deals-list deal2">
-            <img src="images/deal-template2.png" alt="" />
-          </div>
-          <div class="deals-list deal3">
-            <img src="images/deal-template.png" alt="" />
-          </div>
-          <div class="deals-list deal4">
-            <img src="images/deal-template2.png" alt="" />
-          </div>
-          <div class="deal5-container">
-            <div class="deals-list deal5">
-              <img src="images/deal-template.png" alt="" />
-            </div>
-          </div>
+          <img src="images/deal-template.png" alt="" />
+          <img src="images/deal-template.png" alt="" />
+          <img src="images/deal-template2.png" alt="" />
+          <img src="images/deal-template2.png" alt="" />
         </div>
       </div>
     </section>
@@ -272,6 +306,54 @@
       </section>
     </div>
 
+    <!-- -----------------------------------------Qualities------------------------------------------- -->
+
+    <section class="qualities">
+      <div class="container">
+        <div class="qualities-wrapper-container">
+          <div class="qualities-wrapper">
+            <div class="qualities-icon">
+              <i class="fa-solid fa-van-shuttle"></i>
+            </div>
+            <div class="qualities-content">
+              <h2>Free Shipping</h2>
+              <p>Free Shipping On Order Above PKR 500. Shop Now!</p>
+            </div>
+          </div>
+
+          <div class="qualities-wrapper">
+            <div class="qualities-icon pink-shade">
+              <i class="fa-solid fa-rotate-left"></i>
+            </div>
+            <div class="qualities-content">
+              <h2>Easy Return</h2>
+              <p>Enjoy hassle-free returns on all toy purchases.</p>
+            </div>
+          </div>
+
+          <div class="qualities-wrapper">
+            <div class="qualities-icon">
+              <i class="fa-solid fa-ribbon"></i>
+            </div>
+            <div class="qualities-content">
+              <h2>High Quality</h2>
+              <p>"Discover high-quality toys designed for endless fun."</p>
+            </div>
+          </div>
+
+          <div class="qualities-wrapper">
+            <div class="qualities-icon pink-shade">
+              <i class="fa-solid fa-thumbs-up"></i>
+            </div>
+            <div class="qualities-content">
+              <h2>Security Gurantee</h2>
+              <p>Your safety guaranteed with every purchase.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- -----------------------------------------Footer------------------------------------------- -->
     <div class="footer">
       <div class="footer-left">
@@ -281,16 +363,40 @@
           <div class="footer-socials">
             <div class="footer-socials-wrapper">
               <div class="social1">
-                <a href="#"><i class="ri-facebook-fill"></i></a>
+                <a
+                  href=" https://www.facebook.com/profile.php?id=100068177918098
+                "
+                  ><i class="ri-facebook-fill"></i
+                ></a>
               </div>
               <div class="social1">
-                <a href="#"><i class="ri-instagram-fill"></i></a>
+                <a
+                  href=" https://www.instagram.com/gifto_baby_world/
+                "
+                  ><i class="ri-instagram-fill"></i
+                ></a>
               </div>
               <div class="social1">
-                <a href="#"><i class="ri-whatsapp-fill"></i></a>
+                <a
+                  href=" https://www.tiktok.com/@giftobaby1
+                "
+                  ><i class="ri-tiktok-fill"></i
+                ></a>
               </div>
               <div class="social1">
-                <a href="#"><i class="ri-youtube-fill"></i></a>
+                <a href=" https://youtube.com/@GiftoBabyworld"
+                  ><i class="ri-youtube-fill"></i
+                ></a>
+              </div>
+              <div class="social1">
+                <a href="https://maps.app.goo.gl/uZp33UTQxxuiuuCn6"
+                  ><i class="ri-map-pin-line"></i
+                ></a>
+              </div>
+              <div class="social1">
+                <a href="https://wa.me/+923355558359"
+                  ><i class="ri-whatsapp-line"></i
+                ></a>
               </div>
             </div>
           </div>
@@ -304,7 +410,11 @@
         <div class="contact-wrapper-container">
           <div class="contact-wrapper">
             <i class="ri-phone-fill"></i>
-            <p>+92-3353036639</p>
+            <p>03355558359</p>
+          </div>
+          <div class="contact-wrapper">
+            <i class="ri-phone-fill"></i>
+            <p>03345373743</p>
           </div>
           <div class="contact-wrapper">
             <i class="ri-mail-star-fill"></i>
@@ -354,6 +464,7 @@
       <a href="#"><img class="socials-icons" src="images/whatsaap.png" /></a>
     </button>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
