@@ -25,46 +25,10 @@
       <button class="close-btn" onclick="closeBanner()">✕</button>
     </div>
     <!-- -----------------------------------------Header--------------------------------------- -->
-    <div class="header">
-      <div class="header-container">
-        <span class="menu-icon" onclick="openNav()">&#9776;</span>
-        <div class="logo">
-          <a href="index.html"><img src="images/logo.jpg" alt="logo" /></a>
-        </div>
-        <div class="navbar">
-          <a href="index.html">Home</a>
-          <a href="#about">About</a>
-          <div class="dropdown">
-            <button class="dropbtn">
-              Product Categories
-              <i class="ri-arrow-down-s-line"></i>
-            </button>
-            <div class="dropdown-content">
-              <a href="eid.html">Eid Collection</a>
-              <a href="wedding.html">Causals</a>
-              <a href="formal.html">Formal Wear</a>
-              <a href="bags.html">Mini Bags / Potlies</a>
-            </div>
-          </div>
-          <a href="contact.html">Contact Us</a>
-        </div>
-        <div class="addtocart" onclick="openSidebar()">
-          <i class="ri-shopping-cart-2-fill"></i>
-        </div>
-      </div>
-      <!-- open sidebar -->
-      <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
-          >&times;</a
-        >
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Eid Collection</a>
-        <a href="#">Wedding Wear</a>
-        <a href="#">Formal Wear</a>
-        <a href="#">Mini Bags / Bottles</a>
-        <a href="#">Contact Us</a>
-      </div>
+    <div class="navbar" id="navbar">
+      <!-- Navbar links will be inserted here dynamically -->
+  </div>
+  
 
       <!-- ------------------right sidebar------------------ -->
       <div class="sidebar" id="sidebar">
@@ -115,76 +79,7 @@
         </div>
         <swiper-container class="mySwiper" init="false">
           <swiper-slide class="slider-wrapper">
-            <div class="image">
-              <img src="images/product1.jpg" alt="" />
-            </div>
-            <div class="slider-content">
-              <h2>Toys</h2>
-            </div>
-          </swiper-slide>
-          <swiper-slide class="slider-wrapper">
-            <div class="image">
-              <img src="images/product2.jpg" alt="" />
-            </div>
-            <div class="slider-content">
-              <h2>Toys</h2>
-            </div>
-          </swiper-slide>
-          <swiper-slide class="slider-wrapper">
-            <div class="image">
-              <img src="images/product1.jpg" alt="" />
-            </div>
-            <div class="slider-content">
-              <h2>Toys</h2>
-            </div>
-          </swiper-slide>
-          <swiper-slide class="slider-wrapper">
-            <div class="image">
-              <img src="images/product2.jpg" alt="" />
-            </div>
-            <div class="slider-content">
-              <h2>Toys</h2>
-            </div>
-          </swiper-slide>
-          <swiper-slide class="slider-wrapper">
-            <div class="image">
-              <img src="images/product1.jpg" alt="" />
-            </div>
-            <div class="slider-content">
-              <h2>Toys</h2>
-            </div>
-          </swiper-slide>
-          <swiper-slide class="slider-wrapper">
-            <div class="image">
-              <img src="images/product2.jpg" alt="" />
-            </div>
-            <div class="slider-content">
-              <h2>Toys</h2>
-            </div>
-          </swiper-slide>
-          <swiper-slide class="slider-wrapper">
-            <div class="image">
-              <img src="images/product1.jpg" alt="" />
-            </div>
-            <div class="slider-content">
-              <h2>Toys</h2>
-            </div>
-          </swiper-slide>
-          <swiper-slide class="slider-wrapper">
-            <div class="image">
-              <img src="images/product2.jpg" alt="" />
-            </div>
-            <div class="slider-content">
-              <h2>Toys</h2>
-            </div>
-          </swiper-slide>
-          <swiper-slide class="slider-wrapper">
-            <div class="image">
-              <img src="images/product1.jpg" alt="" />
-            </div>
-            <div class="slider-content">
-              <h2>Toys</h2>
-            </div>
+            <div id="menu"></div>
           </swiper-slide>
         </swiper-container>
       </div>
@@ -259,35 +154,7 @@
       </div>
     </section>
 
-    <!-- -----------------------------------------Intro Video------------------------------------------- -->
-    <div class="video-big-container">
-      <section class="video" style="background-image: url(images/video-bg.png)">
-        <div class="video-content">
-          <h1>Welcome To Gift To Baby World</h1>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi
-            distinctio ipsum corporis placeat animi ea voluptates nostrum non
-            voluptatem sequi incidunt, itaque reprehenderit illo id repellat
-            voluptatum ipsam esse veritatis quasi fugiat dolorum aliquam? Veniam
-            tempore quaerat culpa sint minima.
-          </p>
-        </div>
-        <div class="video-container">
-          <div class="video-wrapper">
-            <iframe
-              width="820"
-              height="461"
-              src="https://www.youtube.com/embed/sWaVjPgD65E"
-              title="Smyths Toys - Store Opening - Staples Corner"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
-      </section>
-    </div>
+   
 
     <!-- -----------------------------------------Baby Gears------------------------------------------- -->
     <div class="gears-big-container">
@@ -354,6 +221,35 @@
       </div>
     </section>
 
+     <!-- -----------------------------------------Intro Video------------------------------------------- -->
+     <div class="video-big-container">
+      <section class="video" style="background-image: url(images/video-bg.png)">
+        <div class="video-content">
+          <h1>Welcome To Gifto Baby World</h1>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nisi
+            distinctio ipsum corporis placeat animi ea voluptates nostrum non
+            voluptatem sequi incidunt, itaque reprehenderit illo id repellat
+            voluptatum ipsam esse veritatis quasi fugiat dolorum aliquam? Veniam
+            tempore quaerat culpa sint minima.
+          </p>
+        </div>
+        <div class="video-container">
+          <div class="video-wrapper">
+            <iframe
+              width="820"
+              height="461"
+              src="https://www.youtube.com/embed/sWaVjPgD65E"
+              title="Smyths Toys - Store Opening - Staples Corner"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </div>
     <!-- -----------------------------------------Footer------------------------------------------- -->
     <div class="footer">
       <div class="footer-left">
@@ -465,6 +361,9 @@
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+    <script src="firebase.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

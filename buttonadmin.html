@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Buttons to Firebase</title>
+    <!-- Link to Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+    <!-- Your Firebase configuration -->
+    <script src="firebase.js"></script>
+    <script>
+        const database = firebase.database();
+    </script>
+</head>
+<body>
+
+<h2>Add New Button</h2>
+
+<!-- Main form for adding the main button -->
+<form id="addButtonForm">
+    <label for="buttonName">Main Button Name:</label><br>
+    <input type="text" id="buttonName" name="buttonName" required><br><br>
+
+    <label for="buttonLink">Main Button Link:</label><br>
+    <input type="text" id="buttonLink" name="buttonLink" required><br><br>
+
+    <button type="submit">Add Main Button</button>
+</form>
+
+<!-- Container for dynamically adding sub-buttons forms -->
+<div id="subButtonsContainer">
+    <!-- This will be populated dynamically -->
+</div>
+
+<!-- Template for sub-buttons form -->
+<template id="subButtonTemplate">
+    <form class="subButtonForm">
+        <label>Sub Button Name:</label><br>
+        <input type="text" name="subButtonName" required><br><br>
+
+        <label>Sub Button Link:</label><br>
+        <input type="text" name="subButtonLink" required><br><br>
+    </form>
+</template>
+
+<!-- Your custom JavaScript for adding buttons to Firebase -->
+<script>
+    const form = document.getElementById('addButtonForm');
+    const subButtonsContainer = document.getElementById('subButtonsContainer');
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Get values from main button form
+        const mainButtonName = form['buttonName'].value;
+        const mainButtonLink = form['buttonLink'].value;
+
+        // Reference to your Firebase data
+        const mainButtonsRef = database.ref('mainButtons');
+
+        // Push main button data to Firebase
+        const mainButtonKey = mainButtonsRef.push({
+            name: mainButtonName,
+            link: mainButtonLink
+        }).key;
+
+        // Add sub-buttons under the main button
+        const subButtonsForms = subButtonsContainer.querySelectorAll('.subButtonForm');
+        subButtonsForms.forEach((subButtonForm) => {
+            const subButtonName = subButtonForm.querySelector('[name="subButtonName"]').value;
+            const subButtonLink = subButtonForm.querySelector('[name="subButtonLink"]').value;
+
+            // Reference to sub-buttons under the main button
+            const subButtonsRef = database.ref(`mainButtons/${mainButtonKey}/subButtons`);
+            subButtonsRef.push({
+                name: subButtonName,
+                link: subButtonLink
+            });
+        });
+
+        // Clear main form fields after successful submission
+        form.reset();
+        clearSubButtonsForms();
+        alert('Main Button added successfully!');
+    });
+
+    // Function to add a new sub-button form
+    function addSubButtonForm() {
+        const template = document.getElementById('subButtonTemplate');
+        const clone = document.importNode(template.content, true);
+        subButtonsContainer.appendChild(clone);
+    }
+
+    // Function to clear all sub-button forms
+    function clearSubButtonsForms() {
+        subButtonsContainer.innerHTML = ''; // Clear all sub-button forms
+    }
+
+    // Event listener for adding a new sub-button form
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('addSubButton').addEventListener('click', addSubButtonForm);
+    });
+</script>
+
+<!-- Button to add new sub-button form -->
+<button id="addSubButton">Add Sub-Button</button>
+
+</body>
+</html>
