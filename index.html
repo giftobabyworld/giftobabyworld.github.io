@@ -25,10 +25,72 @@
       <button class="close-btn" onclick="closeBanner()">✕</button>
     </div>
     <!-- -----------------------------------------Header--------------------------------------- -->
-    <div class="navbar" id="navbar">
-      <!-- Navbar links will be inserted here dynamically -->
-  </div>
-  
+    <div class="header">
+      <div class="header-container">
+        <button onclick="openNav()" class="navbar-toggler" type="button">
+          <i class="ri-menu-line sidebar-btn"></i>
+        </button>
+        <div class="logo">
+          <a href="index.html"><img src="images/logo.jpg" alt="logo" /></a>
+        </div>
+        <div class="navbar">
+          <a href="index.html">Home</a>
+          <a href="#about">About</a>
+          <div class="dropdown">
+            <button class="dropbtn">
+              Toys
+              <i class="ri-arrow-down-s-line"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="eid.html">toys under 999₨</a>
+              <a href="wedding.html">musical toys </a>
+              <a href="formal.html">model cars </a>
+              <a href="bags.html">action figures</a>
+              <a href="bags.html">train and truck set </a>
+              <a href="bags.html">sports toys</a>
+              <a href="bags.html"> play dough & slimes</a>
+              <a href="bags.html">stuff toys </a>
+              <a href="bags.html">remote control toys</a>
+              <a href="bags.html">toys gun</a>
+              <a href="bags.html">outdoor play</a>
+              <a href="bags.html">swimming gears</a>
+              <a href="bags.html">girl toys</a>
+              <a href="bags.html">boys toys </a>
+              <a href="bags.html">game and puzzles </a>
+              <a href="bags.html">baby slides </a>
+              <a href="bags.html">jumping castle</a>
+              <a href="bags.html">swings category</a>
+              <a href="bags.html">tables & chair</a>
+            </div>
+          </div>
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="addtocart" onclick="openSidebar()">
+          <i class="ri-shopping-cart-2-fill"></i>
+        </div>
+      </div>
+      <!-- open sidebar -->
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Eid Collection</a>
+        <a href="#">Wedding Wear</a>
+        <a href="#">Formal Wear</a>
+        <a href="#">Mini Bags / Bottles</a>
+        <a href="#">Contact Us</a>
+
+        <!-- ------------------right sidebar------------------ -->
+        <div class="sidebar" id="sidebar">
+          <button class="right-close-btn" onclick="closeSidebar()">✕</button>
+          <div class="right-sidebar-content">
+            <h1>Your Cart</h1>
+            <p>Your cart is empty 😞</p>
+          </div>
+        </div>
+      </div>
 
       <!-- ------------------right sidebar------------------ -->
       <div class="sidebar" id="sidebar">
@@ -154,8 +216,6 @@
       </div>
     </section>
 
-   
-
     <!-- -----------------------------------------Baby Gears------------------------------------------- -->
     <div class="gears-big-container">
       <section class="gears">
@@ -221,8 +281,8 @@
       </div>
     </section>
 
-     <!-- -----------------------------------------Intro Video------------------------------------------- -->
-     <div class="video-big-container">
+    <!-- -----------------------------------------Intro Video------------------------------------------- -->
+    <div class="video-big-container">
       <section class="video" style="background-image: url(images/video-bg.png)">
         <div class="video-content">
           <h1>Welcome To Gifto Baby World</h1>

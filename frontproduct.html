@@ -9,7 +9,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
     <!-- <script src="script.js"></script> -->
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://www.haditravels.com/view.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -23,51 +22,82 @@
     />
   </head>
   <body>
-    <!-- -----------------------------------------------Header------------------------------------- -->
-
+    <!-- -----------------------------------------Header--------------------------------------- -->
     <div class="header">
-      <button onclick="openNav()" class="navbar-toggler" type="button">
-        <i class="ri-menu-line"></i>
-      </button>
-      <a class="a-logo" href="index.html"
-        ><img class="logo" src="images/finalogo.png"
-      /></a>
-
-      <nav class="navbar">
-        <a href="index.html">Home</a>
-        <a href="about.html" target="_blank">About Us</a>
-        <a href="packages.html" target="_blank">Packages</a>
-        <a href="visa.html" target="_blank">Visa's</a>
-        <a href="vlog.html" target="_blank">Vlogs</a>
-        <a href="bussiness-details.html" target="_blank">Details</a>
-        <a href="contact-page2/contact.html" target="_blank">Contact Us</a>
-      </nav>
-
-      <aside class="sidepanel" id="mysidepanel">
-        <div class="sidebar flex">
-          <button
-            onclick="closeNav()"
-            type="button"
-            class="closebtn btn_hover1"
-          >
-            <i class="fa-solid fa-xmark"></i>
-          </button>
+      <div class="header-container">
+        <button onclick="openNav()" class="navbar-toggler" type="button">
+          <i class="ri-menu-line sidebar-btn"></i>
+        </button>
+        <div class="logo">
+          <a href="index.html"><img src="images/logo.jpg" alt="logo" /></a>
         </div>
-        <!-- -----------side menus--------------- -->
-        <ul>
-          <li><a href="index.html" class="nav-link active">Home</a></li>
-          <li><a href="about.html" class="nav-link">About</a></li>
-          <li><a href="packages.html" class="nav-link">Packages</a></li>
-          <li><a href="visa.html" class="nav-link">Visa's</a></li>
-          <li><a href="vlog.html" class="nav-link">Vlogs</a></li>
-          <li><a href="bussiness-details.html" class="nav-link">Details</a></li>
-          <li>
-            <a href="contact-page2/contact.html" class="nav-link">Contact Us</a>
-          </li>
-        </ul>
-      </aside>
+        <div class="navbar">
+          <a href="index.html">Home</a>
+          <a href="#about">About</a>
+          <div class="dropdown">
+            <button class="dropbtn">
+              Toys
+              <i class="ri-arrow-down-s-line"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="eid.html">toys under 999₨</a>
+              <a href="wedding.html">musical toys </a>
+              <a href="formal.html">model cars </a>
+              <a href="bags.html">action figures</a>
+              <a href="bags.html">train and truck set </a>
+              <a href="bags.html">sports toys</a>
+              <a href="bags.html"> play dough & slimes</a>
+              <a href="bags.html">stuff toys </a>
+              <a href="bags.html">remote control toys</a>
+              <a href="bags.html">toys gun</a>
+              <a href="bags.html">outdoor play</a>
+              <a href="bags.html">swimming gears</a>
+              <a href="bags.html">girl toys</a>
+              <a href="bags.html">boys toys </a>
+              <a href="bags.html">game and puzzles </a>
+              <a href="bags.html">baby slides </a>
+              <a href="bags.html">jumping castle</a>
+              <a href="bags.html">swings category</a>
+              <a href="bags.html">tables & chair</a>
+            </div>
+          </div>
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="addtocart" onclick="openSidebar()">
+          <i class="ri-shopping-cart-2-fill"></i>
+        </div>
+      </div>
+      <!-- open sidebar -->
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Eid Collection</a>
+        <a href="#">Wedding Wear</a>
+        <a href="#">Formal Wear</a>
+        <a href="#">Mini Bags / Bottles</a>
+        <a href="#">Contact Us</a>
 
-      <a href="tel:+923007030303" class="btn">Book Now</a>
+        <!-- ------------------right sidebar------------------ -->
+        <div class="sidebar" id="sidebar">
+          <button class="right-close-btn" onclick="closeSidebar()">✕</button>
+          <div class="right-sidebar-content">
+            <h1>Your Cart</h1>
+            <p>Your cart is empty 😞</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ------------------right sidebar------------------ -->
+      <div class="sidebar" id="sidebar">
+        <button class="right-close-btn" onclick="closeSidebar()">✕</button>
+        <div class="right-sidebar-content">
+          <h1>Your Cart</h1>
+          <p>Your cart is empty 😞</p>
+        </div>
+      </div>
     </div>
 
     <section class="packages" id="services">
@@ -87,101 +117,111 @@
       </div>
     </section>
 
-    <!--------------------------------------------------------- Footer ------------------------------------------->
-
-    <section class="footer" data-aos="zoom-out-right">
-      <div class="box-container">
-        <div class="box">
-          <a href="#"
-            ><img class="logo footer-logo" src="images/finalogo.png"
-          /></a>
-          <p>
-            "Discover the world with convenience and assurance. Experience
-            seamless travel planning tailored just for you."
-          </p>
-          <div class="socials">
-            <a href="https://www.facebook.com/AlHadiAviation?mibextid=kFxxJD"
-              ><img class="socials-icons" src="images/facebook.png"
-            /></a>
-            <a
-              href="https://www.instagram.com/hadi_travels?fbclid=IwAR1dMkVbsVUQThg-0PpeFLsAEIJ1LfWVqTj6vBcc7tlwbiq-HwDSWckv9OI"
-              ><img class="socials-icons" src="images/instagram.png"
-            /></a>
-            <a href="https://wa.me/+923007030303"
-              ><img class="socials-icons" src="images/whatsaap.png"
-            /></a>
-            <a href="mailto:info@haditravels.com"
-              ><img class="socials-icons" src="images/mail.png"
-            /></a>
-            <a href="https://maps.app.goo.gl/NDRAbCDvNXHKxT4E8"
-              ><img class="socials-icons" src="images/maps.png"
-            /></a>
+    <!-- -----------------------------------------Footer------------------------------------------- -->
+    <div class="footer">
+      <div class="footer-left">
+        <div class="logo">
+          <img src="images/logo.jpg" alt="" />
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <div class="footer-socials">
+            <div class="footer-socials-wrapper">
+              <div class="social1">
+                <a
+                  href=" https://www.facebook.com/profile.php?id=100068177918098
+            "
+                  ><i class="ri-facebook-fill"></i
+                ></a>
+              </div>
+              <div class="social1">
+                <a
+                  href=" https://www.instagram.com/gifto_baby_world/
+            "
+                  ><i class="ri-instagram-fill"></i
+                ></a>
+              </div>
+              <div class="social1">
+                <a
+                  href=" https://www.tiktok.com/@giftobaby1
+            "
+                  ><i class="ri-tiktok-fill"></i
+                ></a>
+              </div>
+              <div class="social1">
+                <a href=" https://youtube.com/@GiftoBabyworld"
+                  ><i class="ri-youtube-fill"></i
+                ></a>
+              </div>
+              <div class="social1">
+                <a href="https://maps.app.goo.gl/uZp33UTQxxuiuuCn6"
+                  ><i class="ri-map-pin-line"></i
+                ></a>
+              </div>
+              <div class="social1">
+                <a href="https://wa.me/+923355558359"
+                  ><i class="ri-whatsapp-line"></i
+                ></a>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div class="box">
-          <h3>Quick Links</h3>
-          <a href="#home" class="links"
-            ><i class="fa-solid fa-arrow-right"></i>Home</a
-          >
-          <a href="#book-form" class="links"
-            ><i class="fa-solid fa-arrow-right"></i>Book Now</a
-          >
-          <a href="#about" class="links"
-            ><i class="fa-solid fa-arrow-right"></i>About</a
-          >
-          <a href="#packages" class="links"
-            ><i class="fa-solid fa-arrow-right"></i>Packages</a
-          >
-          <a href="#services" class="links"
-            ><i class="fa-solid fa-arrow-right"></i>Services</a
-          >
-          <a href="#gallery" class="links"
-            ><i class="fa-solid fa-arrow-right"></i>Gallery</a
-          >
+      <div class="contact-info">
+        <div class="contact-heading">
+          <h1 class="pink-shade">Contact Info</h1>
         </div>
-
-        <div class="box contact-info">
-          <h3>Contact Info</h3>
-          <p>
-            <i class="fa-solid fa-map-location-dot"></i>G-2A, court view <br />
-            apartment, court road, karachi
-          </p>
-          <p><i class="fa-solid fa-phone"></i>02133378466</p>
-          <p><i class="fa-solid fa-envelope"></i>info@haditravels.com</p>
-          <p><i class="fa-solid fa-clock"></i>10:00 am - 10:00 pm</p>
-        </div>
-
-        <div class="box">
-          <h3>NewsLetter</h3>
-          <p>Subscribe For latest Updates</p>
-          <form action="" id="newsletter">
-            <input
-              type="email"
-              id="email"
-              name=""
-              placeholder="Drop your email"
-              class="newsletter"
-            />
-            <input type="submit" value="subscribe" class="btn" />
-          </form>
+        <div class="contact-wrapper-container">
+          <div class="contact-wrapper">
+            <i class="ri-phone-fill"></i>
+            <p>03355558359</p>
+          </div>
+          <div class="contact-wrapper">
+            <i class="ri-phone-fill"></i>
+            <p>03345373743</p>
+          </div>
+          <div class="contact-wrapper">
+            <i class="ri-mail-star-fill"></i>
+            <p>hamzashakeelhaiderdurrani77@gmail.com</p>
+          </div>
+          <div class="contact-wrapper">
+            <i class="ri-time-fill"></i>
+            <p>24/7</p>
+          </div>
         </div>
       </div>
-    </section>
 
-    <div class="copywrite"><span>Hadi-Travels</span> | all rights reserved</div>
+      <div class="footer-right">
+        <div class="newsletter">
+          <div class="newsletter-content">
+            <h1 class="pink-shade">Newsletter</h1>
+            <p>Subscribe For latest updates</p>
+            <form action="" id="newsletter">
+              <input
+                type="email"
+                id="email"
+                name=""
+                placeholder="Drop your email"
+                class="newsletter"
+              />
+              <input type="submit" value="subscribe" class="btn-1" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <!-- ------------backtotop ------------------>
-    <button class="instagrmBar" id="instagrmBar">
-      <a href="https://wa.me/+923007030303"
-        ><img class="socials-icons" src="images/whatsaap.png"
-      /></a>
-    </button>
+    <hr />
+    <div class="copywrite">
+      <div class="copywrite-content">
+        <p>
+          Copyright &copy; since 1985 Gift To Baby World. All Rights Reserved.
+        </p>
+      </div>
+    </div>
 
     <!-- backend -->
     <script src="firebase.js"></script>
     <script>
-
       // Get a reference to the database
       var database = firebase.database();
 

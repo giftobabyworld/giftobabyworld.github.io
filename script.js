@@ -139,34 +139,35 @@ Object.assign(swiper2, {
 
 swiper2.initialize();
 
-      // Get a reference to the database
-      var database = firebase.database();
+// ----------------------------------------------backend---------------------------------
 
-      // Fetch menu data from Firebase
-      var menuRef = database.ref("front");
-      menuRef.on("value", function (snapshot) {
-        var menuData = snapshot.val();
+// Get a reference to the database
+var database = firebase.database();
 
-        // Display menu data on the web page
-        var menuContainer = document.getElementById("menu");
-        menuContainer.innerHTML = "";
+// Fetch menu data from Firebase
+var menuRef = database.ref("front");
+menuRef.on("value", function (snapshot) {
+  var menuData = snapshot.val();
 
-        for (var key in menuData) {
-          if (menuData.hasOwnProperty(key)) {
-            var menuItem = menuData[key];
-            var menuItemElement = document.createElement("div");
-            menuItemElement.innerHTML = `
+  // Display menu data on the web page
+  var menuContainer = document.getElementById("menu");
+  menuContainer.innerHTML = "";
+
+  for (var key in menuData) {
+    if (menuData.hasOwnProperty(key)) {
+      var menuItem = menuData[key];
+      var menuItemElement = document.createElement("div");
+      menuItemElement.innerHTML = `
             
             <button class="btn-package" onclick="redirectToUrl('${menuItem.name}')">
         <div class="packagesBox">
             <div class="image">
                 <img src="${menuItem.image}" alt="${menuItem.name}" class="menu-image">
             </div>
-            <div class="content">
-                <div class="package-details">    
-                    <div class="package-name">    
+            <div class="slider-content">  
                         <h2 class="multiline-ellipsis-2">${menuItem.name}</h2>
-                    </div>
+            </div>
+
                     
                 </div>    
                
@@ -174,71 +175,71 @@ swiper2.initialize();
         </div> </button>
 `;
 
-            menuContainer.appendChild(menuItemElement);
-          }
-        }
-      });
-      function redirectToUrl(itemName) {
-        // Save itemName to localStorage
-        localStorage.setItem("itemid", itemName);
+      menuContainer.appendChild(menuItemElement);
+    }
+  }
+});
+function redirectToUrl(itemName) {
+  // Save itemName to localStorage
+  localStorage.setItem("itemid", itemName);
 
-        var url = "/frontproduct.html";
-        window.location.href = url;
-      }
+  var url = "/frontproduct.html";
+  window.location.href = url;
+}
 function fetchButtonsFromFirebase() {
-    const navbar = document.getElementById('navbar');
+  const navbar = document.getElementById("navbar");
 
-    // Reference to your Firebase data for main buttons
-    const mainButtonsRef = database.ref('mainButtons');
+  // Reference to your Firebase data for main buttons
+  const mainButtonsRef = database.ref("mainButtons");
 
-    // Fetch the main buttons data once
-    mainButtonsRef.once('value', (mainSnapshot) => {
-        mainSnapshot.forEach((mainChildSnapshot) => {
-            // Get main button data
-            const mainButtonData = mainChildSnapshot.val();
-            const mainButtonName = mainButtonData.name;
-            const mainButtonLink = mainButtonData.link;
+  // Fetch the main buttons data once
+  mainButtonsRef.once("value", (mainSnapshot) => {
+    mainSnapshot.forEach((mainChildSnapshot) => {
+      // Get main button data
+      const mainButtonData = mainChildSnapshot.val();
+      const mainButtonName = mainButtonData.name;
+      const mainButtonLink = mainButtonData.link;
 
-            // Create a new <div> element for the main button in the navbar
-            const mainButtonElement = document.createElement('div');
-            mainButtonElement.textContent = mainButtonName;
-            mainButtonElement.className = 'main-button';
+      // Create a new <div> element for the main button in the navbar
+      const mainButtonElement = document.createElement("div");
+      mainButtonElement.textContent = mainButtonName;
+      mainButtonElement.className = "main-button";
 
-            // Create a container for sub-buttons
-            const subButtonsContainer = document.createElement('div');
-            subButtonsContainer.className = 'sub-buttons-container';
+      // Create a container for sub-buttons
+      const subButtonsContainer = document.createElement("div");
+      subButtonsContainer.className = "sub-buttons-container";
 
-            // Reference to sub-buttons under the main button
-            const subButtonsRef = mainChildSnapshot.child('subButtons');
-            subButtonsRef.forEach((subChildSnapshot) => {
-                // Get sub-button data
-                const subButtonData = subChildSnapshot.val();
-                const subButtonName = subButtonData.name;
-                const subButtonLink = subButtonData.link;
+      // Reference to sub-buttons under the main button
+      const subButtonsRef = mainChildSnapshot.child("subButtons");
+      subButtonsRef.forEach((subChildSnapshot) => {
+        // Get sub-button data
+        const subButtonData = subChildSnapshot.val();
+        const subButtonName = subButtonData.name;
+        const subButtonLink = subButtonData.link;
 
-                // Create a new <a> element for the sub-button
-                const subButtonElement = document.createElement('a');
-                subButtonElement.textContent = subButtonName;
-                subButtonElement.href = subButtonLink;
+        // Create a new <a> element for the sub-button
+        const subButtonElement = document.createElement("a");
+        subButtonElement.textContent = subButtonName;
+        subButtonElement.href = subButtonLink;
 
-                // Append the sub-button to the sub-buttons container
-                subButtonsContainer.appendChild(subButtonElement);
-            });
+        // Append the sub-button to the sub-buttons container
+        subButtonsContainer.appendChild(subButtonElement);
+      });
 
-            // Append the main button and its sub-buttons container to the navbar
-            mainButtonElement.appendChild(subButtonsContainer);
-            navbar.appendChild(mainButtonElement);
+      // Append the main button and its sub-buttons container to the navbar
+      mainButtonElement.appendChild(subButtonsContainer);
+      navbar.appendChild(mainButtonElement);
 
-            // Event listener for showing/hiding sub-buttons on hover
-            mainButtonElement.addEventListener('mouseenter', () => {
-                subButtonsContainer.style.display = 'block';
-            });
+      // Event listener for showing/hiding sub-buttons on hover
+      mainButtonElement.addEventListener("mouseenter", () => {
+        subButtonsContainer.style.display = "block";
+      });
 
-            mainButtonElement.addEventListener('mouseleave', () => {
-                subButtonsContainer.style.display = 'none';
-            });
-        });
+      mainButtonElement.addEventListener("mouseleave", () => {
+        subButtonsContainer.style.display = "none";
+      });
     });
+  });
 }
 
 // Call the function to fetch and display buttons on page load
