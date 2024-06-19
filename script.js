@@ -57,6 +57,40 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(nextSlide, 5000); // Change slide every 4 seconds
 });
 
+// ---------------------dropdown---------------------------
+// Select all dropdown elements
+const dropdowns = document.querySelectorAll(".dropdown2");
+
+// Loop through each dropdown
+dropdowns.forEach((dropdown) => {
+  const select = dropdown.querySelector(".select");
+  const caret = dropdown.querySelector(".caret");
+  const menu = dropdown.querySelector(".menu");
+  const options = dropdown.querySelectorAll(".menu li");
+  const selected = dropdown.querySelector(".selected");
+
+  // Add event listener for the select box
+  select.addEventListener("click", () => {
+    select.classList.toggle("select-clicked");
+    caret.classList.toggle("caret-rotate");
+    menu.classList.toggle("menu-open");
+  });
+
+  // Add event listeners for each option
+  options.forEach((option) => {
+    option.addEventListener("click", () => {
+      selected.innerText = option.innerText;
+      select.classList.remove("select-clicked");
+      caret.classList.remove("caret-rotate");
+      menu.classList.remove("menu-open");
+      options.forEach((option) => {
+        option.classList.remove("active");
+      });
+      option.classList.add("active");
+    });
+  });
+});
+
 // --------------- Back to Top btn -------------------------
 
 window.onscroll = function () {
