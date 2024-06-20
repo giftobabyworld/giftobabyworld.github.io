@@ -24,6 +24,7 @@
     <!-- Include the Firebase JavaScript SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+
   </head>
   <body>
     <!-- -----------------------------------------Header--------------------------------------- -->
@@ -37,34 +38,124 @@
         </div>
         <div class="navbar">
           <a href="index.html">Home</a>
-          <a href="#about">About</a>
           <div class="dropdown">
             <button class="dropbtn">
               Toys
               <i class="ri-arrow-down-s-line"></i>
             </button>
             <div class="dropdown-content">
-              <a href="eid.html">toys under 999₨</a>
-              <a href="wedding.html">musical toys </a>
-              <a href="formal.html">model cars </a>
-              <a href="bags.html">action figures</a>
-              <a href="bags.html">train and truck set </a>
-              <a href="bags.html">sports toys</a>
-              <a href="bags.html"> play dough & slimes</a>
-              <a href="bags.html">stuff toys </a>
-              <a href="bags.html">remote control toys</a>
-              <a href="bags.html">toys gun</a>
-              <a href="bags.html">outdoor play</a>
-              <a href="bags.html">swimming gears</a>
-              <a href="bags.html">girl toys</a>
-              <a href="bags.html">boys toys </a>
-              <a href="bags.html">game and puzzles </a>
-              <a href="bags.html">baby slides </a>
-              <a href="bags.html">jumping castle</a>
-              <a href="bags.html">swings category</a>
-              <a href="bags.html">tables & chair</a>
+              <div class="dropdown-content-container">
+                <div class="dropdown-content-wrapper">
+                  <a href="#" onclick="redirectToCategory(this)">toys under 999₨</a>
+                  <a href="#" onclick="redirectToCategory(this)">musical toys </a>
+                  <a href="#" onclick="redirectToCategory(this)">model cars </a>
+                  <a href="#" onclick="redirectToCategory(this)">action figures</a>
+                  <a href="#" onclick="redirectToCategory(this)">train and truck set </a>
+                  <a href="#" onclick="redirectToCategory(this)">sports toys</a>
+                  <a href="#" onclick="redirectToCategory(this)"> play dough & slimes</a>
+                  <a href="#" onclick="redirectToCategory(this)">stuff toys </a>
+                  <a href="#" onclick="redirectToCategory(this)">remote control toys</a>
+                </div>
+                <div class="dropdown-content-divider">
+                  <a href="#" onclick="redirectToCategory(this)">toys gun</a>
+                  <a href="#" onclick="redirectToCategory(this)">outdoor play</a>
+                  <a href="#" onclick="redirectToCategory(this)"">swimming gears</a>
+                  <a href="#" onclick="redirectToCategory(this)">girl toys</a>
+                  <a href="#" onclick="redirectToCategory(this)">boys toys </a>
+                  <a href="#" onclick="redirectToCategory(this)">game and puzzles </a>
+                  <a href="#" onclick="redirectToCategory(this)">baby slides </a>
+                  <a href="#" onclick="redirectToCategory(this)">jumping castle</a>
+                  <a href="#" onclick="redirectToCategory(this)">swings category</a>
+                  <a href="#" onclick="redirectToCategory(this)">tables & chair</a>
+                </div>
+              </div>
             </div>
           </div>
+
+          <div class="dropdown">
+            <button class="dropbtn">
+              baby accessories
+              <i class="ri-arrow-down-s-line"></i>
+            </button>
+            <div class="dropdown-content">
+              <div class="dropdown-content-container">
+                <div class="dropdown-content-wrapper">
+                  <a href="#" onclick="redirectToCategory(this)">baby care under 999 </a>
+                  <a href="#" onclick="redirectToCategory(this)">carry nest & carry crib </a>
+                  <a href="#" onclick="redirectToCategory(this)">sleeping sets</a>
+                  <a href="#" onclick="redirectToCategory(this)">new born suit boys</a>
+                  <a href="#" onclick="redirectToCategory(this)">new born suit girls </a>
+                  <a href="#" onclick="redirectToCategory(this)">baby bags </a>
+                  <a href="#" onclick="redirectToCategory(this)">bath towels</a>
+                  <a href="#" onclick="redirectToCategory(this)">face towels </a>
+                  <a href="#" onclick="redirectToCategory(this)">changing sheet </a>
+                  <a href="#" onclick="redirectToCategory(this)">rattles </a>
+                  <a href="#" onclick="redirectToCategory(this)">teether & pacifier </a>
+                </div>
+                <div class="dropdown-content-divider">
+                  <a href="#" onclick="redirectToCategory(this)">baby vest & Bibs</a>
+                  <a href="#" onclick="redirectToCategory(this)">wrapping sheet & swaddle sheet </a>
+                  <a href="#" onclick="redirectToCategory(this)">mittens & caps</a>
+                  <a href="#" onclick="redirectToCategory(this)">diapers & panties </a>
+                  <a href="#" onclick="redirectToCategory(this)">baby socks & booties</a>
+                  <a href="#" onclick="redirectToCategory(this)">baby care accessories </a>
+                  <a href="#" onclick="redirectToCategory(this)">toileteries</a>
+                  <a href="#" onclick="redirectToCategory(this)">gift sets</a>
+                  <a href="#" onclick="redirectToCategory(this)">feeder cover & powder puff </a>
+                  <a href="#" onclick="redirectToCategory(this)"> milk container </a>
+                  <a href="#" onclick="redirectToCategory(this)">feeding accessories</a>
+                  <a href="#" onclick="redirectToCategory(this)">blankets</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <button class="dropbtn">
+              kids
+              <i class="ri-arrow-down-s-line"></i>
+            </button>
+            <div class="dropdown-content">
+              <div class="dropdown-content-container">
+                <div class="dropdown-content-wrapper">
+                  <a href="#" onclick="redirectToCategory(this)">kids electric car </a>
+                  <a href="#" onclick="redirectToCategory(this)">kids electric jeep </a>
+                  <a href="#" onclick="redirectToCategory(this)">kids electric scooters </a>
+                  <a href="#" onclick="redirectToCategory(this)"> tricycles </a>
+                  <a href="#" onclick="redirectToCategory(this)">scooties</a>
+                  <a href="#" onclick="redirectToCategory(this)"> tolo cars </a>
+                  <a href="#" onclick="redirectToCategory(this)">ride on horse</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <button class="dropbtn">
+              baby gear
+              <i class="ri-arrow-down-s-line"></i>
+            </button>
+            <div class="dropdown-content">
+              <div class="dropdown-content-container">
+                <div class="dropdown-content-wrapper">
+                  <a href="#" onclick="redirectToCategory(this)"> electric swing </a>
+                  <a href="#" onclick="redirectToCategory(this)">stroller</a>
+                  <a href="#" onclick="redirectToCategory(this)">carry coat & baby carrier</a>
+                  <a href="#" onclick="redirectToCategory(this)">baby walker & activity walker </a>
+                  <a href="#" onclick="redirectToCategory(this)">play mats</a>
+                  <a href="#" onclick="redirectToCategory(this)">baby sofa</a>
+                  <a href="#" onclick="redirectToCategory(this)">baby coat </a>
+                </div>
+                <div class="dropdown-content-divider">
+                  <a href="#" onclick="redirectToCategory(this)">baby accessories box</a>
+                  <a href="#" onclick="redirectToCategory(this)">bathers & baby toilets seat </a>
+                  <a href="#" onclick="redirectToCategory(this)">kids drawers</a>
+                  <a href="#" onclick="redirectToCategory(this)"high chairs & booster seat</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <a href="contact.html">Contact Us</a>
         </div>
         <div class="addtocart" onclick="openSidebar()">
@@ -77,19 +168,139 @@
           >&times;</a
         >
         <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Eid Collection</a>
-        <a href="#">Wedding Wear</a>
-        <a href="#">Formal Wear</a>
-        <a href="#">Mini Bags / Bottles</a>
         <a href="#">Contact Us</a>
+
+        <div class="dropdown2">
+          <div class="select">
+            <span class="selected">Toys</span>
+            <div class="caret"></div>
+          </div>
+          <ul class="menu">
+            <li>toys under 999₨</li>
+            <li>musical toys</li>
+            <li>model cars</li>
+            <li>action figures</li>
+            <li>train and truck set</li>
+            <li>sports toys</li>
+            <li>play dough & slimes</li>
+            <li>stuff toys</li>
+            <li>remote control toys</li>
+            <li>toys gun</li>
+            <li>outdoor play</li>
+            <li>swimming gears</li>
+            <li>girl toys</li>
+            <li>boys toys</li>
+            <li>game and puzzles</li>
+            <li>baby slides</li>
+            <li>jumping castle</li>
+            <li>swings category</li>
+            <li>tables & chair</li>
+            <li class="active">toys</li>
+          </ul>
+        </div>
+
+        <div class="dropdown2">
+          <div class="select">
+            <span class="selected">kids vehicles</span>
+            <div class="caret"></div>
+          </div>
+          <ul class="menu">
+            <li>kids electric car</li>
+            <li>kids electric jeep</li>
+            <li>kids electric scooters</li>
+            <li>tricycles</li>
+            <li>scooties</li>
+            <li>tolo cars</li>
+            <li>ride on horse</li>
+            <li class="active">Kids Vechiels</li>
+          </ul>
+        </div>
+
+        <div class="dropdown2">
+          <div class="select">
+            <span class="selected">born baby accessories</span>
+            <div class="caret"></div>
+          </div>
+          <ul class="menu">
+            <li>baby care under 999</li>
+            <li>carry nest & carry crib</li>
+            <li>new born suit boys</li>
+            <li>new born suit girls</li>
+            <li>baby bags</li>
+            <li>bath towels</li>
+            <li>face towels</li>
+            <li>changing sheet</li>
+            <li>baby vest & Bibs</li>
+            <li>wrapping sheet & swaddle sheet</li>
+            <li>mittens & caps</li>
+            <li>diapers & panties</li>
+            <li>baby socks & booties</li>
+            <li>baby care accessories</li>
+            <li>toileteries</li>
+            <li>gift sets</li>
+            <li>feeder cover & powder puff</li>
+            <li>milk container</li>
+            <li>rattles</li>
+            <li>teether & pacifier</li>
+            <li>feeding accessories </li>
+            <li>blankets</li>
+            <li class="active">born baby accessories</li>
+          </ul>
+        </div>
+
+        <div class="dropdown2">
+          <div class="select">
+            <span class="selected">baby gear</span>
+            <div class="caret"></div>
+          </div>
+          <ul class="menu">
+            <li>electric swing</li>
+            <li>stroller</li>
+            <li>carry coat & baby carrier</li>
+            <li>baby walker & activity walker</li>
+            <li>play mats</li>
+            <li>baby sofa</li>
+            <li>baby coat</li>
+            <li>baby accessories box</li>
+            <li>bathers & baby toilets seat</li>
+            <li>kids drawers</li>
+            <li>high chairs & booster seat</li>
+            <li class="active">baby gear</li>
+          </ul>
+        </div>
 
         <!-- ------------------right sidebar------------------ -->
         <div class="sidebar" id="sidebar">
           <button class="right-close-btn" onclick="closeSidebar()">✕</button>
           <div class="right-sidebar-content">
             <h1>Your Cart</h1>
-            <p>Your cart is empty 😞</p>
+            <section class="cart">
+              <div class="content">
+                <h1>Your Cart</h1>
+              </div>
+              <div id="cart-items"></div>
+              <a href="checkout.html" class="checkout-container">
+                <div class="container">
+                  <div class="left-side">
+                    <div class="card">
+                      <div class="card-line"></div>
+                      <div class="buttons"></div>
+                    </div>
+                    <div class="post">
+                      <div class="post-line"></div>
+                      <div class="screen">
+                        <div class="dollar">RS</div>
+                      </div>
+                      <div class="numbers"></div>
+                      <div class="numbers-line2"></div>
+                    </div>
+                  </div>
+                  <div class="right-side">
+                    <div class="new">Checkout</div>
+                  </div>
+                </div>
+              </a>
+            </section>
           </div>
         </div>
       </div>
@@ -99,11 +310,36 @@
         <button class="right-close-btn" onclick="closeSidebar()">✕</button>
         <div class="right-sidebar-content">
           <h1>Your Cart</h1>
-          <p>Your cart is empty 😞</p>
+          <section class="cart">
+            <div class="content">
+              <h1>Your Cart</h1>
+            </div>
+            <div id="cart-items"></div>
+            <a href="checkout.html" class="checkout-container">
+              <div class="container">
+                <div class="left-side">
+                  <div class="card">
+                    <div class="card-line"></div>
+                    <div class="buttons"></div>
+                  </div>
+                  <div class="post">
+                    <div class="post-line"></div>
+                    <div class="screen">
+                      <div class="dollar">RS</div>
+                    </div>
+                    <div class="numbers"></div>
+                    <div class="numbers-line2"></div>
+                  </div>
+                </div>
+                <div class="right-side">
+                  <div class="new">Checkout</div>
+                </div>
+              </div>
+            </a>
+          </section>
         </div>
       </div>
     </div>
-
     <!-- ---------------------------------------inner eid page-------------------------------------- -->
 
     <section class="packages" id="services">
@@ -231,6 +467,111 @@
     <!-- backend -->
     <script src="firebase.js"></script>
     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  function displayCart() {
+    // Retrieve cart items from localStorage
+    var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+    // Display cart items on the page
+    var cartItemsContainer = document.getElementById("cart-items");
+    cartItemsContainer.innerHTML = ""; // Clear existing content
+
+    if (cartItems.length === 0) {
+      cartItemsContainer.innerHTML =
+        '<p class="empty-msg">Your cart is empty 😞 <a class="empty-shopping" href="index.html">Continue Shopping</a></p>';
+    } else {
+      var totalAmount = 0;
+
+      cartItems.forEach(function (item) {
+        var itemElement = document.createElement("div");
+        itemElement.innerHTML = `
+                      <div class="cart-container">
+                          <div class="cart-container-2">
+                              <div class="cart-img">
+                                  <img src="${item.image}" alt="${item.name}" style="width: 30rem;">
+                              </div>
+                              <div class="cart-details">
+                                  <p>Name: ${item.name}</p>
+                                  <p>Price: Rs ${item.price}</p>
+                                  <p>Quantity: ${item.quantity}</p>
+                                  <p>Size: ${item.buttonName}</p>
+                              </div>
+                          </div>
+                              <button class="remove-item-button noselect" data-name="${item.name}" data-price="${item.price}"> <span class="text">Delete</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></button>
+                              <hr>
+                      </div>`;
+        cartItemsContainer.appendChild(itemElement);
+
+        // Calculate total amount
+        totalAmount += parseInt(item.price) * parseInt(item.quantity);
+      });
+
+      // Display total amount
+      cartItemsContainer.innerHTML += `<h3 class="total-amount">Total: Rs ${totalAmount}</h3>`;
+
+      // Add event listeners to Remove buttons
+      var removeButtons = document.querySelectorAll(
+        ".remove-item-button"
+      );
+      removeButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          var itemName = button.getAttribute("data-name");
+          var itemPrice = button.getAttribute("data-price");
+
+          // Retrieve cart items from localStorage
+          var cartItems =
+            JSON.parse(localStorage.getItem("cartItems")) || [];
+
+          // Find index of item to remove
+          var index = cartItems.findIndex(function (item) {
+            return item.name === itemName && item.price === itemPrice;
+          });
+
+          // Decrease quantity by 1 or remove item if quantity is 1
+          if (index !== -1) {
+            if (cartItems[index].quantity > 1) {
+              cartItems[index].quantity--;
+            } else {
+              cartItems.splice(index, 1);
+            }
+            // Update cart items in localStorage
+            localStorage.setItem("cartItems", JSON.stringify(cartItems));
+            // Trigger live reload
+            displayCart();
+          }
+        });
+      });
+    }
+  }
+
+  // Display cart initially
+  displayCart();
+
+  // Listen for changes in localStorage (storage event)
+  window.addEventListener("storage", function (e) {
+    // Check if the event is related to cartItems
+    if (e.key === "cartItems") {
+      // Trigger live reload
+      displayCart();
+    }
+  });
+});
+function redirectToCategory(element) {
+  // Get the category name from the clicked link's text content
+  var categoryName = element.textContent.trim();
+  // Save category in localStorage or sessionStorage
+  localStorage.setItem('itemCategory', categoryName);
+  // Redirect to category.html
+  window.location.href = 'catogry.html';
+}
+document.addEventListener('DOMContentLoaded', function() {
+  var dropdowns = document.querySelectorAll('.dropdown2 .menu li');
+  dropdowns.forEach(function(item) {
+    item.addEventListener('click', function() {
+      redirectToCategory(this);
+    });
+  });
+});
       // Get a reference to the database
       // Get a reference to the database
       var database = firebase.database();
@@ -587,8 +928,35 @@ ${
         });
         bigImages[index].classList.add("active");
       }
+      // --------------------------------------------------Sidebar------------------------------------------
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+
+// small banner at top
+function closeBanner() {
+  var banner = document.getElementById("banner");
+  banner.style.display = "none";
+}
+
+// -----------right sidebar---------------------
+
+function openSidebar() {
+  document.getElementById("sidebar").classList.add("open");
+}
+
+function closeSidebar() {
+  document.getElementById("sidebar").classList.remove("open");
+}
+
     </script>
-    <script src="script.js"></script>
+   
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
   </body>
 </html>

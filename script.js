@@ -235,61 +235,109 @@ function redirectToUrl(itemName) {
   var url = "/frontproduct.html";
   window.location.href = url;
 }
-function fetchButtonsFromFirebase() {
-  const navbar = document.getElementById("navbar");
 
-  // Reference to your Firebase data for main buttons
-  const mainButtonsRef = database.ref("mainButtons");
+document.addEventListener("DOMContentLoaded", function () {
+  function displayCart() {
+    // Retrieve cart items from localStorage
+    var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-  // Fetch the main buttons data once
-  mainButtonsRef.once("value", (mainSnapshot) => {
-    mainSnapshot.forEach((mainChildSnapshot) => {
-      // Get main button data
-      const mainButtonData = mainChildSnapshot.val();
-      const mainButtonName = mainButtonData.name;
-      const mainButtonLink = mainButtonData.link;
+    // Display cart items on the page
+    var cartItemsContainer = document.getElementById("cart-items");
+    cartItemsContainer.innerHTML = ""; // Clear existing content
 
-      // Create a new <div> element for the main button in the navbar
-      const mainButtonElement = document.createElement("div");
-      mainButtonElement.textContent = mainButtonName;
-      mainButtonElement.className = "main-button";
+    if (cartItems.length === 0) {
+      cartItemsContainer.innerHTML =
+        '<p class="empty-msg">Your cart is empty 😞 <a class="empty-shopping" href="index.html">Continue Shopping</a></p>';
+    } else {
+      var totalAmount = 0;
 
-      // Create a container for sub-buttons
-      const subButtonsContainer = document.createElement("div");
-      subButtonsContainer.className = "sub-buttons-container";
+      cartItems.forEach(function (item) {
+        var itemElement = document.createElement("div");
+        itemElement.innerHTML = `
+                      <div class="cart-container">
+                          <div class="cart-container-2">
+                              <div class="cart-img">
+                                  <img src="${item.image}" alt="${item.name}" style="width: 30rem;">
+                              </div>
+                              <div class="cart-details">
+                                  <p>Name: ${item.name}</p>
+                                  <p>Price: Rs ${item.price}</p>
+                                  <p>Quantity: ${item.quantity}</p>
+                                  <p>Size: ${item.buttonName}</p>
+                              </div>
+                          </div>
+                              <button class="remove-item-button noselect" data-name="${item.name}" data-price="${item.price}"> <span class="text">Delete</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></button>
+                              <hr>
+                      </div>`;
+        cartItemsContainer.appendChild(itemElement);
 
-      // Reference to sub-buttons under the main button
-      const subButtonsRef = mainChildSnapshot.child("subButtons");
-      subButtonsRef.forEach((subChildSnapshot) => {
-        // Get sub-button data
-        const subButtonData = subChildSnapshot.val();
-        const subButtonName = subButtonData.name;
-        const subButtonLink = subButtonData.link;
-
-        // Create a new <a> element for the sub-button
-        const subButtonElement = document.createElement("a");
-        subButtonElement.textContent = subButtonName;
-        subButtonElement.href = subButtonLink;
-
-        // Append the sub-button to the sub-buttons container
-        subButtonsContainer.appendChild(subButtonElement);
+        // Calculate total amount
+        totalAmount += parseInt(item.price) * parseInt(item.quantity);
       });
 
-      // Append the main button and its sub-buttons container to the navbar
-      mainButtonElement.appendChild(subButtonsContainer);
-      navbar.appendChild(mainButtonElement);
+      // Display total amount
+      cartItemsContainer.innerHTML += `<h3 class="total-amount">Total: Rs ${totalAmount}</h3>`;
 
-      // Event listener for showing/hiding sub-buttons on hover
-      mainButtonElement.addEventListener("mouseenter", () => {
-        subButtonsContainer.style.display = "block";
-      });
+      // Add event listeners to Remove buttons
+      var removeButtons = document.querySelectorAll(
+        ".remove-item-button"
+      );
+      removeButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          var itemName = button.getAttribute("data-name");
+          var itemPrice = button.getAttribute("data-price");
 
-      mainButtonElement.addEventListener("mouseleave", () => {
-        subButtonsContainer.style.display = "none";
+          // Retrieve cart items from localStorage
+          var cartItems =
+            JSON.parse(localStorage.getItem("cartItems")) || [];
+
+          // Find index of item to remove
+          var index = cartItems.findIndex(function (item) {
+            return item.name === itemName && item.price === itemPrice;
+          });
+
+          // Decrease quantity by 1 or remove item if quantity is 1
+          if (index !== -1) {
+            if (cartItems[index].quantity > 1) {
+              cartItems[index].quantity--;
+            } else {
+              cartItems.splice(index, 1);
+            }
+            // Update cart items in localStorage
+            localStorage.setItem("cartItems", JSON.stringify(cartItems));
+            // Trigger live reload
+            displayCart();
+          }
+        });
       });
+    }
+  }
+
+  // Display cart initially
+  displayCart();
+
+  // Listen for changes in localStorage (storage event)
+  window.addEventListener("storage", function (e) {
+    // Check if the event is related to cartItems
+    if (e.key === "cartItems") {
+      // Trigger live reload
+      displayCart();
+    }
+  });
+});
+function redirectToCategory(element) {
+  // Get the category name from the clicked link's text content
+  var categoryName = element.textContent.trim();
+  // Save category in localStorage or sessionStorage
+  localStorage.setItem('itemCategory', categoryName);
+  // Redirect to category.html
+  window.location.href = 'catogry.html';
+}
+document.addEventListener('DOMContentLoaded', function() {
+  var dropdowns = document.querySelectorAll('.dropdown2 .menu li');
+  dropdowns.forEach(function(item) {
+    item.addEventListener('click', function() {
+      redirectToCategory(this);
     });
   });
-}
-
-// Call the function to fetch and display buttons on page load
-fetchButtonsFromFirebase();
+});
