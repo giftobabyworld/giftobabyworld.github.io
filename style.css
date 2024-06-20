@@ -504,27 +504,18 @@ aside .pages {
 /* -----------------------------------------Hero------------------------------------ */
 
 .slider {
+  margin-top: 10rem;
+}
+
+.swiper-slide {
+  width: 30%;
+  height: 30%;
+}
+
+.swiper-slide img {
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  position: relative;
-}
-
-.slides {
-  display: flex;
-  transition: transform 1s ease;
-  background-color: red;
-}
-
-.slide {
-  min-width: 100%;
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  height: 70rem;
+  object-fit: cover;
 }
 
 .content {
@@ -575,6 +566,27 @@ p {
 
 .next {
   right: 10px;
+}
+
+swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* -----------------------------------------Qualities------------------------------------ */
@@ -651,7 +663,7 @@ swiper-slide img {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  padding-left: 95rem;
+  /* padding-left: 95rem; */
   /* padding: 0 3rem; */
 }
 .packagesBox {
@@ -662,10 +674,10 @@ swiper-slide img {
   height: 40rem;
   width: 30rem;
 }
-.packagesBox .image img:hover {
+/* .packagesBox .image img:hover {
   width: 100%;
   width: 100%;
-}
+} */
 .packagesBox .content {
   background-color: white;
   color: black;
@@ -1042,5 +1054,15 @@ hr {
 
   .menu-icon {
     display: block;
+  }
+
+  .swiper-slide img {
+    height: 30rem;
+    width: 100%;
+    object-fit: cover;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none !important;
   }
 }

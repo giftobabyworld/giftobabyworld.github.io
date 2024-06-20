@@ -1,0 +1,23 @@
+.catogry-wrapper #menu {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.catogry-wrapper {
+  margin-left: 20rem;
+  margin-top: 5rem;
+}
+
+.catorgy-img {
+  height: 20rem !important;
+  transition: all ease 1s;
+}
+
+.package-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.catorgy-img:hover {
+  transform: scale(1.1);
+}

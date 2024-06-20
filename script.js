@@ -173,6 +173,21 @@ Object.assign(swiper2, {
 
 swiper2.initialize();
 
+// ----------------------------Hero slider----------------
+document.addEventListener("DOMContentLoaded", (event) => {
+  const swiper = new Swiper(".mySwiper3", {
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    autoplay: {
+      delay: 2500, // 2.5 seconds
+      disableOnInteraction: false,
+    },
+    loop: true,
+  });
+});
+
 // ----------------------------------------------backend---------------------------------
 
 // Get a reference to the database
