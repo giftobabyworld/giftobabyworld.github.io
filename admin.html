@@ -93,72 +93,164 @@ a:hover {
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+
 </head>
 <body>
-<h1>ADMIN PANEL (eid)</h1>
+<h1>ADMIN PANEL</h1>
 <h2>Click <a href="apnaorderchecker.html" class="clickHereLink disabled" data-href="apnaorderchecker.html"><u>here</u></a> to check orders</h2>
 <h2>Click <a href="messages.html" class="clickHereLink disabled" data-href="messages.html"><u>here</u></a> to check messages</h2>
-click <a href="admin.html">here</a> to edit eid <br>
-click <a href="admin2.html">here</a> to edit bags<br>
-click <a href="admin3.html">here</a> to edit wedding<br>
-click <a href="admin4.html">here</a> to edit formal<br>
-click <a href="admin5.html">here</a> to edit tops <br>
-click <a href="admin6.html">here</a> to edit shoes<br>
-click <a href="admin7.html">here</a> to edit casual<br>
+
 <h2>Login to Manage Packages</h2>
 <label for="email">Email:</label>
 <input type="email" id="email" placeholder="Enter your email">
 <label for="password">Password:</label>
 <input type="password" id="password" placeholder="Enter your password">
 <button id="loginButton" onclick="login()">Login</button>
-<label for="nodeName">Enter Node Name:</label>
-<input type="text" id="nodeName" name="nodeName" placeholder="Enter node name...">
-<input type="text" id="itemName" placeholder="Enter Package name">
-<label for="itemImageInput">Select Package image:</label>
-<input type="file" id="itemImageInput" accept="image/*" multiple>
+<br><br>
+<label for="nodeName">Enter Catogery Name:</label>
+<input type="text" id="nodeName" name="nodeName" placeholder="Enter category name...">
+<br><br>
 
-<input type="text" id="itemDescription" placeholder="Enter Package description">
-<input type="text" id="itemDescriptionnext" placeholder="Enter Package description for next page">
-<input type="text" id="button1" placeholder="Enter Button 1 name">
-<input type="text" id="button1Price" placeholder="Enter Button 1 price">
-<input type="text" id="button2" placeholder="Enter Button 2 name">
-<input type="text" id="button2Price" placeholder="Enter Button 2 price">
-<input type="text" id="button3" placeholder="Enter Button 3 name">
-<input type="text" id="button3Price" placeholder="Enter Button 3 price">
-<input type="text" id="button4" placeholder="Enter Button 4 name">
-<input type="text" id="button4Price" placeholder="Enter Button 4 price">
-<input type="text" id="button5" placeholder="Enter Button 5 name">
-<input type="text" id="button5Price" placeholder="Enter Button 5 price">
-<input type="text" id="button6" placeholder="Enter Button 6 name">
-<input type="text" id="button6Price" placeholder="Enter Button 6 price">
-<input type="text" id="button7" placeholder="Enter Button 7 name">
-<input type="text" id="button7Price" placeholder="Enter Button 7 price">
-<input type="text" id="button8" placeholder="Enter Button 8 name">
-<input type="text" id="button8Price" placeholder="Enter Button 8 price">
-<input type="text" id="button9" placeholder="Enter Button 9 name">
-<input type="text" id="button9Price" placeholder="Enter Button 9 price">
-<input type="text" id="button10" placeholder="Enter Button 10 name">
-<input type="text" id="button10Price" placeholder="Enter Button 10 price">
-<input type="text" id="button11" placeholder="Enter Button 11 name">
-<input type="text" id="button11Price" placeholder="Enter Button 11 price">
-<input type="text" id="button12" placeholder="Enter Button 12 name">
-<input type="text" id="button12Price" placeholder="Enter Button 12 price">
-<input type="text" id="button13" placeholder="Enter Button 13 name">
-<input type="text" id="button13Price" placeholder="Enter Button 13 price">
-<input type="text" id="button14" placeholder="Enter Button 14 name">
-<input type="text" id="button14Price" placeholder="Enter Button 14 price">
-<input type="text" id="button15" placeholder="Enter Button 15 name">
-<input type="text" id="button15Price" placeholder="Enter Button 15 price">
-<input type="text" id="button16" placeholder="Enter Button 16 name">
-<input type="text" id="button16Price" placeholder="Enter Button 16 price">
-<input type="text" id="button17" placeholder="Enter Button 17 name">
-<input type="text" id="button17Price" placeholder="Enter Button 17 price">
-<input type="text" id="button18" placeholder="Enter Button 18 name">
-<input type="text" id="button18Price" placeholder="Enter Button 18 price">
-<input type="text" id="button19" placeholder="Enter Button 19 name">
-<input type="text" id="button19Price" placeholder="Enter Button 19 price">
-<!-- Add more input fields for additional buttons and prices as needed -->
+<label for="itemName">Enter Product Name:</label>
+<input type="text" id="itemName" name="itemName" placeholder="Enter product name...">
+<br><br>
+
+<div>
+  <label for="itemImageInput">Select Product Images:</label>
+  <input type="file" id="itemImageInput" accept="image/*" multiple>
+  <div id="imageContainer">
+    <!-- Images will be dynamically previewed here -->
+  </div>
+  <br>
+</div>
+
+<label for="itemDescription">Product Description:</label>
+<div id="editor">
+  <textarea id="itemDescription" name="itemDescription" placeholder="Enter package description..."></textarea>
+</div>
+<br><br>
+
+<div id="buttonContainer">
+  <!-- Button inputs will be dynamically added here -->
+</div>
+<button id="showMoreButton">Show More sizes</button>
 <button id="saveItemButton" onclick="saveItem()">Save Item</button>
+
+<!-- Include necessary libraries for text editor and slider -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/min/tiny-slider.js"></script>
+
+<!-- Custom JavaScript for image preview and button functionalities -->
+<script>
+ document.addEventListener('DOMContentLoaded', function () {
+  ClassicEditor
+    .create(document.querySelector('#editor textarea'), {
+      // CKEditor configuration options, if needed
+    })
+    .then(editor => {
+      console.log('Editor initialized successfully:', editor);
+
+      // Get the initial content of the editor
+      const initialContent = editor.getData();
+
+      // Update the separate textarea with the initial content
+      document.getElementById('itemDescription').value = initialContent;
+
+      // Listen for changes in the editor content
+      editor.model.document.on('change:data', () => {
+        // Update the separate textarea with the updated content
+        document.getElementById('itemDescription').value = editor.getData();
+      });
+    })
+    .catch(error => {
+      console.error('Error initializing editor:', error);
+    });
+});
+
+
+
+  // Function to handle file input change and display image previews
+  document.getElementById('itemImageInput').addEventListener('change', function() {
+    var container = document.getElementById('imageContainer');
+    container.innerHTML = ''; // Clear previous previews
+
+    Array.from(this.files).forEach(function(file) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var img = document.createElement('img');
+        img.src = e.target.result;
+        img.style.maxWidth = '100px'; // Adjust image preview size as needed
+        container.appendChild(img);
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+
+// Function to add button inputs dynamically
+function addButtons() {
+  var container = document.getElementById('buttonContainer');
+  container.innerHTML = ''; // Clear previous buttons
+
+  for (var i = 1; i <= 19; i++) {
+    var buttonName = document.createElement('input');
+    buttonName.type = 'text';
+    buttonName.id = 'button' + i;
+    buttonName.placeholder = 'Enter Button ' + i + ' name';
+    buttonName.style.display = 'none'; // Initially hide each button
+    container.appendChild(buttonName);
+
+    var buttonPrice = document.createElement('input');
+    buttonPrice.type = 'text';
+    buttonPrice.id = 'button' + i + 'Price';
+    buttonPrice.placeholder = 'Enter Button ' + i + ' price';
+    buttonPrice.style.display = 'none'; // Initially hide each price input
+    container.appendChild(buttonPrice);
+
+    container.appendChild(document.createElement('br'));
+  }
+}
+
+// Call addButtons function to initially populate button inputs
+addButtons();
+
+// Show More button functionality
+var currentButtonIndex = 0;
+var showMoreButton = document.getElementById('showMoreButton');
+
+showMoreButton.addEventListener('click', function() {
+  var container = document.getElementById('buttonContainer');
+  var buttons = container.querySelectorAll('input[type="text"]');
+  
+  if (currentButtonIndex < buttons.length) {
+    buttons[currentButtonIndex].style.display = 'block'; // Display current button
+    currentButtonIndex++;
+
+    // Check if there's a corresponding price input to display
+    if (currentButtonIndex < buttons.length && buttons[currentButtonIndex].id.endsWith('Price')) {
+      buttons[currentButtonIndex].style.display = 'block'; // Display current price input
+      currentButtonIndex++;
+    }
+
+    // If we've reached the end of the buttons, hide the "Show More" button
+    if (currentButtonIndex >= buttons.length) {
+      showMoreButton.style.display = 'none';
+    }
+  }
+});
+
+
+</script>
+
+<!-- Custom CSS for styling -->
+<style>
+  #imageContainer img {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+</style>
+
 
 <h2>Remove Existing domestic Package </h2>
 <input type="text" id="itemIdToRemove" placeholder="Enter Package name to remove">
@@ -207,7 +299,7 @@ click <a href="admin7.html">here</a> to edit casual<br>
     var itemImageInput = Array.from(document.getElementById("itemImageInput").files);
  // Get an array of selected files
     var itemDescription = document.getElementById("itemDescription").value;
-    var itemDescriptionnext = document.getElementById("itemDescriptionnext").value;
+  
 
     // Additional fields for buttons and their prices
     var button1 = document.getElementById("button1").value;
@@ -285,7 +377,7 @@ Promise.all(uploadTasks).then(function(downloadURLs) {
         images: downloadURLs, 
             name: itemName,
             description: itemDescription,
-            descriptionnext: itemDescriptionnext,
+          
             // Additional properties for buttons and their prices
             button1: button1,
             button1Price: button1Price,

@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Display Item ID from Cache</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <!-- Include the Firebase JavaScript SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
+
+  </head>
+  <body>
+    <!-- -----------------------------------------Header--------------------------------------- -->
+    <div class="header">
+      <div class="header-container">
+        <button onclick="openNav()" class="navbar-toggler" type="button">
+          <i class="ri-menu-line sidebar-btn"></i>
+        </button>
+        <div class="logo">
+          <a href="index.html"><img src="images/logo.jpg" alt="logo" /></a>
+        </div>
+        <div class="navbar">
+          <a href="index.html">Home</a>
+          <div class="dropdown">
+            <button class="dropbtn">
+              Toys
+              <i class="ri-arrow-down-s-line"></i>
+            </button>
+            <div class="dropdown-content">
+              <div class="dropdown-content-container">
+                <div class="dropdown-content-wrapper">
+                  <a href="#" onclick="redirectToCategory(this)">toys under 999₨</a>
+                  <a href="#" onclick="redirectToCategory(this)">musical toys </a>
+                  <a href="#" onclick="redirectToCategory(this)">model cars </a>
+                  <a href="#" onclick="redirectToCategory(this)">action figures</a>
+                  <a href="#" onclick="redirectToCategory(this)">train and truck set </a>
+                  <a href="#" onclick="redirectToCategory(this)">sports toys</a>
+                  <a href="#" onclick="redirectToCategory(this)"> play dough & slimes</a>
+                  <a href="#" onclick="redirectToCategory(this)">stuff toys </a>
+                  <a href="#" onclick="redirectToCategory(this)">remote control toys</a>
+                </div>
+                <div class="dropdown-content-divider">
+                  <a href="#" onclick="redirectToCategory(this)">toys gun</a>
+                  <a href="#" onclick="redirectToCategory(this)">outdoor play</a>
+                  <a href="#" onclick="redirectToCategory(this)"">swimming gears</a>
+                  <a href="#" onclick="redirectToCategory(this)">girl toys</a>
+                  <a href="#" onclick="redirectToCategory(this)">boys toys </a>
+                  <a href="#" onclick="redirectToCategory(this)">game and puzzles </a>
+                  <a href="#" onclick="redirectToCategory(this)">baby slides </a>
+                  <a href="#" onclick="redirectToCategory(this)">jumping castle</a>
+                  <a href="#" onclick="redirectToCategory(this)">swings category</a>
+                  <a href="#" onclick="redirectToCategory(this)">tables & chair</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <button class="dropbtn">
+              baby accessories
+              <i class="ri-arrow-down-s-line"></i>
+            </button>
+            <div class="dropdown-content">
+              <div class="dropdown-content-container">
+                <div class="dropdown-content-wrapper">
+                  <a href="#" onclick="redirectToCategory(this)">baby care under 999 </a>
+                  <a href="#" onclick="redirectToCategory(this)">carry nest & carry crib </a>
+                  <a href="#" onclick="redirectToCategory(this)">sleeping sets</a>
+                  <a href="#" onclick="redirectToCategory(this)">new born suit boys</a>
+                  <a href="#" onclick="redirectToCategory(this)">new born suit girls </a>
+                  <a href="#" onclick="redirectToCategory(this)">baby bags </a>
+                  <a href="#" onclick="redirectToCategory(this)">bath towels</a>
+                  <a href="#" onclick="redirectToCategory(this)">face towels </a>
+                  <a href="#" onclick="redirectToCategory(this)">changing sheet </a>
+                  <a href="#" onclick="redirectToCategory(this)">rattles </a>
+                  <a href="#" onclick="redirectToCategory(this)">teether & pacifier </a>
+                </div>
+                <div class="dropdown-content-divider">
+                  <a href="#" onclick="redirectToCategory(this)">baby vest & Bibs</a>
+                  <a href="#" onclick="redirectToCategory(this)">wrapping sheet & swaddle sheet </a>
+                  <a href="#" onclick="redirectToCategory(this)">mittens & caps</a>
+                  <a href="#" onclick="redirectToCategory(this)">diapers & panties </a>
+                  <a href="#" onclick="redirectToCategory(this)">baby socks & booties</a>
+                  <a href="#" onclick="redirectToCategory(this)">baby care accessories </a>
+                  <a href="#" onclick="redirectToCategory(this)">toileteries</a>
+                  <a href="#" onclick="redirectToCategory(this)">gift sets</a>
+                  <a href="#" onclick="redirectToCategory(this)">feeder cover & powder puff </a>
+                  <a href="#" onclick="redirectToCategory(this)"> milk container </a>
+                  <a href="#" onclick="redirectToCategory(this)">feeding accessories</a>
+                  <a href="#" onclick="redirectToCategory(this)">blankets</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <button class="dropbtn">
+              kids
+              <i class="ri-arrow-down-s-line"></i>
+            </button>
+            <div class="dropdown-content">
+              <div class="dropdown-content-container">
+                <div class="dropdown-content-wrapper">
+                  <a href="#" onclick="redirectToCategory(this)">kids electric car </a>
+                  <a href="#" onclick="redirectToCategory(this)">kids electric jeep </a>
+                  <a href="#" onclick="redirectToCategory(this)">kids electric scooters </a>
+                  <a href="#" onclick="redirectToCategory(this)"> tricycles </a>
+                  <a href="#" onclick="redirectToCategory(this)">scooties</a>
+                  <a href="#" onclick="redirectToCategory(this)"> tolo cars </a>
+                  <a href="#" onclick="redirectToCategory(this)">ride on horse</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <button class="dropbtn">
+              baby gear
+              <i class="ri-arrow-down-s-line"></i>
+            </button>
+            <div class="dropdown-content">
+              <div class="dropdown-content-container">
+                <div class="dropdown-content-wrapper">
+                  <a href="#" onclick="redirectToCategory(this)"> electric swing </a>
+                  <a href="#" onclick="redirectToCategory(this)">stroller</a>
+                  <a href="#" onclick="redirectToCategory(this)">carry coat & baby carrier</a>
+                  <a href="#" onclick="redirectToCategory(this)">baby walker & activity walker </a>
+                  <a href="#" onclick="redirectToCategory(this)">play mats</a>
+                  <a href="#" onclick="redirectToCategory(this)">baby sofa</a>
+                  <a href="#" onclick="redirectToCategory(this)">baby coat </a>
+                </div>
+                <div class="dropdown-content-divider">
+                  <a href="#" onclick="redirectToCategory(this)">baby accessories box</a>
+                  <a href="#" onclick="redirectToCategory(this)">bathers & baby toilets seat </a>
+                  <a href="#" onclick="redirectToCategory(this)">kids drawers</a>
+                  <a href="#" onclick="redirectToCategory(this)"high chairs & booster seat</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="addtocart" onclick="openSidebar()">
+          <i class="ri-shopping-cart-2-fill"></i>
+        </div>
+      </div>
+      <!-- open sidebar -->
+      <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+          >&times;</a
+        >
+        <a href="#">Home</a>
+        <a href="#">Contact Us</a>
+
+        <div class="dropdown2">
+          <div class="select">
+            <span class="selected">Toys</span>
+            <div class="caret"></div>
+          </div>
+          <ul class="menu">
+            <li>toys under 999₨</li>
+            <li>musical toys</li>
+            <li>model cars</li>
+            <li>action figures</li>
+            <li>train and truck set</li>
+            <li>sports toys</li>
+            <li>play dough & slimes</li>
+            <li>stuff toys</li>
+            <li>remote control toys</li>
+            <li>toys gun</li>
+            <li>outdoor play</li>
+            <li>swimming gears</li>
+            <li>girl toys</li>
+            <li>boys toys</li>
+            <li>game and puzzles</li>
+            <li>baby slides</li>
+            <li>jumping castle</li>
+            <li>swings category</li>
+            <li>tables & chair</li>
+            <li class="active">toys</li>
+          </ul>
+        </div>
+
+        <div class="dropdown2">
+          <div class="select">
+            <span class="selected">kids vehicles</span>
+            <div class="caret"></div>
+          </div>
+          <ul class="menu">
+            <li>kids electric car</li>
+            <li>kids electric jeep</li>
+            <li>kids electric scooters</li>
+            <li>tricycles</li>
+            <li>scooties</li>
+            <li>tolo cars</li>
+            <li>ride on horse</li>
+            <li class="active">Kids Vechiels</li>
+          </ul>
+        </div>
+
+        <div class="dropdown2">
+          <div class="select">
+            <span class="selected">born baby accessories</span>
+            <div class="caret"></div>
+          </div>
+          <ul class="menu">
+            <li>baby care under 999</li>
+            <li>carry nest & carry crib</li>
+            <li>new born suit boys</li>
+            <li>new born suit girls</li>
+            <li>baby bags</li>
+            <li>bath towels</li>
+            <li>face towels</li>
+            <li>changing sheet</li>
+            <li>baby vest & Bibs</li>
+            <li>wrapping sheet & swaddle sheet</li>
+            <li>mittens & caps</li>
+            <li>diapers & panties</li>
+            <li>baby socks & booties</li>
+            <li>baby care accessories</li>
+            <li>toileteries</li>
+            <li>gift sets</li>
+            <li>feeder cover & powder puff</li>
+            <li>milk container</li>
+            <li>rattles</li>
+            <li>teether & pacifier</li>
+            <li>feeding accessories </li>
+            <li>blankets</li>
+            <li class="active">born baby accessories</li>
+          </ul>
+        </div>
+
+        <div class="dropdown2">
+          <div class="select">
+            <span class="selected">baby gear</span>
+            <div class="caret"></div>
+          </div>
+          <ul class="menu">
+            <li>electric swing</li>
+            <li>stroller</li>
+            <li>carry coat & baby carrier</li>
+            <li>baby walker & activity walker</li>
+            <li>play mats</li>
+            <li>baby sofa</li>
+            <li>baby coat</li>
+            <li>baby accessories box</li>
+            <li>bathers & baby toilets seat</li>
+            <li>kids drawers</li>
+            <li>high chairs & booster seat</li>
+            <li class="active">baby gear</li>
+          </ul>
+        </div>
+
+        <!-- ------------------right sidebar------------------ -->
+        <div class="sidebar" id="sidebar">
+          <button class="right-close-btn" onclick="closeSidebar()">✕</button>
+          <div class="right-sidebar-content">
+            <h1>Your Cart</h1>
+            <section class="cart">
+              <div class="content">
+                <h1>Your Cart</h1>
+              </div>
+              <div id="cart-items"></div>
+              <a href="checkout.html" class="checkout-container">
+                <div class="container">
+                  <div class="left-side">
+                    <div class="card">
+                      <div class="card-line"></div>
+                      <div class="buttons"></div>
+                    </div>
+                    <div class="post">
+                      <div class="post-line"></div>
+                      <div class="screen">
+                        <div class="dollar">RS</div>
+                      </div>
+                      <div class="numbers"></div>
+                      <div class="numbers-line2"></div>
+                    </div>
+                  </div>
+                  <div class="right-side">
+                    <div class="new">Checkout</div>
+                  </div>
+                </div>
+              </a>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <!-- ------------------right sidebar------------------ -->
+      <div class="sidebar" id="sidebar">
+        <button class="right-close-btn" onclick="closeSidebar()">✕</button>
+        <div class="right-sidebar-content">
+          <h1>Your Cart</h1>
+          <section class="cart">
+            <div class="content">
+              <h1>Your Cart</h1>
+            </div>
+            <div id="cart-items"></div>
+            <a href="checkout.html" class="checkout-container">
+              <div class="container">
+                <div class="left-side">
+                  <div class="card">
+                    <div class="card-line"></div>
+                    <div class="buttons"></div>
+                  </div>
+                  <div class="post">
+                    <div class="post-line"></div>
+                    <div class="screen">
+                      <div class="dollar">RS</div>
+                    </div>
+                    <div class="numbers"></div>
+                    <div class="numbers-line2"></div>
+                  </div>
+                </div>
+                <div class="right-side">
+                  <div class="new">Checkout</div>
+                </div>
+              </div>
+            </a>
+          </section>
+        </div>
+      </div>
+    </div>
+    <!-- ---------------------------------------inner eid page-------------------------------------- -->
+
+    <section class="packages" id="services">
+      <div class="content">
+        <h1>kids</h1>
+      </div>
+    </section>
+
+    <!-- packages -->
+
+    <div id="menu"></div>
+
+    <div id="itemIdDisplay"></div>
+
+    <!-- -----------------------------------------Footer------------------------------------------- -->
+    <div class="footer">
+      <div class="footer-left">
+        <div class="logo">
+          <img src="images/logo.jpg" alt="" />
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <div class="footer-socials">
+            <div class="footer-socials-wrapper">
+              <div class="social1">
+                <a
+                  href=" https://www.facebook.com/profile.php?id=100068177918098
+                "
+                  ><i class="ri-facebook-fill"></i
+                ></a>
+              </div>
+              <div class="social1">
+                <a
+                  href=" https://www.instagram.com/gifto_baby_world/
+                "
+                  ><i class="ri-instagram-fill"></i
+                ></a>
+              </div>
+              <div class="social1">
+                <a
+                  href=" https://www.tiktok.com/@giftobaby1
+                "
+                  ><i class="ri-tiktok-fill"></i
+                ></a>
+              </div>
+              <div class="social1">
+                <a href=" https://youtube.com/@GiftoBabyworld"
+                  ><i class="ri-youtube-fill"></i
+                ></a>
+              </div>
+              <div class="social1">
+                <a href="https://maps.app.goo.gl/uZp33UTQxxuiuuCn6"
+                  ><i class="ri-map-pin-line"></i
+                ></a>
+              </div>
+              <div class="social1">
+                <a href="https://wa.me/+923355558359"
+                  ><i class="ri-whatsapp-line"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-info">
+        <div class="contact-heading">
+          <h1 class="pink-shade">Contact Info</h1>
+        </div>
+        <div class="contact-wrapper-container">
+          <div class="contact-wrapper">
+            <i class="ri-phone-fill"></i>
+            <p>03355558359</p>
+          </div>
+          <div class="contact-wrapper">
+            <i class="ri-phone-fill"></i>
+            <p>03345373743</p>
+          </div>
+          <div class="contact-wrapper">
+            <i class="ri-mail-star-fill"></i>
+            <p>hamzashakeelhaiderdurrani77@gmail.com</p>
+          </div>
+          <div class="contact-wrapper">
+            <i class="ri-time-fill"></i>
+            <p>24/7</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <div class="newsletter">
+          <div class="newsletter-content">
+            <h1 class="pink-shade">Newsletter</h1>
+            <p>Subscribe For latest updates</p>
+            <form action="" id="newsletter">
+              <input
+                type="email"
+                id="email"
+                name=""
+                placeholder="Drop your email"
+                class="newsletter"
+              />
+              <input type="submit" value="subscribe" class="btn-1" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+    <div class="copywrite">
+      <div class="copywrite-content">
+        <p>
+          Copyright &copy; since 1985 Gift To Baby World. All Rights Reserved.
+        </p>
+      </div>
+    </div>
+
+    <!-- -----------------------------------------Back to top btn------------------------------------------- -->
+    <button onclick="scrollToTop()" class="btn-hover2" id="backToTop">
+      <i class="fa-solid fa-angle-up"></i>
+    </button>
+    <button class="instagrmBar" id="instagrmBar">
+      <a href="#"><img class="socials-icons" src="images/whatsaap.png" /></a>
+    </button>
+
+    <!-- backend -->
+    <script src="firebase.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+  function displayCart() {
+    // Retrieve cart items from localStorage
+    var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+    // Display cart items on the page
+    var cartItemsContainer = document.getElementById("cart-items");
+    cartItemsContainer.innerHTML = ""; // Clear existing content
+
+    if (cartItems.length === 0) {
+      cartItemsContainer.innerHTML =
+        '<p class="empty-msg">Your cart is empty 😞 <a class="empty-shopping" href="index.html">Continue Shopping</a></p>';
+    } else {
+      var totalAmount = 0;
+
+      cartItems.forEach(function (item) {
+        var itemElement = document.createElement("div");
+        itemElement.innerHTML = `
+                      <div class="cart-container">
+                          <div class="cart-container-2">
+                              <div class="cart-img">
+                                  <img src="${item.image}" alt="${item.name}" style="width: 30rem;">
+                              </div>
+                              <div class="cart-details">
+                                  <p>Name: ${item.name}</p>
+                                  <p>Price: Rs ${item.price}</p>
+                                  <p>Quantity: ${item.quantity}</p>
+                                  <p>Size: ${item.buttonName}</p>
+                              </div>
+                          </div>
+                              <button class="remove-item-button noselect" data-name="${item.name}" data-price="${item.price}"> <span class="text">Delete</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></button>
+                              <hr>
+                      </div>`;
+        cartItemsContainer.appendChild(itemElement);
+
+        // Calculate total amount
+        totalAmount += parseInt(item.price) * parseInt(item.quantity);
+      });
+
+      // Display total amount
+      cartItemsContainer.innerHTML += `<h3 class="total-amount">Total: Rs ${totalAmount}</h3>`;
+
+      // Add event listeners to Remove buttons
+      var removeButtons = document.querySelectorAll(
+        ".remove-item-button"
+      );
+      removeButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          var itemName = button.getAttribute("data-name");
+          var itemPrice = button.getAttribute("data-price");
+
+          // Retrieve cart items from localStorage
+          var cartItems =
+            JSON.parse(localStorage.getItem("cartItems")) || [];
+
+          // Find index of item to remove
+          var index = cartItems.findIndex(function (item) {
+            return item.name === itemName && item.price === itemPrice;
+          });
+
+          // Decrease quantity by 1 or remove item if quantity is 1
+          if (index !== -1) {
+            if (cartItems[index].quantity > 1) {
+              cartItems[index].quantity--;
+            } else {
+              cartItems.splice(index, 1);
+            }
+            // Update cart items in localStorage
+            localStorage.setItem("cartItems", JSON.stringify(cartItems));
+            // Trigger live reload
+            displayCart();
+          }
+        });
+      });
+    }
+  }
+
+  // Display cart initially
+  displayCart();
+
+  // Listen for changes in localStorage (storage event)
+  window.addEventListener("storage", function (e) {
+    // Check if the event is related to cartItems
+    if (e.key === "cartItems") {
+      // Trigger live reload
+      displayCart();
+    }
+  });
+});
+function redirectToCategory(element) {
+  // Get the category name from the clicked link's text content
+  var categoryName = element.textContent.trim();
+  // Save category in localStorage or sessionStorage
+  localStorage.setItem('itemCategory', categoryName);
+  // Redirect to category.html
+  window.location.href = 'catogry.html';
+}
+document.addEventListener('DOMContentLoaded', function() {
+  var dropdowns = document.querySelectorAll('.dropdown2 .menu li');
+  dropdowns.forEach(function(item) {
+    item.addEventListener('click', function() {
+      redirectToCategory(this);
+    });
+  });
+});
+      // Get a reference to the database
+      // Get a reference to the database
+      var database = firebase.database();
+
+      // Fetch menu data from Firebase
+      var menuRef = database.ref("products");
+      menuRef.on("value", function (snapshot) {
+        var menuData = snapshot.val();
+
+        // Retrieve itemId and itemCategory from localStorage
+        var itemId = localStorage.getItem("itemName");
+        var itemCategory = localStorage.getItem("itemCategory");
+        console.log("Retrieved itemCategory from localStorage:", itemCategory);
+
+        // Display menu data on the web page
+        var menuContainer = document.getElementById("menu");
+        menuContainer.innerHTML = "";
+
+        // Iterate through each product category
+        for (var categoryKey in menuData) {
+          if (
+            menuData.hasOwnProperty(categoryKey) &&
+            categoryKey === itemCategory
+          ) {
+            // Find products under the specified category
+            var category = menuData[categoryKey];
+            for (var productKey in category) {
+              if (category.hasOwnProperty(productKey)) {
+                var product = category[productKey];
+                if (product.name === itemId) {
+                  // Check if item ID matches
+                  var menuItemElement = document.createElement("div");
+                  menuItemElement.innerHTML = `
+
+                    <section class="packages-box-container">
+                              <div class="content">
+                                  <div class="package-details">
+                                      <div class="package-name-visa">
+                                          <h2>${product.name}</h2>
+                                      </div>
+                                  </div>
+                              </div>
+                                  </div>
+                      </section>
+
+                <div class="bigDiv">
+  <div class="slider-container">
+    <div class="big-image">
+      ${
+        product.images && Array.isArray(product.images)
+          ? product.images
+              .map(
+                (image, index) => `
+                <div class="slide ${index === 0 ? "active" : ""}">
+                  <img src="${image}" alt="${
+                  product.name
+                }" class="menu-image-visa">
+                </div>
+              `
+              )
+              .join("")
+          : ""
+      }
+    </div>
+    <div class="small-images">
+      ${
+        product.images && Array.isArray(product.images)
+          ? product.images
+              .map(
+                (image, index) => `
+                <div class="slide ${
+                  index === 0 ? "active" : ""
+                }" onclick="changeImage(${index})">
+                  <img src="${image}" alt="${
+                  product.name
+                }" class="menu-image-visa">
+                </div>
+              `
+              )
+              .join("")
+          : ""
+      }
+    </div>
+  </div>
+</div>
+
+
+
+          <div class="btn-container">
+              <h1 class="packageTitle">Product Size</h1>
+
+              <div class="package-prices">
+                  <div class="package-price" id="current-price">
+                  <h4>Rs ${product.button1Price}</h4>
+                  </div>
+              </div>
+
+              <div class="buttons">
+                  <!-- Check if menuItem.button1 is defined before rendering the button -->
+                  ${
+                    product.button1
+                      ? `<button class="price-button" data-price="${product.button1Price}">${product.button1}</button>`
+                      : ""
+                  }
+                  <!-- Check if menuItem.button2 is defined before rendering the button -->
+                  ${
+                    product.button2
+                      ? `<button class="price-button" data-price="${product.button2Price}">${product.button2}</button>`
+                      : ""
+                  }
+                  <!-- Check if menuItem.button3 is defined before rendering the button -->
+                  ${
+                    product.button3
+                      ? `<button class="price-button" data-price="${product.button3Price}">${product.button3}</button>`
+                      : ""
+                  }
+                  <!-- Check if menuItem.button4 is defined before rendering the button -->
+                  ${
+                    product.button4
+                      ? `<button class="price-button" data-price="${product.button4Price}">${product.button4}</button>`
+                      : ""
+                  }
+                  <!-- Check if menuItem.button5 is defined before rendering the button -->
+                  ${
+                    product.button5
+                      ? `<button class="price-button" data-price="${product.button5Price}">${product.button5}</button>`
+                      : ""
+                  }
+                  <!-- Check if menuItem.button6 is defined before rendering the button -->
+                  ${
+                    product.button6
+                      ? `<button class="price-button" data-price="${product.button6Price}">${product.button6}</button>`
+                      : ""
+                  }
+                  <!-- Check if menuItem.button7 is defined before rendering the button -->
+                  ${
+                    product.button7
+                      ? `<button class="price-button" data-price="${product.button7Price}">${product.button7}</button>`
+                      : ""
+                  }
+                  <!-- Check if menuItem.button8 is defined before rendering the button -->
+                  ${
+                    product.button8
+                      ? `<button class="price-button" data-price="${product.button8Price}">${product.button8}</button>`
+                      : ""
+                  }
+                  <!-- Check if menuItem.button9 is defined before rendering the button -->
+                  ${
+                    product.button9
+                      ? `<button class="price-button" data-price="${product.button9Price}">${product.button9}</button>`
+                      : ""
+                  }
+                  ${
+                    product.button10
+                      ? `<button class="price-button" data-price="${product.button10Price}">${product.button10}</button>`
+                      : ""
+                  }
+<!-- Check if menuItem.button11 is defined before rendering the button -->
+${
+  product.button11
+    ? `<button class="price-button" data-price="${product.button11Price}">${product.button11}</button>`
+    : ""
+}
+${
+  product.button12
+    ? `<button class="price-button" data-price="${product.button12Price}">${product.button12}</button>`
+    : ""
+}
+${
+  product.button13
+    ? `<button class="price-button" data-price="${product.button13Price}">${product.button13}</button>`
+    : ""
+}
+${
+  product.button14
+    ? `<button class="price-button" data-price="${product.button14Price}">${product.button14}</button>`
+    : ""
+}
+${
+  product.button15
+    ? `<button class="price-button" data-price="${product.button15Price}">${product.button15}</button>`
+    : ""
+}
+${
+  product.button16
+    ? `<button class="price-button" data-price="${product.button16Price}">${product.button16}</button>`
+    : ""
+}
+${
+  product.button17
+    ? `<button class="price-button" data-price="${product.button17Price}">${product.button17}</button>`
+    : ""
+}
+
+                  <!-- Add more button checks as needed -->
+              </div>
+          </div>
+      </div>
+
+                <div class="add-to-cart">
+                              <button class="add-to-cart-button" data-name="${
+                                product.name
+                              }" data-image="${product.image}" data-price="${
+                    product.price
+                  }">
+                    <span class="IconContainer">
+          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg>
+        </span>
+        <p>Add to cart</p>
+                    </button>
+              </div>
+                          </div>
+                          <div class="hr">
+                              <hr class="des-hr" />
+                          </div>
+
+                                  <div class="package-des" id="des">
+                                      <div class="heading">
+                                          <span class="package-des-title">Package Description</span>
+
+                                      </div>
+                                      <div class="package-des1">
+                                          <p class="des-1">${
+                                            product.description
+                                          }</p>
+                                      </div>
+                                      <div class="package-des2">
+                                          <p class="des-2">${
+                                            product.descriptionnext
+                                          }</p>
+                                      </div>
+                                  </div>
+
+                             `;
+
+                  // Append menu item element to menu container
+                  menuContainer.appendChild(menuItemElement);
+
+                  // Add event listeners to Price buttons
+                  var priceButtons =
+                    menuItemElement.querySelectorAll(".price-button");
+                  priceButtons.forEach(function (priceButton, index) {
+                    priceButton.addEventListener("click", function () {
+                      // Update current price display
+                      var currentPrice =
+                        menuItemElement.querySelector("#current-price h4");
+                      currentPrice.textContent =
+                        "Rs " + priceButton.getAttribute("data-price");
+
+                      // Capture the current button name
+                      var currentButtonName = priceButton.textContent;
+                      console.log("Current button name:", currentButtonName);
+
+                      // Store the current button name in localStorage
+                      localStorage.setItem(
+                        "currentButtonName",
+                        currentButtonName
+                      );
+                    });
+
+                    // Simulate click event on button 1 by default
+                    if (index === 0) {
+                      priceButton.click();
+                    }
+                  });
+
+                  // Add event listener to Add to Cart button
+                  var addToCartButton = menuItemElement.querySelector(
+                    ".add-to-cart-button"
+                  );
+                  addToCartButton.addEventListener("click", function () {
+                    var itemName = addToCartButton.getAttribute("data-name");
+                    var itemImages = product.images || []; // Retrieve array of images or initialize as empty array if undefined
+                    if (itemImages.length > 0) {
+                      // Check if itemImages is not empty
+                      var randomImageIndex = Math.floor(
+                        Math.random() * itemImages.length
+                      ); // Generate a random index
+                      var randomImage = itemImages[randomImageIndex]; // Get a random image from the array
+                      var itemPrice = menuItemElement
+                        .querySelector("#current-price h4")
+                        .textContent.replace("Rs ", "");
+                    }
+
+                    // Retrieve the current button name from localStorage
+                    var currentButtonName =
+                      localStorage.getItem("currentButtonName");
+                    console.log(
+                      "Retrieved current button name:",
+                      currentButtonName
+                    );
+
+                    // Retrieve existing cart items from localStorage or initialize an empty array
+                    var cartItems =
+                      JSON.parse(localStorage.getItem("cartItems")) || [];
+
+                    // Check if the item is already in the cart (including price and button name)
+                    var existingItem = cartItems.find(function (item) {
+                      return (
+                        item.name === itemName &&
+                        item.price === itemPrice &&
+                        item.buttonName === currentButtonName
+                      );
+                    });
+
+                    if (!existingItem) {
+                      // Item not in cart, add it
+                      cartItems.push({
+                        name: itemName,
+                        image: randomImage, // Use the random image
+                        price: itemPrice,
+                        buttonName: currentButtonName, // Store the current button name
+                        quantity: 1, // Initialize quantity to 1
+                      });
+                    } else {
+                      // Item already in cart, increment quantity
+                      existingItem.quantity = (existingItem.quantity || 1) + 1;
+                    }
+
+                    // Save updated cart items to localStorage
+                    localStorage.setItem(
+                      "cartItems",
+                      JSON.stringify(cartItems)
+                    );
+
+                    // Provide feedback to the user
+                    alert("Item added to cart!");
+                  });
+                }
+              }
+            }
+          }
+        }
+      });
+    </script>
+    <script>
+      // ------------------------image changing--------------------
+      function changeImage(index) {
+        // Get all the small images
+        const smallImages = document.querySelectorAll(".small-images .slide");
+
+        // Remove 'active' class from all small images
+        smallImages.forEach((image) => {
+          image.classList.remove("active");
+        });
+
+        // Add 'active' class to the clicked small image
+        smallImages[index].classList.add("active");
+
+        // Change the big image to match the clicked small image
+        const bigImages = document.querySelectorAll(".big-image .slide");
+        bigImages.forEach((image) => {
+          image.classList.remove("active");
+        });
+        bigImages[index].classList.add("active");
+      }
+      // --------------------------------------------------Sidebar------------------------------------------
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+}
+
+// small banner at top
+function closeBanner() {
+  var banner = document.getElementById("banner");
+  banner.style.display = "none";
+}
+
+// -----------right sidebar---------------------
+
+function openSidebar() {
+  document.getElementById("sidebar").classList.add("open");
+}
+
+function closeSidebar() {
+  document.getElementById("sidebar").classList.remove("open");
+}
+
+    </script>
+   
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
