@@ -179,6 +179,7 @@ section {
   }
 
   .row {
+    display: flex;
     flex-direction: column;
   }
 
@@ -189,5 +190,75 @@ section {
 
   .contact-form {
     width: 100%;
+  }
+}
+
+@media (min-width: 450px) {
+  .row {
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  section {
+    margin-top: -10rem;
+  }
+
+  .section-header h2 {
+    font-size: 5em;
+  }
+
+  .contact-info-content h4 {
+    font-size: 4em;
+  }
+
+  .contact-info-icon i {
+    font-size: 4rem;
+  }
+
+  .contact-info-icon {
+    height: 150px;
+    width: 150px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-info-content p {
+    font-size: 3em;
+  }
+
+  .contact-info {
+    width: 81%;
+  }
+
+  .contact-form {
+    padding: 74px;
+    width: 80%;
+    padding-bottom: 114px;
+    padding-top: 114px;
+  }
+
+  .contact-form h2 {
+    font-size: 5em;
+  }
+
+  .contact-form .input-box span {
+    font-size: 3rem;
+  }
+
+  .contact-form .input-box input,
+  .contact-form .input-box textarea {
+    font-size: 50px;
+  }
+
+  .contact-form .input-box input:focus ~ span,
+  .contact-form .input-box textarea:focus ~ span {
+    font-size: 40px;
+    transform: translateY(-50px);
+  }
+
+  .contact-form .input-box input[type="submit"] {
+    font-size: 50px;
   }
 }
