@@ -1111,6 +1111,7 @@ swiper-slide img {
 
 .footer-right {
   margin-left: 10rem;
+  width: 20%;
 }
 .newsletter-content h1 {
   font-size: 3rem;
@@ -1333,5 +1334,10 @@ hr {
   .swiper-button-next,
   .swiper-button-prev {
     display: none !important;
+  }
+
+  .footer-right {
+    width: 80%;
+    margin-right: 8rem;
   }
 }
