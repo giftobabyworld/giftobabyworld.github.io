@@ -63,4 +63,8 @@
     width: 35rem;
     object-fit: cover;
   }
+
+  .package-name h2 {
+    width: 75%;
+  }
 }

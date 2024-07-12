@@ -119,8 +119,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                   <p>Size: ${item.buttonName}</p>
                               </div>
                           </div>
-                              <button class="remove-item-button noselect" data-name="${item.name}" data-price="${item.price}"> <span class="text">Delete</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></button>
-                              <hr>
+                              <button class="remove-item-button noselect" data-name="${item.name}" data-price="${item.price}"></button>
+                              
                       </div>`;
         cartItemsContainer.appendChild(itemElement);
 
@@ -132,17 +132,14 @@ document.addEventListener("DOMContentLoaded", function () {
       cartItemsContainer.innerHTML += `<h3 class="total-amount">Total: Rs ${totalAmount}</h3>`;
 
       // Add event listeners to Remove buttons
-      var removeButtons = document.querySelectorAll(
-        ".remove-item-button"
-      );
+      var removeButtons = document.querySelectorAll(".remove-item-button");
       removeButtons.forEach(function (button) {
         button.addEventListener("click", function () {
           var itemName = button.getAttribute("data-name");
           var itemPrice = button.getAttribute("data-price");
 
           // Retrieve cart items from localStorage
-          var cartItems =
-            JSON.parse(localStorage.getItem("cartItems")) || [];
+          var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
           // Find index of item to remove
           var index = cartItems.findIndex(function (item) {
@@ -182,14 +179,14 @@ function redirectToCategory(element) {
   // Get the category name from the clicked link's text content
   var categoryName = element.textContent.trim();
   // Save category in localStorage or sessionStorage
-  localStorage.setItem('itemCategory', categoryName);
+  localStorage.setItem("itemCategory", categoryName);
   // Redirect to category.html
-  window.location.href = 'catogry.html';
+  window.location.href = "catogry.html";
 }
-document.addEventListener('DOMContentLoaded', function() {
-  var dropdowns = document.querySelectorAll('.dropdown2 .menu li');
-  dropdowns.forEach(function(item) {
-    item.addEventListener('click', function() {
+document.addEventListener("DOMContentLoaded", function () {
+  var dropdowns = document.querySelectorAll(".dropdown2 .menu li");
+  dropdowns.forEach(function (item) {
+    item.addEventListener("click", function () {
       redirectToCategory(this);
     });
   });

@@ -9,19 +9,12 @@
   --pink-color: #c69ca3;
 }
 
-.checkout-container {
-  margin-top: 15rem;
+.checkout-container-wrapper {
+  margin-top: 20rem;
+  display: flex;
 }
-.checkout-container .content {
+.checkout-container-wrapper .content {
   margin-bottom: 5rem;
-}
-
-.colorful-form {
-  width: 500px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 10px;
 }
 
 .form-group {
@@ -69,10 +62,12 @@ textarea.form-input {
 }
 
 .form-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .bank-details {
@@ -83,63 +78,73 @@ textarea.form-input {
   line-height: 4rem;
   /* margin: 2rem 4rem; */
 }
-.iban {
+/* .iban {
   line-height: 3rem;
   background-color: var(--pink-color);
   padding: 1rem;
+} */
+
+form h2 {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-size: 2rem;
 }
 
-.checkout-details {
-  font-size: 2rem;
-  font-weight: 600;
-  border: 2px solid var(--light-color);
-  padding: 2rem 5rem;
-  line-height: 5rem;
+label {
+  display: block;
+  margin-top: 10px;
+  font-size: 1.5rem;
 }
-.checkout-total {
-  font-size: 2.5rem;
-  margin-top: 2rem;
+
+input[type="text"],
+input[type="email"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.checkout-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
   text-align: center;
+  margin-top: 2rem;
 }
 
-.cart-items {
-  font-size: 3rem !important;
-  /* background-color: red !important; */
+.checkout-btn:hover {
+  background-color: #0056b3;
 }
 
-.thankyou {
-  margin-top: 20rem;
-  color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.thankyou h1 {
-  font-size: 4rem;
-  font-weight: 600;
-  margin-bottom: 2rem;
-}
-.thankyou h2 {
+.account-title {
   font-size: 2rem;
-  margin-bottom: 2rem;
-  font-weight: 500;
-}
-
-.thankyou-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
 /* -----------------------------------------------breakpoints--------------------------------- */
 @media (max-width: 450px) {
-  .form-container {
+  .checkout-container-wrapper {
     flex-direction: column;
+    gap: 2rem;
+    margin-top: 15rem;
   }
-  .colorful-form {
-    width: 330px;
+  .form-container {
+    width: 100%;
+  }
+  p {
+    font-size: 1.8rem;
   }
   .checkout-total {
     margin-bottom: 3rem;

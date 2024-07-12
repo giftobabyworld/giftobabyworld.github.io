@@ -16,11 +16,12 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="inner-page.css">
 
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
+    /> -->
     <!-- Include the Firebase JavaScript SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
@@ -661,7 +662,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
           <div class="btn-container">
-              <h1 class="packageTitle">Product Size</h1>
+              
 
               <div class="package-prices">
                   <div class="package-price" id="current-price">
@@ -669,7 +670,8 @@ document.addEventListener('DOMContentLoaded', function() {
                   </div>
               </div>
 
-              <div class="buttons">
+              <h1 class="packageTitle">Product Size</h1>
+              <div class="size-buttons">
                   <!-- Check if menuItem.button1 is defined before rendering the button -->
                   ${
                     product.button1
@@ -957,7 +959,7 @@ function closeSidebar() {
 
     </script>
    
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
-    <script src="script.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script> -->
+    <!-- <script src="script.js"></script> -->
   </body>
 </html>

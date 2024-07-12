@@ -1,0 +1,289 @@
+#menu {
+  width: 400%;
+  margin-top: 15rem;
+}
+
+.bigDiv {
+  text-align: center;
+  margin-top: 15rem;
+}
+
+.slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.big-image {
+  width: 60%;
+  position: relative;
+}
+
+.big-image .slide {
+  display: none;
+  position: absolute;
+  top: -40rem;
+  left: 0;
+  width: 100%;
+}
+
+.big-image .slide.active {
+  display: block;
+}
+
+.small-images {
+  width: 40%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-right: 10rem;
+}
+
+.small-images .slide {
+  width: calc(33.33% - 10px);
+  margin: 0 5px;
+  cursor: pointer;
+  margin-top: -20rem;
+}
+
+.menu-image-visa {
+  max-width: 100%;
+  width: 100%;
+  height: 50rem;
+  object-fit: contain;
+}
+
+/* .packages-box-container {
+  margin-top: 20rem;
+} */
+
+.package-name-visa h2 {
+  font-size: 10rem;
+  margin-bottom: 10rem;
+  /* margin-top: 50rem; */
+  z-index: 20;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: -3rem;
+}
+
+.packageTitle {
+  font-size: 3rem;
+}
+
+.package-prices h4 {
+  font-size: 2.5rem;
+}
+
+.price-button {
+  appearance: none;
+  background-color: transparent;
+  border: 0.125em solid #1a1a1a;
+  border-radius: 0.9375em;
+  box-sizing: border-box;
+  color: #3b3b3b;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 3.75em;
+  min-width: 0;
+  outline: none;
+  padding: 1em 2.3em;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+}
+
+.price-button:disabled {
+  pointer-events: none;
+}
+
+.price-button:hover {
+  color: #fff;
+  background-color: #1a1a1a;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.price-button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+.add-to-cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.add-to-cart-button {
+  width: 150px;
+  height: 50px;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  border: none;
+  background-color: green;
+  color: black; /* If you're using `currentColor` in your SVG fill/stroke */
+  fill: black; /* Directly setting fill color */
+  stroke: black; /* If your SVG has strokes */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  overflow: hidden;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.103);
+  position: relative;
+}
+.add-to-cart-button p {
+  color: black; /* If you're using `currentColor` in your SVG fill/stroke */
+  fill: black; /* Directly setting fill color */
+  stroke: black; /* If your SVG has strokes */
+  font-size: 1.5rem;
+}
+
+.IconContainer {
+  position: absolute;
+  left: -50px;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  color: black;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 2;
+  transition-duration: 0.5s;
+}
+.IconContainer svg {
+  color: black; /* If you're using `currentColor` in your SVG fill/stroke */
+  fill: black; /* Directly setting fill color */
+  stroke: black; /* If your SVG has strokes */
+}
+
+.icon {
+  border-radius: 1px;
+}
+
+.text {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition-duration: 0.5s;
+  font-size: 3rem;
+  font-weight: 600;
+  color: black; /* If you're using `currentColor` in your SVG fill/stroke */
+  fill: black; /* Directly setting fill color */
+  stroke: black; /* If your SVG has strokes */
+}
+
+.add-to-cart-button:hover .IconContainer {
+  transform: translateX(58px);
+  border-radius: 40px;
+  transition-duration: 0.5s;
+}
+
+.add-to-cart-button:hover .text {
+  transform: translate(10px, 0px);
+  transition-duration: 0.5s;
+  color: black;
+}
+
+.add-to-cart-button:active {
+  transform: scale(0.95);
+  transition-duration: 0.5s;
+}
+/* .add-to-cart p {
+  color: black;
+} */
+
+.package-des {
+  font-size: 1.5rem;
+  /* margin-top: 3rem; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  line-height: 3rem;
+  margin: 3rem 10rem;
+  /* width: 80%; */
+
+  /* margin-bottom: 10rem; */
+}
+
+.package-des-title {
+  font-size: 3rem;
+  font-weight: 600;
+}
+.des-1,
+.des-2 {
+  font-size: 2rem;
+  margin-top: 3rem;
+}
+
+/* ----------------------------------------breakpoints--------------------------- */
+
+@media (max-width: 768px) {
+  .slider-container {
+    flex-direction: column; /* Change flex direction to column on smaller screens */
+  }
+  #menu {
+    margin-top: 15rem;
+  }
+  .big-image {
+    width: 100%; /* Make big image full width on smaller screens */
+    margin-bottom: 25rem;
+  }
+  .small-images {
+    width: 100%; /* Make small images full width on smaller screens */
+    padding: 2rem;
+    margin-right: 0;
+  }
+  .small-images .slide {
+    width: calc(
+      50% - 10px
+    ); /* Change small image width to 50% on smaller screens */
+  }
+
+  .bigDiv {
+    margin-top: 30rem;
+  }
+
+  .price-button {
+    /* padding: 4rem; */
+    margin: 1rem 1rem;
+  }
+  .package-des-title {
+    white-space: nowrap;
+  }
+
+  .package-des {
+    margin: 3rem 3rem;
+  }
+
+  .size-buttons {
+    margin-left: 5rem;
+  }
+}
