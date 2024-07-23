@@ -564,19 +564,65 @@ aside .pages {
   position: absolute;
   top: 12rem;
   left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  padding: 0.5rem;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
 }
+
 .remove-item-button:hover {
   background-color: red !important;
 }
+
 .remove-item-button .text {
   font-size: 1.5rem;
+  display: inline-block;
 }
+
+.remove-item-button .icon {
+  display: flex; /* Hide icon by default */
+}
+
+/* If you want to display the icon instead of text, uncomment the following */
 .remove-item-button:hover .text {
   color: white;
 }
-.remove-item-button .icon {
-  display: none;
+
+.remove-item-button:hover .icon {
+  display: inline-block;
+  font-size: 1.5rem; /* Adjust as needed */
 }
+.quantity-control {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-control button {
+  background: var(--pink-color);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-control .quantity {
+  margin: 0 1rem;
+  font-size: 1.5rem;
+}
+
+.quantity-control button:hover {
+  background-color: red;
+}
+
 
 .total-amount {
   font-size: 2rem;

@@ -531,69 +531,92 @@
     <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-database.js"></script>
     <script src="firebase.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Retrieve cart items from localStorage
-        var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+     document.addEventListener("DOMContentLoaded", function () {
+  function displayCart() {
+    // Retrieve cart items from localStorage
+    var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-        // Display cart items on the page
-        var cartItemsContainer = document.getElementById("cart-items");
-        if (cartItems.length === 0) {
-          cartItemsContainer.innerHTML = "<p>Your cart is empty 😞.</p>";
-        } else {
-          var totalAmount = 0;
+    // Display cart items on the page
+    var cartItemsContainer = document.getElementById("cart-items");
+    cartItemsContainer.innerHTML = ""; // Clear existing content
 
-          cartItems.forEach(function (item) {
-            var itemElement = document.createElement("div");
-            itemElement.innerHTML = `
-                        <div class="checkout-details">
-                            <p>Name: ${item.name}</p>
-                            <p>Price: Rs ${item.price}</p>
-                            <p>Quantity: ${item.quantity}</p>
-                            <p>Size: ${item.buttonName}</p>
-                            <hr>
-                        </div>`;
-            cartItemsContainer.appendChild(itemElement);
+    if (cartItems.length === 0) {
+      cartItemsContainer.innerHTML =
+        '<p class="empty-msg">Your cart is empty 😞 <a class="empty-shopping" href="index.html">Continue Shopping</a></p>';
+    } else {
+      var totalAmount = 0;
 
-            // Calculate total amount
-            totalAmount += parseInt(item.price) * parseInt(item.quantity);
-          });
+      cartItems.forEach(function (item) {
+        var itemElement = document.createElement("div");
+        itemElement.innerHTML = `
+                      <div class="cart-container">
+                          <div class="cart-container-2">
+                              <div class="cart-img">
+                                  <img src="${item.image}" alt="${item.name}" style="width: 30rem;">
+                              </div>
+                              <div class="cart-details">
+                                  <p>Name: ${item.name}</p>
+                                  <p>Price: Rs ${item.price}</p>
+                                  <p>Quantity: ${item.quantity}</p>
+                                  <p>Size: ${item.buttonName}</p>
+                              </div>
+                          </div>
+                              <button class="remove-item-button noselect" data-name="${item.name}" data-price="${item.price}"></button>
+                              
+                      </div>`;
+        cartItemsContainer.appendChild(itemElement);
 
-          // Display total amount
-          cartItemsContainer.innerHTML += `<h3 class="checkout-total">Total: Rs ${totalAmount}</h3>`;
-
-          // Add event listeners to Remove buttons
-          var removeButtons = document.querySelectorAll(".remove-item-button");
-          removeButtons.forEach(function (button) {
-            button.addEventListener("click", function () {
-              var itemName = button.getAttribute("data-name");
-              var itemPrice = button.getAttribute("data-price");
-
-              // Retrieve cart items from localStorage
-              var cartItems =
-                JSON.parse(localStorage.getItem("cartItems")) || [];
-
-              // Find index of item to remove
-              var index = cartItems.findIndex(function (item) {
-                return item.name === itemName && item.price === itemPrice;
-              });
-
-              // Decrease quantity by 1 or remove item if quantity is 1
-              if (index !== -1) {
-                if (cartItems[index].quantity > 1) {
-                  cartItems[index].quantity--;
-                } else {
-                  cartItems.splice(index, 1);
-                }
-                // Update cart items in localStorage
-                localStorage.setItem("cartItems", JSON.stringify(cartItems));
-                // Refresh cart display
-                location.reload();
-              }
-            });
-          });
-        }
+        // Calculate total amount
+        totalAmount += parseInt(item.price) * parseInt(item.quantity);
       });
 
+      // Display total amount
+      cartItemsContainer.innerHTML += `<h3 class="total-amount">Total: Rs ${totalAmount}</h3>`;
+
+      // Add event listeners to Remove buttons
+      var removeButtons = document.querySelectorAll(".remove-item-button");
+      removeButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          var itemName = button.getAttribute("data-name");
+          var itemPrice = button.getAttribute("data-price");
+
+          // Retrieve cart items from localStorage
+          var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+          // Find index of item to remove
+          var index = cartItems.findIndex(function (item) {
+            return item.name === itemName && item.price === itemPrice;
+          });
+
+          // Decrease quantity by 1 or remove item if quantity is 1
+          if (index !== -1) {
+            if (cartItems[index].quantity > 1) {
+              cartItems[index].quantity--;
+            } else {
+              cartItems.splice(index, 1);
+            }
+            // Update cart items in localStorage
+            localStorage.setItem("cartItems", JSON.stringify(cartItems));
+            // Trigger live reload
+            displayCart();
+          }
+        });
+      });
+    }
+  }
+
+  // Display cart initially
+  displayCart();
+
+  // Listen for changes in localStorage (storage event)
+  window.addEventListener("storage", function (e) {
+    // Check if the event is related to cartItems
+    if (e.key === "cartItems") {
+      // Trigger live reload
+      displayCart();
+    }
+  });
+});
       // Add event listener to form submission
       document
         .getElementById("checkoutForm")
