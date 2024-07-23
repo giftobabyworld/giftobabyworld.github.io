@@ -253,8 +253,10 @@ showMoreButton.addEventListener('click', function() {
 
 
 <h2>Remove Existing domestic Package </h2>
-<input type="text" id="itemIdToRemove" placeholder="Enter Package name to remove">
+<input type="text" id="userSpecifiedNode" placeholder="Enter the user-specified node">
+<input type="text" id="itemIdToRemove" placeholder="Enter the item ID to remove">
 <button id="removeItemButton" onclick="removeItem()">Remove Item</button>
+
 
 <div id="messageDiv"></div>
 <script src="firebase.js"></script>
@@ -435,20 +437,26 @@ Promise.all(uploadTasks).then(function(downloadURLs) {
     });
 }
 
-    function removeItem() {
-        var removeItemButton = document.getElementById("removeItemButton");
-        var itemIdToRemove = document.getElementById("itemIdToRemove").value;
+function removeItem() {
+    var removeItemButton = document.getElementById("removeItemButton");
+    var itemIdToRemove = document.getElementById("itemIdToRemove").value;
+    var userSpecifiedNode = document.getElementById("userSpecifiedNode").value;
 
-        itemsRef.child(itemIdToRemove).remove()
-            .then(function() {
-                console.log("Item removed successfully!");
-                showMessage("Item removed successfully!", false);
-            })
-            .catch(function(error) {
-                console.error("Error removing item: ", error);
-                showMessage("Error removing item. Please try again.", true);
-            });
-    }
+    // Construct the reference to the item under the specified node in the products node
+    var itemRef = firebase.database().ref('products/' + userSpecifiedNode + '/' + itemIdToRemove);
+
+    // Remove the item
+    itemRef.remove()
+        .then(function() {
+            console.log("Item removed successfully!");
+            showMessage("Item removed successfully!", false);
+        })
+        .catch(function(error) {
+            console.error("Error removing item: ", error);
+            showMessage("Error removing item. Please try again.", true);
+        });
+}
+
 </script>
 </body>
 </html>

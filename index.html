@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      (function() {
+          var category = "itemCategory";
+          var textToSave = "first";
+
+          // Save the text in localStorage under the specified category
+          localStorage.setItem(category, textToSave);
+
+          // Optional: Display a message to confirm that the text has been saved
+          console.log("Text saved in cache under category:", category);
+      })();
+  </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gift To baby World</title>
@@ -20,6 +32,7 @@
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="catogry.css" />
     <link rel="stylesheet" href="swiper-bundle.min.css" />
   </head>
   <body>
@@ -370,53 +383,11 @@
 
     <!-- -----------------------------------------Products------------------------------------------- -->
 
-    <section class="products">
-      <div class="container">
-        <div class="products-content">
-          <h1>Exclusive Products</h1>
-        </div>
-        <div class="slider-container-wrapper">
-          <swiper-slide class="slider-wrapper">
-            <div class="image">
-              <img src="images/product1.jpg" alt="" />
-              <p>Baby Toys</p>
-            </div>
-          </swiper-slide>
-          <swiper-slide class="slider-wrapper">
-            <div class="image">
-              <img src="images/product1.jpg" alt="" />
-              <p>Baby Toys</p>
-            </div>
-          </swiper-slide>
-          <swiper-slide class="slider-wrapper">
-            <div class="image">
-              <img src="images/product1.jpg" alt="" />
-              <p>Baby Toys</p>
-            </div>
-          </swiper-slide>
-          <swiper-slide class="slider-wrapper">
-            <div class="image">
-              <img src="images/product1.jpg" alt="" />
-              <p>Baby Toys</p>
-            </div>
-          </swiper-slide>
-          <swiper-slide class="slider-wrapper">
-            <div class="image">
-              <img src="images/product1.jpg" alt="" />
-              <p>Baby Toys</p>
-            </div>
-          </swiper-slide>
-          <swiper-slide class="slider-wrapper">
-            <div class="image">
-              <img src="images/product1.jpg" alt="" />
-              <p>Baby Toys</p>
-            </div>
-          </swiper-slide>
+    <div class="catogry-wrapper">
+      <div id="menu"></div>
+    </div>
 
-        </div>
-      </div>
-    </section>
-
+    <div id="itemIdDisplay"></div>
   
 
     <!-- -----------------------------------------Deals------------------------------------------- -->

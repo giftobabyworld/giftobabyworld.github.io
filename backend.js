@@ -1,93 +1,75 @@
-// Get a reference to the database
-var database = firebase.database();
+     // Get a reference to the database
+     var database = firebase.database();
+     var menuRef = database.ref("products");
 
-// Fetch menu data from Firebase
-var menuRef = database.ref("front");
-menuRef.on("value", function (snapshot) {
-  var menuData = snapshot.val();
+     // Retrieve itemCategory from localStorage
+     var itemCategory = localStorage.getItem("itemCategory");
+     console.log("Retrieved itemCategory from localStorage:", itemCategory);
 
-  // Display menu data on the web page
-  var menuContainer = document.getElementById("menu");
-  menuContainer.innerHTML = "";
+     // Check if menu items are already loaded
+     var menuItemsLoaded = false;
 
-  for (var key in menuData) {
-    if (menuData.hasOwnProperty(key)) {
-      var menuItem = menuData[key];
-      var menuItemElement = document.createElement("div");
-      menuItemElement.innerHTML = `
-            
-            <button class="btn-package" onclick="redirectToUrl('${menuItem.name}')">
-        <div class="packagesBox">
-            <div class="image">
-                <img src="${menuItem.image}" alt="${menuItem.name}" class="menu-image">
-            </div>
-            <div class="slider-content">  
-                        <h2 class="multiline-ellipsis-2">${menuItem.name}</h2>
-            </div>
+     menuRef.on("value", function (snapshot) {
+       var menuData = snapshot.val();
+       console.log("Retrieved menuData from Firebase:", menuData);
 
-                    
-                </div>    
-               
-            </div>    
-        </div> </button>
-`;
+       // Display menu data on the web page
+       var menuContainer = document.getElementById("menu");
+       menuContainer.innerHTML = "";
 
-      menuContainer.appendChild(menuItemElement);
-    }
-  }
-});
-function redirectToUrl(itemName) {
-  // Save itemName to localStorage
-  localStorage.setItem("itemid", itemName);
+       var foundItems = false;
+       if (menuData.hasOwnProperty(itemCategory)) {
+         var categoryItems = menuData[itemCategory];
 
-  var url = "/frontproduct.html";
-  window.location.href = url;
-}
-// Get a reference to the database
-var database = firebase.database();
+         for (var key in categoryItems) {
+           if (categoryItems.hasOwnProperty(key)) {
+             var menuItem = categoryItems[key];
+             foundItems = true;
 
-// Fetch menu data from Firebase
-var menuRef = database.ref("front");
-menuRef.on("value", function (snapshot) {
-  var menuData = snapshot.val();
+             // Create menu item element
+             var menuItemElement = document.createElement("div");
+             var firstImageUrl = Array.isArray(menuItem.images)
+               ? menuItem.images[0]
+               : menuItem.images; // Get the first image URL if it's an array
+             menuItemElement.innerHTML = `
+               <div class="btn-container">
+                   <button class="btn-package" onclick="redirectToUrl('${menuItem.name}')">
+                       <div class="packagesBoxs">
+                           <div class="catorgy-imgs">
+                               <img src="${firstImageUrl}" alt="${menuItem.name}" class="menu-image">
+                           </div>
+                           <div class="preview"></div>
+                           <div class="Pcontent">
+                               <div class="package-details">
+                                   <div class="package-name">
+                                       <h2 class="multiline-ellipsis-2">${menuItem.name}</h2>
+                                   </div>
+                                   <div class="package-price">
+                                       <h4 class="multiline-ellipsis-3">Rs ${menuItem.button1Price}</h4>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </button>
+               </div>
+               `;
+             menuContainer.appendChild(menuItemElement);
+           }
+         }
+       }
 
-  // Display menu data on the web page
-  var menuContainer = document.getElementById("menu");
-  menuContainer.innerHTML = "";
+       if (!foundItems) {
+         console.log("No items found for the category:", itemCategory);
+       }
+     });
 
-  for (var key in menuData) {
-    if (menuData.hasOwnProperty(key)) {
-      var menuItem = menuData[key];
-      var menuItemElement = document.createElement("div");
-      menuItemElement.innerHTML = `
-            
-            <button class="btn-package" onclick="redirectToUrl('${menuItem.name}')">
-        <div class="packagesBox">
-            <div class="image">
-                <img src="${menuItem.image}" alt="${menuItem.name}" class="menu-image">
-            </div>
-            <div class="slider-content">  
-                        <h2 class="multiline-ellipsis-2">${menuItem.name}</h2>
-            </div>
+     function redirectToUrl(itemName) {
+       // Save itemName to localStorage
+       localStorage.setItem("itemName", itemName);
 
-                    
-                </div>    
-               
-            </div>    
-        </div> </button>
-`;
-
-      menuContainer.appendChild(menuItemElement);
-    }
-  }
-});
-function redirectToUrl(itemName) {
-  // Save itemName to localStorage
-  localStorage.setItem("itemid", itemName);
-
-  var url = "/frontproduct.html";
-  window.location.href = url;
-}
+       var url = "product.html";
+       window.location.href = url;
+     }
 
 document.addEventListener("DOMContentLoaded", function () {
   function displayCart() {
