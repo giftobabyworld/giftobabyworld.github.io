@@ -623,7 +623,6 @@ aside .pages {
   background-color: red;
 }
 
-
 .total-amount {
   font-size: 2rem;
   font-weight: 600;
@@ -861,6 +860,27 @@ aside .pages {
   }
 }
 
+.left-sidebar-content {
+  margin-top: 3rem;
+}
+.left-sidebar-content .sidebar-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.left-sidebar-content .sidebar-content a {
+  font-size: 1.5rem;
+}
+
+.left-sidebar-socials-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: -52rem;
+}
+
 /* -----------------------------------------Hero------------------------------------ */
 
 .slider {
@@ -1045,6 +1065,11 @@ swiper-slide img {
 .packagesBox .content {
   background-color: white;
   color: black;
+}
+
+.products-by-line {
+  font-size: 2rem;
+  color: rgb(244, 70, 99);
 }
 
 /* -----------------------------------------Brands------------------------------------ */

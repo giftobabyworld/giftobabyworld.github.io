@@ -1,4 +1,3 @@
-
 // --------------------------------------------------Sidebar------------------------------------------
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
@@ -142,15 +141,15 @@ Object.assign(swiperEl, {
   },
   breakpoints: {
     "@0.00": {
-      slidesPerView: 1,
-      spaceBetween: 10,
+      slidesPerView: 3,
+      spaceBetween: 2,
     },
     "@0.75": {
       slidesPerView: 2,
       spaceBetween: 20,
     },
     "@1.00": {
-      slidesPerView: 3,
+      slidesPerView: 4,
       spaceBetween: 40,
     },
     "@1.50": {
