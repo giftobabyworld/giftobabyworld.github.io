@@ -169,7 +169,7 @@
           >&times;</a
         >
         <a href="#">Home</a>
-        <a href="#">Contact Us</a>
+        <a href="contact.html">Contact Us</a>
 
         <div class="dropdown2">
           <div class="select">
@@ -270,41 +270,37 @@
           </ul>
         </div>
 
-        <!-- ------------------right sidebar------------------ -->
-        <div class="sidebar" id="sidebar">
-          <button class="right-close-btn" onclick="closeSidebar()">✕</button>
-          <div class="right-sidebar-content">
-            <h1>Your Cart</h1>
-            <section class="cart">
-              <div class="content">
-                <h1>Your Cart</h1>
-              </div>
-              <div id="cart-items"></div>
-              <a href="checkout.html" class="checkout-container">
-                <div class="container">
-                  <div class="left-side">
-                    <div class="card">
-                      <div class="card-line"></div>
-                      <div class="buttons"></div>
-                    </div>
-                    <div class="post">
-                      <div class="post-line"></div>
-                      <div class="screen">
-                        <div class="dollar">RS</div>
-                      </div>
-                      <div class="numbers"></div>
-                      <div class="numbers-line2"></div>
-                    </div>
-                  </div>
-                  <div class="right-side">
-                    <div class="new">Checkout</div>
-                  </div>
-                </div>
-              </a>
-            </section>
+        <div class="left-sidebar-content">
+          <div class="sidebar-content">
+            <h1>Helpline 📞</h1>
+            <a href="+923345373743">+92-334-5373743</a>
+          </div>
+          <div class="left-sidebar-socials-wrapper">
+            <div class="leftbar-socials">
+              <a
+                  href="https://www.tiktok.com/@giftobaby1"
+                  ><i class="ri-tiktok-fill"></i
+                ></a>
+            </div>
+            <div class="leftbar-socials">
+              <a
+                  href=" https://www.facebook.com/profile.php?id=100068177918098"
+                  ><i class="ri-facebook-fill"></i
+                ></a>
+            </div>
+            <div class="leftbar-socials">
+              <a
+                  href=" https://www.instagram.com/gifto_baby_world/"
+                  ><i class="ri-instagram-fill"></i
+                ></a>
+            </div>
+            <div class="leftbar-socials">
+              <a href=" https://youtube.com/@GiftoBabyworld"
+                  ><i class="ri-youtube-fill"></i
+                ></a>
+            </div>
           </div>
         </div>
-      </div>
 
           <!-- ------------------right sidebar------------------ -->
           <div class="sidebar" id="sidebar">
@@ -1065,6 +1061,7 @@ ${
         bigImages[index].classList.add("active");
       }
       // --------------------------------------------------Sidebar------------------------------------------
+// --------------------------------------------------Sidebar------------------------------------------
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
   document.getElementById("main").style.marginLeft = "250px";
@@ -1090,6 +1087,72 @@ function openSidebar() {
 function closeSidebar() {
   document.getElementById("sidebar").classList.remove("open");
 }
+
+// ----------------------------Hero slider--------------------------------
+
+let currentIndex = 0;
+
+function showSlide(index) {
+  const slides = document.querySelectorAll(".slide");
+  const totalSlides = slides.length;
+  if (index >= totalSlides) {
+    currentIndex = 0;
+  } else if (index < 0) {
+    currentIndex = totalSlides - 1;
+  } else {
+    currentIndex = index;
+  }
+  slides.forEach((slide, i) => {
+    slide.style.transform = `translateX(${100 * (i - currentIndex)}%)`;
+  });
+}
+
+function nextSlide() {
+  showSlide(currentIndex + 1);
+}
+
+function prevSlide() {
+  showSlide(currentIndex - 1);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  showSlide(currentIndex);
+  setInterval(nextSlide, 5000); // Change slide every 4 seconds
+});
+
+// ---------------------dropdown---------------------------
+// Select all dropdown elements
+const dropdowns = document.querySelectorAll(".dropdown2");
+
+// Loop through each dropdown
+dropdowns.forEach((dropdown) => {
+  const select = dropdown.querySelector(".select");
+  const caret = dropdown.querySelector(".caret");
+  const menu = dropdown.querySelector(".menu");
+  const options = dropdown.querySelectorAll(".menu li");
+  const selected = dropdown.querySelector(".selected");
+
+  // Add event listener for the select box
+  select.addEventListener("click", () => {
+    select.classList.toggle("select-clicked");
+    caret.classList.toggle("caret-rotate");
+    menu.classList.toggle("menu-open");
+  });
+
+  // Add event listeners for each option
+  options.forEach((option) => {
+    option.addEventListener("click", () => {
+      selected.innerText = option.innerText;
+      select.classList.remove("select-clicked");
+      caret.classList.remove("caret-rotate");
+      menu.classList.remove("menu-open");
+      options.forEach((option) => {
+        option.classList.remove("active");
+      });
+      option.classList.add("active");
+    });
+  });
+});
 
     </script>
    
