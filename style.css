@@ -1105,6 +1105,19 @@ swiper-slide img {
   /* transition: all ease 0.3s; */
 }
 
+.deals .sidebar-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.deals .sidebar-content h1 {
+  font-size: 4rem;
+  color: black;
+  margin: 3rem 0 3rem 0;
+}
+
 /* -----------------------------------------Video------------------------------------ */
 .video-big-container {
   width: 100%;
