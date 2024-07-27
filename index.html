@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>/* Add to Cart Button */
+      .add-to-cart-button {
+        background-color: #d28a7c; /* Background color matching the theme */
+        color: #fff; /* Text color */
+        border: none; /* Remove default border */
+        border-radius: 5px; /* Rounded corners */
+        padding: 10px 20px; /* Padding for the button */
+        font-size: 16px; /* Font size */
+        cursor: pointer; /* Cursor pointer on hover */
+        transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+      }
+      
+      .add-to-cart-button:hover {
+        background-color: #bb796e; /* Slightly darker color on hover */
+        transform: scale(1.05); /* Slight scale up on hover */
+      }
+      
+      .add-to-cart-button:active {
+        background-color: #a66a5f; /* Even darker color on click */
+        transform: scale(0.95); /* Slight scale down on click */
+      }
+      </style>
     <script>
       (function() {
           var category = "itemCategory";

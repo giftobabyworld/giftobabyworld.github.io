@@ -1,77 +1,97 @@
-     // Get a reference to the database
-     var database = firebase.database();
-     var menuRef = database.ref("products");
+var database = firebase.database();
+var menuRef = database.ref("products");
 
-     // Retrieve itemCategory from localStorage
-     var itemCategory = localStorage.getItem("itemCategory");
-     console.log("Retrieved itemCategory from localStorage:", itemCategory);
+// Retrieve itemCategory from localStorage
+var itemCategory = localStorage.getItem("itemCategory");
+console.log("Retrieved itemCategory from localStorage:", itemCategory);
 
-     // Check if menu items are already loaded
-     var menuItemsLoaded = false;
+// Check if menu items are already loaded
+var menuItemsLoaded = false;
 
-     menuRef.on("value", function (snapshot) {
-       var menuData = snapshot.val();
-       console.log("Retrieved menuData from Firebase:", menuData);
+menuRef.on("value", function (snapshot) {
+  var menuData = snapshot.val();
+  console.log("Retrieved menuData from Firebase:", menuData);
 
-       // Display menu data on the web page
-       var menuContainer = document.getElementById("menu");
-       menuContainer.innerHTML = "";
+  // Display menu data on the web page
+  var menuContainer = document.getElementById("menu");
+  menuContainer.innerHTML = "";
 
-       var foundItems = false;
-       if (menuData.hasOwnProperty(itemCategory)) {
-         var categoryItems = menuData[itemCategory];
+  var foundItems = false;
+  if (menuData.hasOwnProperty(itemCategory)) {
+    var categoryItems = menuData[itemCategory];
 
-         for (var key in categoryItems) {
-           if (categoryItems.hasOwnProperty(key)) {
-             var menuItem = categoryItems[key];
-             foundItems = true;
+    for (var key in categoryItems) {
+      if (categoryItems.hasOwnProperty(key)) {
+    var menuItem = categoryItems[key];
+    foundItems = true;
 
-             // Create menu item element
-             var menuItemElement = document.createElement("div");
-             var firstImageUrl = Array.isArray(menuItem.images)
-               ? menuItem.images[0]
-               : menuItem.images; // Get the first image URL if it's an array
-             menuItemElement.innerHTML = `
-               <div class="btn-container">
-                   <button class="btn-package" onclick="redirectToUrl('${menuItem.name}')">
-                       <div class="packagesBoxs">
-                           <div class="catorgy-imgs">
-                               <img src="${firstImageUrl}" alt="${menuItem.name}" class="menu-image">
-                           </div>
-                           <div class="preview"></div>
-                           <div class="Pcontent">
-                               <div class="package-details">
-                                   <div class="package-name">
-                                       <h2 class="multiline-ellipsis-2">${menuItem.name}</h2>
-                                   </div>
-                                   <div class="package-price">
-                                       <h4 class="multiline-ellipsis-3">Rs ${menuItem.button1Price}</h4>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </button>
-               </div>
-               `;
-             menuContainer.appendChild(menuItemElement);
-           }
-         }
-       }
+    // Create menu item element
+    var menuItemElement = document.createElement("div");
+    var firstImageUrl = Array.isArray(menuItem.images)
+      ? menuItem.images[0]
+      : menuItem.images; // Get the first image URL if it's an array
+    menuItemElement.innerHTML = `
+      <div class="btn-container">
+        <button class="btn-package" onclick="redirectToUrl('${menuItem.name}')">
+          <div class="packagesBoxs">
+            <div class="catorgy-imgs">
+              <img src="${firstImageUrl}" alt="${menuItem.name}" class="menu-image">
+            </div>
+            <div class="preview"></div>
+            <div class="Pcontent">
+              <div class="package-details">
+                <div class="package-name">
+                  <h2 class="multiline-ellipsis-2">${menuItem.name}</h2>
+                </div>
+                <div class="package-price">
+                  <h4 class="multiline-ellipsis-3">Rs ${menuItem.button1Price}</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </button>
+        <button class="add-to-cart-button" onclick="addToCart('${menuItem.name}', '${firstImageUrl}', '${menuItem.button1Price}')">Add to Cart</button>
+      </div>
+    `;
+    menuContainer.appendChild(menuItemElement);
+  }
+}
+  }
 
-       if (!foundItems) {
-         console.log("No items found for the category:", itemCategory);
-       }
-     });
+  if (!foundItems) {
+    console.log("No items found for the category:", itemCategory);
+  }
+});
+function addToCart(name, image, price) {
+  // Retrieve cart items from localStorage
+  var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-     function redirectToUrl(itemName) {
-       // Save itemName to localStorage
-       localStorage.setItem("itemName", itemName);
+  // Check if the item already exists in the cart
+  var existingItem = cartItems.find(item => item.name === name);
 
-       var url = "product.html";
-       window.location.href = url;
-     }
+  if (existingItem) {
+    // Increase the quantity if it already exists
+    existingItem.quantity++;
+  } else {
+    // Add new item to the cart
+    cartItems.push({ name, image, price, quantity: 1 });
+  }
 
-     document.addEventListener("DOMContentLoaded", function () {
+  // Save cart items back to localStorage
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+  // Optionally, you can trigger a cart display update or provide feedback to the user here
+  alert("Item added to cart!");
+  location.reload();
+}
+function redirectToUrl(itemName) {
+  // Save itemName to localStorage
+  localStorage.setItem("itemName", itemName);
+
+  var url = "product.html";
+  window.location.href = url;
+}
+document.addEventListener("DOMContentLoaded", function () {
       function displayCart() {
         // Retrieve cart items from localStorage
         var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
@@ -228,7 +248,6 @@
         }
       });
     });
-    
    
     
 function redirectToCategory(element) {

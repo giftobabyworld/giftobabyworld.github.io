@@ -22,6 +22,11 @@
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
     <style>/* Add to Cart Button */
+      .btn-container .package-name h2,
+    .btn-container .package-price h4 {
+      font-family: inherit; /* Inherit the font family from parent */
+       /* Make the text bold */
+    }
       .add-to-cart-button {
         background-color: #d28a7c; /* Background color matching the theme */
         color: #fff; /* Text color */
@@ -601,6 +606,7 @@ function addToCart(name, image, price) {
 
   // Optionally, you can trigger a cart display update or provide feedback to the user here
   alert("Item added to cart!");
+  location.reload();
 }
 function redirectToUrl(itemName) {
   // Save itemName to localStorage
@@ -610,163 +616,162 @@ function redirectToUrl(itemName) {
   window.location.href = url;
 }
 document.addEventListener("DOMContentLoaded", function () {
-  function displayCart() {
-    // Retrieve cart items from localStorage
-    var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-    var deliveryCharge = 99; // Fixed delivery charge
-
-    // Display cart items on the page
-    var cartItemsContainer = document.getElementById("cart-items");
-    var content = ""; // Variable to build the HTML content
-
-    if (cartItems.length === 0) {
-      content = `
-        <p class="empty-msg">Your cart is empty 😞 
-        <a class="empty-shopping" href="index.html">Continue Shopping</a></p>
-      `;
-    } else {
-      var totalAmount = 0;
-
-      cartItems.forEach(function (item) {
-        content += `
-          <div class="cart-container">
-            <div class="cart-container-2">
-              <div class="cart-img">
-                <img src="${item.image}" alt="${item.name}" style="width: 30rem;">
-              </div>
-              <div class="cart-details">
-                <p>Name: ${item.name}</p>
-                <p>Price: Rs ${item.price}</p>
-                ${item.buttonName !== 'button1' ? `<p>Size: ${item.buttonName}</p>` : ''}
-                <div class="quantity-control">
-                  <button class="decrease-quantity" data-name="${item.name}" data-price="${item.price}">-</button>
-                  <span class="quantity">${item.quantity}</span>
-                  <button class="increase-quantity" data-name="${item.name}" data-price="${item.price}">+</button>
+      function displayCart() {
+        // Retrieve cart items from localStorage
+        var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        var deliveryCharge = 99; // Fixed delivery charge
+    
+        // Display cart items on the page
+        var cartItemsContainer = document.getElementById("cart-items");
+        var content = ""; // Variable to build the HTML content
+    
+        if (cartItems.length === 0) {
+          content = `
+            <p class="empty-msg">Your cart is empty 😞 
+            <a class="empty-shopping" href="index.html">Continue Shopping</a></p>
+          `;
+        } else {
+          var totalAmount = 0;
+    
+          cartItems.forEach(function (item) {
+            content += `
+              <div class="cart-container">
+                <div class="cart-container-2">
+                  <div class="cart-img">
+                    <img src="${item.image}" alt="${item.name}" style="width: 30rem;">
+                  </div>
+                  <div class="cart-details">
+                    <p>Name: ${item.name}</p>
+                    <p>Price: Rs ${item.price}</p><br><br>
+                    <div class="quantity-control">
+                      <button class="decrease-quantity" data-name="${item.name}" data-price="${item.price}">-</button>
+                      <span class="quantity">${item.quantity}</span>
+                      <button class="increase-quantity" data-name="${item.name}" data-price="${item.price}">+</button>
+                    </div>
+                    <p>Size: ${item.buttonName}<br><br></p><br>
+                  </div>
                 </div>
+                <button class="remove-item-button noselect" data-name="${item.name}" data-price="${item.price}">
+                  <span class="text">Remove</span>
+                  <!-- Optionally, you can add an icon here if you prefer -->
+                  <!-- <i class="icon">🗑️</i> -->
+                </button>
               </div>
-            </div>
-            <button class="remove-item-button noselect" data-name="${item.name}" data-price="${item.price}">
-              <span class="text">Remove</span>
-              <!-- Optionally, you can add an icon here if you prefer -->
-              <!-- <i class="icon">🗑️</i> -->
-            </button>
-          </div>
-        `;
-
-        // Calculate total amount
-        totalAmount += parseInt(item.price) * parseInt(item.quantity);
-      });
-
-      // Calculate final total with delivery charge
-      var totalAmountWithDelivery = totalAmount + deliveryCharge;
-
-      // Display only the final total
-      content += `
-        <h3 class="total-amount">Total: Rs ${totalAmountWithDelivery}</h3>
-      `;
-    }
-
-    // Set the built content to the cartItemsContainer
-    cartItemsContainer.innerHTML = content;
-
-    // Add event listeners to Remove buttons
-    var removeButtons = document.querySelectorAll(".remove-item-button");
-    removeButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        var itemName = button.getAttribute("data-name");
-        var itemPrice = button.getAttribute("data-price");
-
-        // Retrieve cart items from localStorage
-        var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-        // Find index of item to remove
-        var index = cartItems.findIndex(function (item) {
-          return item.name === itemName && item.price === itemPrice;
-        });
-
-        // Decrease quantity by 1 or remove item if quantity is 1
-        if (index !== -1) {
-          if (cartItems[index].quantity > 1) {
-            cartItems[index].quantity--;
-          } else {
-            cartItems.splice(index, 1);
-          }
-          // Update cart items in localStorage
-          localStorage.setItem("cartItems", JSON.stringify(cartItems));
-          // Trigger live reload
-          displayCart();
+            `;
+    
+            // Calculate total amount
+            totalAmount += parseInt(item.price) * parseInt(item.quantity);
+          });
+    
+          // Calculate final total with delivery charge
+          var totalAmountWithDelivery = totalAmount + deliveryCharge;
+    
+          // Display only the final total
+          content += `
+            <h3 class="total-amount">Total: Rs ${totalAmountWithDelivery}</h3>
+          `;
         }
-      });
-    });
-
-    // Add event listeners to Quantity control buttons
-    var increaseButtons = document.querySelectorAll(".increase-quantity");
-    var decreaseButtons = document.querySelectorAll(".decrease-quantity");
-
-    increaseButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        var itemName = button.getAttribute("data-name");
-        var itemPrice = button.getAttribute("data-price");
-
-        // Retrieve cart items from localStorage
-        var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-        // Find index of item to update
-        var index = cartItems.findIndex(function (item) {
-          return item.name === itemName && item.price === itemPrice;
+    
+        // Set the built content to the cartItemsContainer
+        cartItemsContainer.innerHTML = content;
+    
+        // Add event listeners to Remove buttons
+        var removeButtons = document.querySelectorAll(".remove-item-button");
+        removeButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            var itemName = button.getAttribute("data-name");
+            var itemPrice = button.getAttribute("data-price");
+    
+            // Retrieve cart items from localStorage
+            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    
+            // Find index of item to remove
+            var index = cartItems.findIndex(function (item) {
+              return item.name === itemName && item.price === itemPrice;
+            });
+    
+            // Decrease quantity by 1 or remove item if quantity is 1
+            if (index !== -1) {
+              if (cartItems[index].quantity > 1) {
+                cartItems[index].quantity--;
+              } else {
+                cartItems.splice(index, 1);
+              }
+              // Update cart items in localStorage
+              localStorage.setItem("cartItems", JSON.stringify(cartItems));
+              // Trigger live reload
+              displayCart();
+            }
+          });
         });
-
-        if (index !== -1) {
-          cartItems[index].quantity++;
-          // Update cart items in localStorage
-          localStorage.setItem("cartItems", JSON.stringify(cartItems));
-          // Trigger live reload
-          displayCart();
-        }
-      });
-    });
-
-    decreaseButtons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        var itemName = button.getAttribute("data-name");
-        var itemPrice = button.getAttribute("data-price");
-
-        // Retrieve cart items from localStorage
-        var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-        // Find index of item to update
-        var index = cartItems.findIndex(function (item) {
-          return item.name === itemName && item.price === itemPrice;
+    
+        // Add event listeners to Quantity control buttons
+        var increaseButtons = document.querySelectorAll(".increase-quantity");
+        var decreaseButtons = document.querySelectorAll(".decrease-quantity");
+    
+        increaseButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            var itemName = button.getAttribute("data-name");
+            var itemPrice = button.getAttribute("data-price");
+    
+            // Retrieve cart items from localStorage
+            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    
+            // Find index of item to update
+            var index = cartItems.findIndex(function (item) {
+              return item.name === itemName && item.price === itemPrice;
+            });
+    
+            if (index !== -1) {
+              cartItems[index].quantity++;
+              // Update cart items in localStorage
+              localStorage.setItem("cartItems", JSON.stringify(cartItems));
+              // Trigger live reload
+              displayCart();
+            }
+          });
         });
-
-        if (index !== -1) {
-          if (cartItems[index].quantity > 1) {
-            cartItems[index].quantity--;
-          } else {
-            cartItems.splice(index, 1);
-          }
-          // Update cart items in localStorage
-          localStorage.setItem("cartItems", JSON.stringify(cartItems));
-          // Trigger live reload
-          displayCart();
-        }
-      });
-    });
-  }
-
-  // Display cart initially
-  displayCart();
-
-  // Listen for changes in localStorage (storage event)
-  window.addEventListener("storage", function (e) {
-    // Check if the event is related to cartItems
-    if (e.key === "cartItems") {
-      // Trigger live reload
+    
+        decreaseButtons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            var itemName = button.getAttribute("data-name");
+            var itemPrice = button.getAttribute("data-price");
+    
+            // Retrieve cart items from localStorage
+            var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    
+            // Find index of item to update
+            var index = cartItems.findIndex(function (item) {
+              return item.name === itemName && item.price === itemPrice;
+            });
+    
+            if (index !== -1) {
+              if (cartItems[index].quantity > 1) {
+                cartItems[index].quantity--;
+              } else {
+                cartItems.splice(index, 1);
+              }
+              // Update cart items in localStorage
+              localStorage.setItem("cartItems", JSON.stringify(cartItems));
+              // Trigger live reload
+              displayCart();
+            }
+          });
+        });
+      }
+    
+      // Display cart initially
       displayCart();
-    }
-  });
-});
-
+    
+      // Listen for changes in localStorage (storage event)
+      window.addEventListener("storage", function (e) {
+        // Check if the event is related to cartItems
+        if (e.key === "cartItems") {
+          // Trigger live reload
+          displayCart();
+        }
+      });
+    });
     
 
 function redirectToCategory(element) {
