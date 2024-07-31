@@ -124,7 +124,7 @@ a:hover {
   </div>
   <br>
 </div>
-
+<input type="number" id="quantity" name="quantity" placeholder="Enter product quantity...">
 <label for="itemDescription">Product Description:</label>
 <div id="editor">
   <textarea id="itemDescription" name="itemDescription" placeholder="Enter package description..."></textarea>
@@ -301,7 +301,7 @@ showMoreButton.addEventListener('click', function() {
     var itemImageInput = Array.from(document.getElementById("itemImageInput").files);
  // Get an array of selected files
     var itemDescription = document.getElementById("itemDescription").value;
-  
+    var itemquantity = document.getElementById("quantity").value;
 
     // Additional fields for buttons and their prices
     var button1 = document.getElementById("button1").value;
@@ -379,7 +379,7 @@ Promise.all(uploadTasks).then(function(downloadURLs) {
         images: downloadURLs, 
             name: itemName,
             description: itemDescription,
-          
+          quantity: itemquantity,
             // Additional properties for buttons and their prices
             button1: button1,
             button1Price: button1Price,

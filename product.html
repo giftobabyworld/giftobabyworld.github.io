@@ -679,365 +679,249 @@ document.addEventListener('DOMContentLoaded', function() {
 });
       // Get a reference to the database
       // Get a reference to the database
-      var database = firebase.database();
+var database = firebase.database();
 
-      // Fetch menu data from Firebase
-      var menuRef = database.ref("products");
-      menuRef.on("value", function (snapshot) {
-        var menuData = snapshot.val();
+// Fetch menu data from Firebase
+var menuRef = database.ref("products");
+menuRef.on("value", function (snapshot) {
+  var menuData = snapshot.val();
 
-        // Retrieve itemId and itemCategory from localStorage
-        var itemId = localStorage.getItem("itemName");
-        var itemCategory = localStorage.getItem("itemCategory");
-        console.log("Retrieved itemCategory from localStorage:", itemCategory);
+  // Retrieve itemId and itemCategory from localStorage
+  var itemId = localStorage.getItem("itemName");
+  var itemCategory = localStorage.getItem("itemCategory");
+  console.log("Retrieved itemCategory from localStorage:", itemCategory);
 
-        // Display menu data on the web page
-        var menuContainer = document.getElementById("menu");
-        menuContainer.innerHTML = "";
+  // Display menu data on the web page
+  var menuContainer = document.getElementById("menu");
+  menuContainer.innerHTML = "";
 
-        // Iterate through each product category
-        for (var categoryKey in menuData) {
-          if (
-            menuData.hasOwnProperty(categoryKey) &&
-            categoryKey === itemCategory
-          ) {
-            // Find products under the specified category
-            var category = menuData[categoryKey];
-            for (var productKey in category) {
-              if (category.hasOwnProperty(productKey)) {
-                var product = category[productKey];
-                if (product.name === itemId) {
-                  // Check if item ID matches
-                  var menuItemElement = document.createElement("div");
-                  menuItemElement.innerHTML = `
-
-                    <section class="packages-box-container">
-                              <div class="content">
-                                  <div class="package-details">
-                                      <div class="package-name-visa">
-                                          <h2>${product.name}</h2>
-                                      </div>
-                                  </div>
-                              </div>
-                                  </div>
-                      </section>
-
-                <div class="bigDiv">
-  <div class="slider-container">
-    <div class="big-image">
-      ${
-        product.images && Array.isArray(product.images)
-          ? product.images
-              .map(
-                (image, index) => `
-                <div class="slide ${index === 0 ? "active" : ""}">
-                  <img src="${image}" alt="${
-                  product.name
-                }" class="menu-image-visa">
-                </div>
-              `
-              )
-              .join("")
-          : ""
-      }
-    </div>
-    <div class="small-images">
-      ${
-        product.images && Array.isArray(product.images)
-          ? product.images
-              .map(
-                (image, index) => `
-                <div class="slide ${
-                  index === 0 ? "active" : ""
-                }" onclick="changeImage(${index})">
-                  <img src="${image}" alt="${
-                  product.name
-                }" class="menu-image-visa">
-                </div>
-              `
-              )
-              .join("")
-          : ""
-      }
-    </div>
-  </div>
-</div>
-
-
-
-          <div class="btn-container">
-              
-
-              <div class="package-prices">
-                  <div class="package-price" id="current-price">
-                  <h4>Rs ${product.button1Price}</h4>
+  // Iterate through each product category
+  for (var categoryKey in menuData) {
+    if (menuData.hasOwnProperty(categoryKey) && categoryKey === itemCategory) {
+      // Find products under the specified category
+      var category = menuData[categoryKey];
+      for (var productKey in category) {
+        if (category.hasOwnProperty(productKey)) {
+          var product = category[productKey];
+          if (product.name === itemId) {
+            // Check if item ID matches
+            var menuItemElement = document.createElement("div");
+            menuItemElement.innerHTML = `
+              <section class="packages-box-container">
+                <div class="content">
+                  <div class="package-details">
+                    <div class="package-name-visa">
+                      <h2>${product.name}</h2>
+                    </div>
                   </div>
-              </div>
-
-              <h1 class="packageTitle">Product Size</h1>
-              <div class="size-buttons">
-                  <!-- Check if menuItem.button1 is defined before rendering the button -->
-                  ${
-                    product.button1
-                      ? `<button class="price-button" data-price="${product.button1Price}">${product.button1}</button>`
-                      : ""
-                  }
-                  <!-- Check if menuItem.button2 is defined before rendering the button -->
-                  ${
-                    product.button2
-                      ? `<button class="price-button" data-price="${product.button2Price}">${product.button2}</button>`
-                      : ""
-                  }
-                  <!-- Check if menuItem.button3 is defined before rendering the button -->
-                  ${
-                    product.button3
-                      ? `<button class="price-button" data-price="${product.button3Price}">${product.button3}</button>`
-                      : ""
-                  }
-                  <!-- Check if menuItem.button4 is defined before rendering the button -->
-                  ${
-                    product.button4
-                      ? `<button class="price-button" data-price="${product.button4Price}">${product.button4}</button>`
-                      : ""
-                  }
-                  <!-- Check if menuItem.button5 is defined before rendering the button -->
-                  ${
-                    product.button5
-                      ? `<button class="price-button" data-price="${product.button5Price}">${product.button5}</button>`
-                      : ""
-                  }
-                  <!-- Check if menuItem.button6 is defined before rendering the button -->
-                  ${
-                    product.button6
-                      ? `<button class="price-button" data-price="${product.button6Price}">${product.button6}</button>`
-                      : ""
-                  }
-                  <!-- Check if menuItem.button7 is defined before rendering the button -->
-                  ${
-                    product.button7
-                      ? `<button class="price-button" data-price="${product.button7Price}">${product.button7}</button>`
-                      : ""
-                  }
-                  <!-- Check if menuItem.button8 is defined before rendering the button -->
-                  ${
-                    product.button8
-                      ? `<button class="price-button" data-price="${product.button8Price}">${product.button8}</button>`
-                      : ""
-                  }
-                  <!-- Check if menuItem.button9 is defined before rendering the button -->
-                  ${
-                    product.button9
-                      ? `<button class="price-button" data-price="${product.button9Price}">${product.button9}</button>`
-                      : ""
-                  }
-                  ${
-                    product.button10
-                      ? `<button class="price-button" data-price="${product.button10Price}">${product.button10}</button>`
-                      : ""
-                  }
-<!-- Check if menuItem.button11 is defined before rendering the button -->
-${
-  product.button11
-    ? `<button class="price-button" data-price="${product.button11Price}">${product.button11}</button>`
-    : ""
-}
-${
-  product.button12
-    ? `<button class="price-button" data-price="${product.button12Price}">${product.button12}</button>`
-    : ""
-}
-${
-  product.button13
-    ? `<button class="price-button" data-price="${product.button13Price}">${product.button13}</button>`
-    : ""
-}
-${
-  product.button14
-    ? `<button class="price-button" data-price="${product.button14Price}">${product.button14}</button>`
-    : ""
-}
-${
-  product.button15
-    ? `<button class="price-button" data-price="${product.button15Price}">${product.button15}</button>`
-    : ""
-}
-${
-  product.button16
-    ? `<button class="price-button" data-price="${product.button16Price}">${product.button16}</button>`
-    : ""
-}
-${
-  product.button17
-    ? `<button class="price-button" data-price="${product.button17Price}">${product.button17}</button>`
-    : ""
-}
-
-                  <!-- Add more button checks as needed -->
-              </div>
-          </div>
-      </div>
-
-                <div class="add-to-cart">
-                              <button class="add-to-cart-button" data-name="${
-                                product.name
-                              }" data-image="${product.image}" data-price="${
-                    product.price
-                  }">
-                    <span class="IconContainer">
-          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart"><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path></svg>
-        </span>
-        <p>Add to cart</p>
-                    </button>
-              </div>
-                          </div>
-                          <div class="hr">
-                              <hr class="des-hr" />
-                          </div>
-
-                                  <div class="package-des" id="des">
-                                      <div class="heading">
-                                          <span class="package-des-title">Package Description</span>
-
-                                      </div>
-                                      <div class="package-des1">
-                                          <p class="des-1">${
-                                            product.description
-                                          }</p>
-                                      </div>
-                                      <div class="inner-minor-things-wrapper">
-                                        <div class="inner-minor-things">
-                                          <i class="ri-truck-fill"></i> 
-                                          <p>Delivery time 3 to 5 working days after order confirmation</p>
-                                        </div>
-                                        <div class="inner-minor-things">
-                                          <i class="ri-gift-2-line"></i>
-                                          <p>Gift Wrapping avaliable</p>
-                                        </div>
-                                      <div>
-                                         <div class="accordion">
-                                          <div class="accordion-item">
-                                            <input type="checkbox" id="accordion1" />
-                                              <label for="accordion1" class="accordion-header">DELIVERY CHARGES</label>
-                                          <div class="accordion-content">
-                                            <p>Delivery Charges are Rs.99/- all across Pakistan</p>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="accordion">
-                                          <div class="accordion-item">
-                                            <input type="checkbox" id="accordion2" />
-                                              <label for="accordion2" class="accordion-header">Important info</label>
-                                          <div class="accordion-content">
-                                            <p>important info</p>
-                                          </div>
-                                        </div>
-                                      </div>
-
-
-                                  </div>
-
-                             `;
-
-                  // Append menu item element to menu container
-                  menuContainer.appendChild(menuItemElement);
-
-                  // Add event listeners to Price buttons
-                  var priceButtons =
-                    menuItemElement.querySelectorAll(".price-button");
-                  priceButtons.forEach(function (priceButton, index) {
-                    priceButton.addEventListener("click", function () {
-                      // Update current price display
-                      var currentPrice =
-                        menuItemElement.querySelector("#current-price h4");
-                      currentPrice.textContent =
-                        "Rs " + priceButton.getAttribute("data-price");
-
-                      // Capture the current button name
-                      var currentButtonName = priceButton.textContent;
-                      console.log("Current button name:", currentButtonName);
-
-                      // Store the current button name in localStorage
-                      localStorage.setItem(
-                        "currentButtonName",
-                        currentButtonName
-                      );
-                    });
-
-                    // Simulate click event on button 1 by default
-                    if (index === 0) {
-                      priceButton.click();
+                </div>
+              </section>
+              <div class="bigDiv">
+                <div class="slider-container">
+                  <div class="big-image">
+                    ${
+                      product.images && Array.isArray(product.images)
+                        ? product.images
+                            .map(
+                              (image, index) => `
+                              <div class="slide ${index === 0 ? "active" : ""}">
+                                <img src="${image}" alt="${product.name}" class="menu-image-visa">
+                              </div>
+                            `
+                            )
+                            .join("")
+                        : ""
                     }
-                  });
-
-                  // Add event listener to Add to Cart button
-                  var addToCartButton = menuItemElement.querySelector(
-                    ".add-to-cart-button"
-                  );
-                  addToCartButton.addEventListener("click", function () {
-                    var itemName = addToCartButton.getAttribute("data-name");
-                    var itemImages = product.images || []; // Retrieve array of images or initialize as empty array if undefined
-                    if (itemImages.length > 0) {
-                      // Check if itemImages is not empty
-                      var randomImageIndex = Math.floor(
-                        Math.random() * itemImages.length
-                      ); // Generate a random index
-                      var randomImage = itemImages[randomImageIndex]; // Get a random image from the array
-                      var itemPrice = menuItemElement
-                        .querySelector("#current-price h4")
-                        .textContent.replace("Rs ", "");
+                  </div>
+                  <div class="small-images">
+                    ${
+                      product.images && Array.isArray(product.images)
+                        ? product.images
+                            .map(
+                              (image, index) => `
+                              <div class="slide ${index === 0 ? "active" : ""}" onclick="changeImage(${index})">
+                                <img src="${image}" alt="${product.name}" class="menu-image-visa">
+                              </div>
+                            `
+                            )
+                            .join("")
+                        : ""
                     }
-
-                    // Retrieve the current button name from localStorage
-                    var currentButtonName =
-                      localStorage.getItem("currentButtonName");
-                    console.log(
-                      "Retrieved current button name:",
-                      currentButtonName
-                    );
-
-                    // Retrieve existing cart items from localStorage or initialize an empty array
-                    var cartItems =
-                      JSON.parse(localStorage.getItem("cartItems")) || [];
-
-                    // Check if the item is already in the cart (including price and button name)
-                    var existingItem = cartItems.find(function (item) {
-                      return (
-                        item.name === itemName &&
-                        item.price === itemPrice &&
-                        item.buttonName === currentButtonName
-                      );
-                    });
-
-                    if (!existingItem) {
-                      // Item not in cart, add it
-                      cartItems.push({
-                        name: itemName,
-                        image: randomImage, // Use the random image
-                        price: itemPrice,
-                        buttonName: currentButtonName, // Store the current button name
-                        quantity: 1, // Initialize quantity to 1
-                      });
-                    } else {
-                      // Item already in cart, increment quantity
-                      existingItem.quantity = (existingItem.quantity || 1) + 1;
-                    }
-
-                    // Save updated cart items to localStorage
-                    localStorage.setItem(
-                      "cartItems",
-                      JSON.stringify(cartItems)
-                    );
-
-                    // Provide feedback to the user
-                    alert("Item added to cart!");
-                    location.reload();
-                  });
-                }
+                  </div>
+                </div>
+              </div>
+              <div class="btn-container">
+                <div class="package-prices">
+                  <div class="package-price" id="current-price">
+                    <h4>Rs ${product.button1Price}</h4>
+                  </div>
+                </div>
+                <h1 class="packageTitle">Product Size</h1>
+                <div class="size-buttons">
+                  ${product.button1 ? `<button class="price-button" data-price="${product.button1Price}">${product.button1}</button>` : ""}
+                  ${product.button2 ? `<button class="price-button" data-price="${product.button2Price}">${product.button2}</button>` : ""}
+                  ${product.button3 ? `<button class="price-button" data-price="${product.button3Price}">${product.button3}</button>` : ""}
+                  ${product.button4 ? `<button class="price-button" data-price="${product.button4Price}">${product.button4}</button>` : ""}
+                  ${product.button5 ? `<button class="price-button" data-price="${product.button5Price}">${product.button5}</button>` : ""}
+                  ${product.button6 ? `<button class="price-button" data-price="${product.button6Price}">${product.button6}</button>` : ""}
+                  ${product.button7 ? `<button class="price-button" data-price="${product.button7Price}">${product.button7}</button>` : ""}
+                  ${product.button8 ? `<button class="price-button" data-price="${product.button8Price}">${product.button8}</button>` : ""}
+                  ${product.button9 ? `<button class="price-button" data-price="${product.button9Price}">${product.button9}</button>` : ""}
+                  ${product.button10 ? `<button class="price-button" data-price="${product.button10Price}">${product.button10}</button>` : ""}
+                  ${product.button11 ? `<button class="price-button" data-price="${product.button11Price}">${product.button11}</button>` : ""}
+                  ${product.button12 ? `<button class="price-button" data-price="${product.button12Price}">${product.button12}</button>` : ""}
+                  ${product.button13 ? `<button class="price-button" data-price="${product.button13Price}">${product.button13}</button>` : ""}
+                  ${product.button14 ? `<button class="price-button" data-price="${product.button14Price}">${product.button14}</button>` : ""}
+                  ${product.button15 ? `<button class="price-button" data-price="${product.button15Price}">${product.button15}</button>` : ""}
+                  ${product.button16 ? `<button class="price-button" data-price="${product.button16Price}">${product.button16}</button>` : ""}
+                  ${product.button17 ? `<button class="price-button" data-price="${product.button17Price}">${product.button17}</button>` : ""}
+                </div>
+              </div>
+              <div class="quantity-info">
+                <p>Quantity left: ${product.quantity}</p>
+              </div>
+              ${
+                product.quantity > 0
+                  ? `<div class="add-to-cart">
+                      <button class="add-to-cart-button" data-name="${product.name}" data-image="${product.image}" data-price="${product.price}">
+                        <span class="IconContainer">
+                          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512" fill="rgb(17, 17, 17)" class="cart">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"></path>
+                          </svg>
+                        </span>
+                        <p>Add to cart</p>
+                      </button>
+                    </div>`
+                  : `<div class="sold-out">
+                      <p>Sold Out</p>
+                    </div>`
               }
+              <div class="hr">
+                <hr class="des-hr" />
+              </div>
+              <div class="package-des" id="des">
+                <div class="heading">
+                  <span class="package-des-title">Package Description</span>
+                </div>
+                <div class="package-des1">
+                  <p class="des-1">${product.description}</p>
+                </div>
+                <div class="inner-minor-things-wrapper">
+                  <div class="inner-minor-things">
+                    <i class="ri-truck-fill"></i> 
+                    <p>Delivery time 3 to 5 working days after order confirmation</p>
+                  </div>
+                  <div class="inner-minor-things">
+                    <i class="ri-gift-2-line"></i>
+                    <p>Gift Wrapping available</p>
+                  </div>
+                  <div>
+                    <div class="accordion">
+                      <div class="accordion-item">
+                        <input type="checkbox" id="accordion1" />
+                        <label for="accordion1" class="accordion-header">DELIVERY CHARGES</label>
+                        <div class="accordion-content">
+                          <p>Delivery Charges are Rs.99/- all across Pakistan</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion">
+                      <div class="accordion-item">
+                        <input type="checkbox" id="accordion2" />
+                        <label for="accordion2" class="accordion-header">Important info</label>
+                        <div class="accordion-content">
+                          <p>important info</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `;
+
+            // Append menu item element to menu container
+            menuContainer.appendChild(menuItemElement);
+
+            // Add event listeners to Price buttons
+            var priceButtons = menuItemElement.querySelectorAll(".price-button");
+            priceButtons.forEach(function (priceButton, index) {
+              priceButton.addEventListener("click", function () {
+                // Update current price display
+                var currentPrice = menuItemElement.querySelector("#current-price h4");
+                currentPrice.textContent = "Rs " + priceButton.getAttribute("data-price");
+
+                // Capture the current button name
+                var currentButtonName = priceButton.textContent;
+                console.log("Current button name:", currentButtonName);
+
+                // Store the current button name in localStorage
+                localStorage.setItem("currentButtonName", currentButtonName);
+              });
+
+              // Simulate click event on button 1 by default
+              if (index === 0) {
+                priceButton.click();
+              }
+            });
+
+            // Add event listener to Add to Cart button
+            if (product.quantity > 0) {
+              var addToCartButton = menuItemElement.querySelector(".add-to-cart-button");
+              addToCartButton.addEventListener("click", function () {
+                var itemName = addToCartButton.getAttribute("data-name");
+                var itemImages = product.images || []; // Retrieve array of images or initialize as empty array if undefined
+                if (itemImages.length > 0) {
+                  // Check if itemImages is not empty
+                  var randomImageIndex = Math.floor(Math.random() * itemImages.length); // Generate a random index
+                  var randomImage = itemImages[randomImageIndex]; // Get a random image from the array
+                  var itemPrice = menuItemElement.querySelector("#current-price h4").textContent.replace("Rs ", "");
+                }
+
+                // Retrieve the current button name from localStorage
+                var currentButtonName = localStorage.getItem("currentButtonName");
+                console.log("Retrieved current button name:", currentButtonName);
+
+                // Retrieve existing cart items from localStorage or initialize an empty array
+                var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+                // Check if the item is already in the cart (including price and button name)
+                var existingItem = cartItems.find(function (item) {
+                  return (
+                    item.name === itemName &&
+                    item.price === itemPrice &&
+                    item.buttonName === currentButtonName
+                  );
+                });
+
+                if (!existingItem) {
+                  // Item not in cart, add it
+                  cartItems.push({
+                    name: itemName,
+                    image: randomImage, // Use the random image
+                    price: itemPrice,
+                    buttonName: currentButtonName, // Store the current button name
+                    quantity: 1, // Initialize quantity to 1
+                  });
+                } else {
+                  // Item already in cart, increment quantity
+                  existingItem.quantity = (existingItem.quantity || 1) + 1;
+                }
+
+                // Save updated cart items to localStorage
+                localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+                // Provide feedback to the user
+                alert("Item added to cart!");
+                location.reload();
+              });
             }
           }
         }
-      });
+      }
+    }
+  }
+});
+
     </script>
     <script>
       // ------------------------image changing--------------------
