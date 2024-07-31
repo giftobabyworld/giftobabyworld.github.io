@@ -8,6 +8,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   background-color: white;
+  margin-right: 10rem;
 }
 .catogry-wrapper {
   margin-left: 20rem;
@@ -32,11 +33,17 @@
   font-weight: 500;
   margin-bottom: 1rem;
   color: black !important;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 .package-details h4 {
   font-size: 2rem;
   font-weight: 800;
   color: black !important;
+  width: 100%;
 }
 
 .catorgy-imgs:hover {
@@ -66,13 +73,13 @@
 
 @media (max-width: 450px) {
   .catogry-wrapper #menu {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin-top: 5rem;
+    grid-template-columns: repeat(2, 3fr);
+    gap: 5rem;
+    margin-top: -3rem;
   }
 
   .catogry-wrapper {
-    margin-left: 5rem;
+    margin-left: 3rem;
   }
 
   .packagesBoxs img {
@@ -82,6 +89,15 @@
   }
 
   .package-name h2 {
-    width: 75%;
+    width: 100%;
+  }
+
+  .add-to-cart-button {
+    margin-left: 0;
+    font-size: 1.5rem;
+  }
+
+  .package-details {
+    gap: 1rem;
   }
 }
