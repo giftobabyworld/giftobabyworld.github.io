@@ -501,14 +501,7 @@
   
 
   
-  <div class="copywrite">
-      <div class="copywrite-content">
-        <p>
-          Copyright &copy; since 1985 Gift To Baby World. All Rights Reserved.
-        </p>
-      </div>
-    </div>
-  </div>
+
 
     <hr />
     <div class="copywrite">
@@ -557,29 +550,30 @@ menuRef.on("value", function (snapshot) {
       ? menuItem.images[0]
       : menuItem.images; // Get the first image URL if it's an array
     menuItemElement.innerHTML = `
-      <div class="btn-container">
-        <button class="btn-package" onclick="redirectToUrl('${menuItem.name}')">
-          <div class="packagesBoxs">
+<div class="btn-container">
+    <button class="btn-package" onclick="redirectToUrl('${menuItem.name}')">
+        <div class="packagesBoxs">
             <div class="catorgy-imgs">
-              <img src="${firstImageUrl}" alt="${menuItem.name}" class="menu-image">
+                <img src="${firstImageUrl}" alt="${menuItem.name}" class="menu-image">
             </div>
-            <div class="preview"></div>
             <div class="Pcontent">
-              <div class="package-details">
-                <div class="package-name">
-                  <h2 class="multiline-ellipsis-2">${menuItem.name}</h2>
+                <div class="package-details">
+                    <div class="package-name">
+                        <h2 class="multiline-ellipsis-2">${menuItem.name}</h2>
+                    </div>
+                    <div class="package-price">
+                        <h4 class="multiline-ellipsis-3">Rs ${menuItem.button1Price}</h4>
+                    </div>
                 </div>
-                <div class="package-price">
-                  <h4 class="multiline-ellipsis-3">Rs ${menuItem.button1Price}</h4>
-                </div>
-              </div>
             </div>
-          </div>
-        </button>
-        <div class="button-category-wrapper">
-          <button class="add-to-cart-button" onclick="addToCart('${menuItem.name}', '${firstImageUrl}', '${menuItem.button1Price}')">Add to Cart</button>
-          </div>
         </div>
+    </button>
+    <div class="button-category-wrapper">
+        <button class="add-to-cart-button" onclick="addToCart('${menuItem.name}', '${firstImageUrl}', '${menuItem.button1Price}')">Add to Cart</button>
+    </div>
+</div>
+
+
     `;
     menuContainer.appendChild(menuItemElement);
   }
