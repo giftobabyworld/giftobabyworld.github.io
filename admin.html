@@ -136,6 +136,16 @@ a:hover {
 </div>
 <button id="showMoreButton">Show More sizes</button>
 <button id="saveItemButton" onclick="saveItem()">Save Item</button>
+<div class="container">
+  <h2>Update Product Quantities</h2>
+  <label for="productNames">Product Names (comma-separated):</label>
+  <textarea id="productNames" rows="4" placeholder="Enter product names or 'all' to update all products"></textarea>
+  
+  <label for="quantityToAdd">Quantity to Add:</label>
+  <input type="number" id="quantityToAdd" placeholder="Enter quantity to add">
+
+  <button id="updateQuantitiesBtn">Update Quantities</button>
+</div>
 
 <!-- Include necessary libraries for text editor and slider -->
 
@@ -456,6 +466,61 @@ function removeItem() {
             showMessage("Error removing item. Please try again.", true);
         });
 }
+document.getElementById('updateQuantitiesBtn').addEventListener('click', function() {
+      var productNames = document.getElementById('productNames').value.split(',').map(name => name.trim());
+      var quantityToAdd = parseInt(document.getElementById('quantityToAdd').value);
+
+      if (isNaN(quantityToAdd)) {
+        alert('Please enter a valid quantity to add.');
+        return;
+      }
+
+      var database = firebase.database();
+      var productsRef = database.ref('products');
+
+      productsRef.once('value', function(snapshot) {
+        var productsData = snapshot.val();
+        var allProducts = [];
+
+        // Flatten the products data to an array of objects with category and key
+        for (var category in productsData) {
+          if (productsData.hasOwnProperty(category)) {
+            for (var key in productsData[category]) {
+              if (productsData[category].hasOwnProperty(key)) {
+                allProducts.push({
+                  category: category,
+                  key: key,
+                  data: productsData[category][key]
+                });
+              }
+            }
+          }
+        }
+
+        if (productNames.includes('all')) {
+          // Update all products
+          allProducts.forEach(function(product) {
+            var newQuantity = (product.data.quantity || 0) + quantityToAdd;
+            database.ref('products/' + product.category + '/' + product.key).update({
+              quantity: newQuantity
+            });
+          });
+        } else {
+          // Update specified products
+          productNames.forEach(function(productName) {
+            var productToUpdate = allProducts.find(product => product.data.name === productName);
+            if (productToUpdate) {
+              var newQuantity = (productToUpdate.data.quantity || 0) + quantityToAdd;
+              database.ref('products/' + productToUpdate.category + '/' + productToUpdate.key).update({
+                quantity: newQuantity
+              });
+            }
+          });
+        }
+
+        alert('Quantities updated successfully!');
+      });
+    });
 
 </script>
 </body>

@@ -22,46 +22,56 @@ menuRef.on("value", function (snapshot) {
 
     for (var key in categoryItems) {
       if (categoryItems.hasOwnProperty(key)) {
-    var menuItem = categoryItems[key];
-    foundItems = true;
+        var menuItem = categoryItems[key];
+        foundItems = true;
 
-    // Create menu item element
-    var menuItemElement = document.createElement("div");
-    var firstImageUrl = Array.isArray(menuItem.images)
-      ? menuItem.images[0]
-      : menuItem.images; // Get the first image URL if it's an array
-    menuItemElement.innerHTML = `
-      <div class="btn-container">
-        <button class="btn-package" onclick="redirectToUrl('${menuItem.name}')">
-          <div class="packagesBoxs">
-            <div class="catorgy-imgs">
-              <img src="${firstImageUrl}" alt="${menuItem.name}" class="menu-image">
-            </div>
-            <div class="preview"></div>
-            <div class="Pcontent">
-              <div class="package-details">
-                <div class="package-name">
-                  <h2 class="multiline-ellipsis-2">${menuItem.name}</h2>
+        // Create menu item element
+        var menuItemElement = document.createElement("div");
+        var firstImageUrl = Array.isArray(menuItem.images)
+          ? menuItem.images[0]
+          : menuItem.images; // Get the first image URL if it's an array
+          
+        // Check if the item is in stock
+        var inStock = menuItem.quantity > 0;
+        var buttonHtml = inStock 
+          ? `<button class="add-to-cart-button" onclick="addToCart('${menuItem.name}', '${firstImageUrl}', '${menuItem.button1Price}')">Add to Cart</button>`
+          : `<button class="add-to-cart-button" disabled>Sold Out</button>`;
+
+        menuItemElement.innerHTML = `
+          <div class="btn-container">
+            <button class="btn-package" onclick="redirectToUrl('${menuItem.name}')">
+              <div class="packagesBoxs">
+                <div class="catorgy-imgs">
+                  <img src="${firstImageUrl}" alt="${menuItem.name}" class="menu-image ${!inStock ? 'sold-out' : ''}">
                 </div>
-                <div class="package-price">
-                  <h4 class="multiline-ellipsis-3">Rs ${menuItem.button1Price}</h4>
+                <div class="Pcontent">
+                  <div class="package-details">
+                    <div class="package-name">
+                      <h2 class="multiline-ellipsis-2">${menuItem.name}</h2>
+                    </div>
+                    <div class="package-price">
+                      <h4 class="multiline-ellipsis-3">Rs ${menuItem.button1Price}</h4>
+                    </div>
+                  </div>
                 </div>
               </div>
+            </button>
+            <div class="button-category-wrapper">
+              ${buttonHtml}
             </div>
           </div>
-        </button>
-        <button class="add-to-cart-button" onclick="addToCart('${menuItem.name}', '${firstImageUrl}', '${menuItem.button1Price}')">Add to Cart</button>
-      </div>
-    `;
-    menuContainer.appendChild(menuItemElement);
-  }
-}
+        `;
+
+        menuContainer.appendChild(menuItemElement);
+      }
+    }
   }
 
   if (!foundItems) {
     console.log("No items found for the category:", itemCategory);
   }
 });
+
 function addToCart(name, image, price) {
   // Retrieve cart items from localStorage
   var cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
@@ -84,6 +94,7 @@ function addToCart(name, image, price) {
   alert("Item added to cart!");
   location.reload();
 }
+
 function redirectToUrl(itemName) {
   // Save itemName to localStorage
   localStorage.setItem("itemName", itemName);
@@ -91,6 +102,7 @@ function redirectToUrl(itemName) {
   var url = "product.html";
   window.location.href = url;
 }
+
 document.addEventListener("DOMContentLoaded", function () {
       function displayCart() {
         // Retrieve cart items from localStorage

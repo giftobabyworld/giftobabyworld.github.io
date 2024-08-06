@@ -7,7 +7,28 @@
   text-align: center;
   margin-top: 15rem;
 }
+/* Ensure the container is centered and flexbox is used for alignment */
+.quantity-info-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0; /* Adjust spacing as needed */
+  text-align: center;
+}
 
+/* Style for quantity info */
+.quantity-info {
+  font-size: 18px;
+  color: #333;
+  margin-right: 15px; /* Space between quantity and sold out */
+}
+
+/* Style for sold out message */
+.sold-out {
+  font-size: 18px;
+  color: #d9534f; /* Red color for emphasis */
+  font-weight: bold;
+}
 .slider-container {
   display: flex;
   justify-content: center;
