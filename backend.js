@@ -278,3 +278,57 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+var database = firebase.database();
+var menuRef = database.ref("products");
+
+// Fetch all products and store them in an array
+var allProducts = [];
+
+menuRef.on("value", function (snapshot) {
+  var menuData = snapshot.val();
+
+  // Flatten the nested objects into a single array of products
+  for (var category in menuData) {
+    if (menuData.hasOwnProperty(category)) {
+      var categoryItems = menuData[category];
+      for (var key in categoryItems) {
+        if (categoryItems.hasOwnProperty(key)) {
+          // Add category information to each product
+          categoryItems[key].category = category;
+          allProducts.push(categoryItems[key]);
+        }
+      }
+    }
+  }
+});
+
+document.getElementById("searchBar").addEventListener("input", function (event) {
+  var query = event.target.value.toLowerCase();
+  var suggestionsContainer = document.getElementById("suggestions");
+
+  suggestionsContainer.innerHTML = "";
+
+  if (query.length > 0) {
+    var suggestions = allProducts.filter(function (product) {
+      return product.name.toLowerCase().includes(query);
+    });
+
+    suggestions.forEach(function (product) {
+      var suggestionElement = document.createElement("p");
+      suggestionElement.textContent = product.name;
+      suggestionElement.addEventListener("click", function () {
+        redirectToProductPage(product);
+      });
+      suggestionsContainer.appendChild(suggestionElement);
+    });
+  }
+});
+
+function redirectToProductPage(product) {
+  // Save itemCategory and itemName to localStorage
+  localStorage.setItem("itemCategory", product.category);
+  localStorage.setItem("itemName", product.name);
+
+  // Redirect to product.html
+  window.location.href = "product.html";
+}

@@ -1536,3 +1536,49 @@ swiper-slide img {
     margin-right: 8rem;
   }
 }
+/* Container for search bar and suggestions */
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Style for search bar input */
+#searchBar {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Style for suggestions dropdown */
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.suggestions p {
+  padding: 10px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.suggestions p:hover {
+  background: #f0f0f0;
+}
+
+/* Style for search results */
+.search-results {
+  margin-top: 20px;
+}
