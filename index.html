@@ -23,6 +23,112 @@
         background-color: #a66a5f; /* Even darker color on click */
         transform: scale(0.95); /* Slight scale down on click */
       }
+  /* Container for search bar and suggestions */
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Style for search bar input */
+#searchBar {
+  width: 100%;
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Style for search icon */
+#searchIcon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+/* Style for suggestions dropdown */
+.suggestions, .suggestions-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: calc(100% - 40px); /* Adjust to match the width of the search bar and icon */
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  margin-top: 5px; /* Add margin to separate from search bar */
+}
+
+.suggestions p, .suggestions-box p {
+  padding: 10px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.suggestions p:hover, .suggestions-box p:hover {
+  background: #f0f0f0;
+}
+
+/* Style for search results */
+.search-results {
+  margin-top: 20px;
+}
+
+/* Additional styles for products and buttons */
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-container {
+  width: calc(50% - 10px);
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-image {
+  width: 100px;
+  height: 100px;
+}
+
+.Pcontent {
+  text-align: center;
+}
+
+.package-name h2,
+.package-price h4 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+  margin: 0 auto;
+}
+
+.add-to-cart-button, .btn-package {
+  display: block;
+  margin: 10px auto;
+}
+
+@media (max-width: 768px) {
+  .btn-container {
+    width: 100%;
+  }
+}
+
+
+
       </style>
     <script>
       (function() {
@@ -438,9 +544,13 @@
   
     <div class="search-container">
       <input type="text" id="searchBar" placeholder="Search for products...">
-      <div id="suggestions" class="suggestions"></div>
+      <button id="searchIcon">
+        <img src="search.png" alt="Search">
+      </button>
     </div>
-    <div id="searchResults" class="search-results"></div>
+    <div id="suggestions"></div>
+    <div id="relatedProducts"></div>
+    
     
     <!-- -----------------------------------------Deals------------------------------------------- -->
     <section class="deals">

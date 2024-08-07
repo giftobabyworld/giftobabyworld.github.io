@@ -324,6 +324,27 @@ document.getElementById("searchBar").addEventListener("input", function (event) 
   }
 });
 
+document.getElementById("searchIcon").addEventListener("click", function () {
+  var query = document.getElementById("searchBar").value.toLowerCase();
+  var relatedProductsContainer = document.getElementById("relatedProducts");
+
+  relatedProductsContainer.innerHTML = "";
+
+  if (query.length > 0) {
+    var relatedProducts = allProducts.filter(function (product) {
+      return product.name.toLowerCase().includes(query);
+    });
+
+    if (relatedProducts.length > 0) {
+      relatedProducts.forEach(function (product) {
+        displayProduct(product, relatedProductsContainer);
+      });
+    } else {
+      relatedProductsContainer.innerHTML = "<p>No related products found.</p>";
+    }
+  }
+});
+
 function redirectToProductPage(product) {
   // Save itemCategory and itemName to localStorage
   localStorage.setItem("itemCategory", product.category);
@@ -331,4 +352,43 @@ function redirectToProductPage(product) {
 
   // Redirect to product.html
   window.location.href = "product.html";
+}
+
+function displayProduct(product, container) {
+  var firstImageUrl = Array.isArray(product.images) ? product.images[0] : product.images;
+  var menuItemElement = document.createElement("div");
+  menuItemElement.className = "btn-container";
+
+  menuItemElement.innerHTML = `
+    <button class="btn-package" onclick="redirectToUrl('${product.name}')">
+      <div class="packagesBoxs">
+        <div class="catorgy-imgs">
+          <img src="${firstImageUrl}" alt="${product.name}" class="menu-image">
+        </div>
+        <div class="Pcontent">
+          <div class="package-details">
+            <div class="package-name">
+              <h2 class="multiline-ellipsis-2">${product.name}</h2>
+            </div>
+            <div class="package-price">
+              <h4 class="multiline-ellipsis-3">Rs ${product.button1Price}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </button>
+    <div class="button-category-wrapper">
+      <button class="add-to-cart-button" onclick="addToCart('${product.name}', '${firstImageUrl}', '${product.button1Price}')">Add to Cart</button>
+    </div>
+  `;
+
+  container.appendChild(menuItemElement);
+}
+
+function redirectToUrl(itemName) {
+  // Save itemName to localStorage
+  localStorage.setItem("itemName", itemName);
+
+  var url = "product.html";
+  window.location.href = url;
 }
