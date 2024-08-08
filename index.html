@@ -32,6 +32,8 @@
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  margin-top: 2rem;
+  gap: 2rem;
 }
 
 /* Style for search bar input */
@@ -53,28 +55,34 @@
   padding: 5px;
 }
 
+#searchIcon img {
+  width: 5rem;
+}
+
 /* Style for suggestions dropdown */
-.suggestions, .suggestions-box {
+#suggestions, .suggestions-box {
   position: absolute;
-  top: 100%;
+  top: 90%;
   left: 0;
   width: calc(100% - 40px); /* Adjust to match the width of the search bar and icon */
   background: white;
   border: 1px solid #ccc;
   border-radius: 5px;
-  max-height: 200px;
-  overflow-y: auto;
+  max-height: 100%;
+  /* overflow-y: auto; */
   z-index: 1000;
   margin-top: 5px; /* Add margin to separate from search bar */
+  padding-left: 20rem;
 }
 
-.suggestions p, .suggestions-box p {
+
+#suggestions p, .suggestions-box p {
   padding: 10px;
   margin: 0;
   cursor: pointer;
 }
 
-.suggestions p:hover, .suggestions-box p:hover {
+#suggestions p:hover, .suggestions-box p:hover {
   background: #f0f0f0;
 }
 
@@ -559,10 +567,10 @@
       </div>
       <div class="container">
         <div class="deals-wrapper">
-          <img src="images/deal-template.png" alt="" />
-          <img src="images/deal-template.png" alt="" />
-          <img src="images/deal-template2.png" alt="" />
-          <img src="images/deal-template2.png" alt="" />
+          <img src="images/discount1.jpg" alt="" />
+          <img src="images/discount2.jpg" alt="" />
+          <img src="images/discount3.jpg" alt="" />
+          <img src="images/discount4.jpg" alt="" />
         </div>
       </div>
     </section>
