@@ -9,6 +9,7 @@
   grid-template-columns: repeat(4, 1fr);
   background-color: white;
   margin-right: 10rem;
+  /* margin-top: 5rem; */
 }
 
 .catogry-wrapper {
@@ -95,7 +96,7 @@
   .catogry-wrapper #menu {
     grid-template-columns: repeat(2, 1fr);
     gap: 3rem;
-    margin-top: -3rem;
+    margin-top: 5rem;
   }
 
   .catogry-wrapper {

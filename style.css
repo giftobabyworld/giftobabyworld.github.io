@@ -1397,6 +1397,12 @@ swiper-slide img {
   color: #64cd8a;
 }
 
+#relatedProducts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-left: 10rem;
+}
+
 /* ---------------------------------------Breakpoints----------------------------------- */
 
 @media (max-width: 768px) {
@@ -1534,6 +1540,12 @@ swiper-slide img {
   .footer-right {
     width: 80%;
     margin-right: 8rem;
+  }
+
+  #relatedProducts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: -3rem;
   }
 }
 /* Container for search bar and suggestions */
