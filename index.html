@@ -24,6 +24,18 @@
         transform: scale(0.95); /* Slight scale down on click */
       }
   /* Container for search bar and suggestions */
+  #otherIcon {
+    display: block;
+    width: 24px;    /* Adjust the width of the icon */
+    height: 24px;   /* Adjust the height of the icon */
+    cursor: pointer; /* Change the cursor to a pointer when hovering over the icon */
+}
+
+#otherIcon img {
+    width: 100%;    /* Ensure the image fills the container */
+    height: 100%;   /* Ensure the image fills the container */
+    object-fit: contain; /* Maintain the aspect ratio of the image */
+}
 .search-container {
   position: relative;
   width: 100%;
@@ -45,6 +57,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   outline: none;
+  display: none;
 }
 
 /* Style for search icon */
@@ -53,6 +66,7 @@
   border: none;
   cursor: pointer;
   padding: 5px;
+  display: none;
 }
 
 #searchIcon img {
@@ -296,12 +310,13 @@
                   <a href="#" onclick="redirectToCategory(this)">play mats</a>
                   <a href="#" onclick="redirectToCategory(this)">baby sofa</a>
                   <a href="#" onclick="redirectToCategory(this)">baby coat </a>
+
                 </div>
                 <div class="dropdown-content-divider">
                   <a href="#" onclick="redirectToCategory(this)">baby accessories box</a>
                   <a href="#" onclick="redirectToCategory(this)">bathers & baby toilets seat </a>
                   <a href="#" onclick="redirectToCategory(this)">kids drawers</a>
-                  <a href="#" onclick="redirectToCategory(this)"high chairs & booster seat</a>
+                  <a href="#" onclick="redirectToCategory(this)">high chairs & booster seat</a>
                 </div>
               </div>
             </div>
@@ -309,6 +324,18 @@
 
           <a href="contact.html">Contact Us</a>
         </div>
+        <div class="search-container">
+          <input type="text" id="searchBar" placeholder="Search for products...">
+          <button id="searchIcon">
+              <img src="search.png" alt="Search">
+          </button>
+          <button id="otherIcon">
+              <img src="other.png" alt="Other Functionality">
+          </button>
+      </div>
+      <!-- <div id="suggestions"></div> -->
+      <div id="relatedProducts"></div>
+      <br>
         <div class="addtocart" onclick="openSidebar()">
           <i class="ri-shopping-cart-2-fill"></i>
         </div>
@@ -550,14 +577,7 @@
       </div>
     </div>
   
-    <div class="search-container">
-      <input type="text" id="searchBar" placeholder="Search for products...">
-      <button id="searchIcon">
-        <img src="search.png" alt="Search">
-      </button>
-    </div>
-    <!-- <div id="suggestions"></div> -->
-    <div id="relatedProducts"></div>
+   
     
     
     <!-- -----------------------------------------Deals------------------------------------------- -->

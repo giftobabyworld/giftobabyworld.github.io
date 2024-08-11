@@ -249,7 +249,21 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
    
-    
+    document.getElementById("otherIcon").onclick = function() {
+      var searchBar = document.getElementById("searchBar");
+      var searchIcon = document.getElementById("searchIcon");
+  
+      // Toggle the display of both the search bar and the search icon
+      if (searchBar.style.display === "none" || searchBar.style.display === "") {
+          searchBar.style.display = "block";
+          searchIcon.style.display = "block"; // Show both the search bar and search icon
+          searchBar.focus(); // Optional: Focus the search bar when it appears
+      } else {
+          searchBar.style.display = "none";
+          searchIcon.style.display = "none"; // Hide both the search bar and search icon
+      }
+  };
+     
 function redirectToCategory(element) {
   // Get the category name from the clicked link's text content
   var categoryName = element.textContent.trim();
