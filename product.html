@@ -685,8 +685,24 @@ var menuRef = database.ref("products");
 menuRef.on("value", function (snapshot) {
   var menuData = snapshot.val();
 
-  // Retrieve itemId and itemCategory from localStorage
-  var itemId = localStorage.getItem("itemName");
+
+  // Function to get the value of a URL parameter
+  function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  }
+
+  // Retrieve itemName from the URL
+  var itemId = getUrlParameter('itemName');
+  if (itemId) {
+    console.log("Retrieved itemName from URL:", itemId);
+  } else {
+    console.log("No itemName found in URL.");
+  }
+
+
   var itemCategory = localStorage.getItem("itemCategory");
   console.log("Retrieved itemCategory from localStorage:", itemCategory);
 
@@ -710,7 +726,7 @@ menuRef.on("value", function (snapshot) {
                 <div class="content">
                   <div class="package-details">
                     <div class="package-name-visa">
-                      <h2>${product.name}</h2>
+                    
                     </div>
                   </div>
                 </div>
@@ -749,8 +765,12 @@ menuRef.on("value", function (snapshot) {
                   </div>
                 </div>
               </div>
+              <div style="text-align: center;">
+                <h1>${product.name}</h1><BR>
+                  </div>
               <div class="btn-container">
                 <div class="package-prices">
+                  
                   <div class="package-price" id="current-price">
                     <h4>Rs ${product.button1Price}</h4>
                   </div>

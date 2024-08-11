@@ -607,12 +607,10 @@ function addToCart(name, image, price) {
   location.reload();
 }
 function redirectToUrl(itemName) {
-  // Save itemName to localStorage
-  localStorage.setItem("itemName", itemName);
-
-  var url = "product.html";
+  var url = "product.html?itemName=" + encodeURIComponent(itemName);
   window.location.href = url;
 }
+
 document.addEventListener("DOMContentLoaded", function () {
       function displayCart() {
         // Retrieve cart items from localStorage
