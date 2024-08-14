@@ -204,6 +204,13 @@ body {
   gap: 1rem;
 }
 
+.realtedproductsWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 /* -------------------------------sidebar---------------------------- */
 
 .navbar-toggler i {
