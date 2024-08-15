@@ -250,17 +250,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
    
     document.getElementById("otherIcon").onclick = function() {
+      var modal = document.getElementById("modal");
       var searchBar = document.getElementById("searchBar");
-      var searchIcon = document.getElementById("searchIcon");
-  
-      // Toggle the display of both the search bar and the search icon
-      if (searchBar.style.display === "none" || searchBar.style.display === "") {
-          searchBar.style.display = "block";
-          searchIcon.style.display = "block"; // Show both the search bar and search icon
-          searchBar.focus(); // Optional: Focus the search bar when it appears
-      } else {
-          searchBar.style.display = "none";
-          searchIcon.style.display = "none"; // Hide both the search bar and search icon
+
+      modal.style.display = "block";
+      searchBar.focus(); // Focus the search bar when the modal appears
+  };
+
+  document.getElementById("closeIcon").onclick = function() {
+      var modal = document.getElementById("modal");
+
+      modal.style.display = "none";
+  };
+
+  // Close the modal when clicking outside of it
+  window.onclick = function(event) {
+      var modal = document.getElementById("modal");
+
+      if (event.target == modal) {
+          modal.style.display = "none";
       }
   };
      
