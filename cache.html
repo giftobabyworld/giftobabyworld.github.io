@@ -65,3 +65,86 @@
     </script>
 </body>
 </html>
+/* The Modal (background) */
+#otherIcon {
+  display: block;
+  width: 24px;    /* Adjust the width of the icon */
+  height: 24px;   /* Adjust the height of the icon */
+  cursor: pointer; /* Change the cursor to a pointer when hovering over the icon */
+}
+
+#otherIcon img {
+  width: 100%;    /* Ensure the image fills the container */
+  height: 100%;   /* Ensure the image fills the container */
+  object-fit: contain; /* Maintain the aspect ratio of the image */
+  background: transparent;
+}
+   /* The Modal (background) */
+   .modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+
+      /* Modal Content/Box */
+      .modal-content {
+          background-color: #fefefe;
+          margin: 15% auto; /* 15% from the top and centered */
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%; /* Could be more or less, depending on screen size */
+          max-width: 600px;
+          display: flex; /* Flexbox to align icon and search bar */
+          align-items: center;
+      }
+
+      /* Close Button */
+      .close {
+          color: #aaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+          color: black;
+          text-decoration: none;
+          cursor: pointer;
+      }
+
+      /* Style the search bar inside the modal */
+      #searchBar {
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+      }
+
+      /* Style the search icon */
+      #searchIcon {
+          margin-right: 10px;
+          cursor: pointer;
+      }
+      <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="searchIcon">
+                &#128269; <!-- This is a Unicode character for a search icon -->
+            </span>
+            <input type="text" id="searchBar" placeholder="Search our store...">
+            <span class="close" id="closeIcon">&times;</span>
+        </div>
+    </div>
+
+    <!-- The Trigger Icon -->
+    <span id="otherIcon">
+        &#128269; <!-- This is a Unicode character for a search icon -->
+    </span>
