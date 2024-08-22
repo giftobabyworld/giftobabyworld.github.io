@@ -394,4 +394,3 @@ function displayProduct(product, container) {
 
   container.appendChild(menuItemElement);
 }
-
