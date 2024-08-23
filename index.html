@@ -26,9 +26,10 @@
   /* The Modal (background) */
   #otherIcon {
     display: block;
-    width: 24px;    /* Adjust the width of the icon */
-    height: 24px;   /* Adjust the height of the icon */
-    cursor: pointer; /* Change the cursor to a pointer when hovering over the icon */
+    width: 30rem;
+    height: 24px;
+    cursor: pointer;
+    font-size: 3rem;
 }
 
 #otherIcon img {
@@ -69,6 +70,7 @@
             float: right;
             font-size: 28px;
             font-weight: bold;
+            margin-left: 2rem;
         }
 
         .close:hover,
@@ -91,6 +93,7 @@
         #searchIcon {
             margin-right: 10px;
             cursor: pointer;
+            font-size: 3rem;
         }
 
 
@@ -342,31 +345,42 @@
               </div>
             </div>
           </div>
-
+          
           <a href="contact.html">Contact Us</a>
-          <div id="modal" class="modal">
-            <div class="modal-content">
-                <span id="searchIcon">
-                    &#128269; <!-- This is a Unicode character for a search icon -->
-                </span>
-                <input type="text" id="searchBar" placeholder="Search our store...">
-                <span class="close" id="closeIcon">&times;</span>
-            </div>
-        </div>
-    
-        <!-- The Trigger Icon -->
-        <span id="otherIcon">
-            &#128269; <!-- This is a Unicode character for a search icon -->
-        </span>
-    
-      <br>
-        <div class="addtocart" onclick="openSidebar()">
-          <i class="ri-shopping-cart-2-fill"></i>
-        </div>
+
+      </div>
       </div>
       <div class="realtedproductsWrapper">
         <div id="relatedProducts"></div>
        </div>
+
+      
+
+       <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="searchIcon">
+                &#128269; <!-- This is a Unicode character for a search icon -->
+            </span>
+            <input type="text" id="searchBar" placeholder="Search our store...">
+            <span class="close" id="closeIcon">&times;</span>
+        </div>
+    </div>
+
+    
+
+    
+    
+
+  
+
+    <!-- The Trigger Icon -->
+    <span id="otherIcon">
+        &#128269; <!-- This is a Unicode character for a search icon -->
+    </span>
+
+    <div class="addtocart" onclick="openSidebar()">
+      <i class="ri-shopping-cart-2-fill"></i>
+    </div>
       <!-- open sidebar -->
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
@@ -542,41 +556,10 @@
         </div>
       </div>
 
-      <!-- ------------------right sidebar------------------ -->
-      <div class="sidebar" id="sidebar">
-        <button class="right-close-btn" onclick="closeSidebar()">✕</button>
-        <div class="right-sidebar-content">
-          <h1>Your Cart</h1>
-          <section class="cart">
-            <div class="content">
-              <h1>Your Cart</h1>
-            </div>
-            <div id="cart-items"></div>
-            <a href="checkout.html" class="checkout-container">
-              <div class="container">
-                <div class="left-side">
-                  <div class="card">
-                    <div class="card-line"></div>
-                    <div class="buttons"></div>
-                  </div>
-                  <div class="post">
-                    <div class="post-line"></div>
-                    <div class="screen">
-                      <div class="dollar">RS</div>
-                    </div>
-                    <div class="numbers"></div>
-                    <div class="numbers-line2"></div>
-                  </div>
-                </div>
-                <div class="right-side">
-                  <div class="new">Checkout</div>
-                </div>
-              </div>
-            </a>
-          </section>
-        </div>
-      </div>
+      
     </div>
+    </div>
+    
 
     <!-- -----------------------------------------Hero------------------------------------------- -->
 
