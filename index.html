@@ -64,6 +64,10 @@
             align-items: center;
         }
 
+        .closeModal {
+          display: none;
+        }
+
         /* Close Button */
         .close {
             color: #aaa;
@@ -346,16 +350,23 @@
             </div>
           </div>
           
+          
           <a href="contact.html">Contact Us</a>
 
+        
       </div>
       </div>
       <div class="realtedproductsWrapper">
         <div id="relatedProducts"></div>
        </div>
 
+       <div class="addtocart" onclick="openSidebar()">
+        <i class="ri-shopping-cart-2-fill"></i>
+      </div>
+
       
 
+      <div id="clickModal" class="clickModal" onclick="closeModal()">
        <div id="modal" class="modal">
         <div class="modal-content">
             <span id="searchIcon">
@@ -365,6 +376,7 @@
             <span class="close" id="closeIcon">&times;</span>
         </div>
     </div>
+  </div>
 
     
 
@@ -378,9 +390,7 @@
         &#128269; <!-- This is a Unicode character for a search icon -->
     </span>
 
-    <div class="addtocart" onclick="openSidebar()">
-      <i class="ri-shopping-cart-2-fill"></i>
-    </div>
+   
       <!-- open sidebar -->
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"

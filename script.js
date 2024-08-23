@@ -206,4 +206,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
 });
 
-// ----------------------------------------------backend---------------------------------
+// ----------------------------------------------close modal--------------------------------
+
+function closeModal() {
+  document.getElementById("clickModal").classList.add("closeModal");
+}

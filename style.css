@@ -337,6 +337,9 @@ aside .pages {
   color: var(--black-color);
   margin-right: 1rem;
   cursor: pointer;
+  position: absolute;
+  right: 14px;
+  top: 42px;
 }
 .addtocart i:hover {
   color: var(--pink-color);
