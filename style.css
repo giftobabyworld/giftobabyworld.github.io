@@ -338,11 +338,21 @@ aside .pages {
   margin-right: 1rem;
   cursor: pointer;
   position: absolute;
-  right: 14px;
-  top: 42px;
+  right: 50rem;
+  top: 16rem;
 }
 .addtocart i:hover {
   color: var(--pink-color);
+}
+
+#otherIcon {
+  width: 0rem;
+  height: 24px;
+  cursor: pointer;
+  font-size: 3rem;
+  position: absolute;
+  top: 15rem;
+  right: 66rem;
 }
 
 .sidenav {
@@ -1559,6 +1569,16 @@ swiper-slide img {
     position: absolute;
     top: 37px;
     right: 14rem;
+  }
+
+  .addtocart i {
+    font-size: 3rem;
+    color: var(--black-color);
+    margin-right: 1rem;
+    cursor: pointer;
+    position: absolute;
+    right: 14px;
+    top: 42px;
   }
 }
 
