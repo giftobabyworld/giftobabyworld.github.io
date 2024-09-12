@@ -209,5 +209,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
 // ----------------------------------------------close modal--------------------------------
 
 function closeModal() {
-  document.getElementById("clickModal").classList.add("closeModal");
+  document.getElementById("clickModal").classList.add("hidden");
+}
+
+function openModal() {
+  document.getElementById("clickModal").classList.remove("hidden");
 }

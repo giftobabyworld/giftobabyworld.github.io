@@ -376,6 +376,10 @@ aside .pages {
   transition: 0.3s;
 }
 
+.hidden {
+  display: none;
+}
+
 .sidenav a:hover {
   /* background-color: #ff1493; */
   color: white;
